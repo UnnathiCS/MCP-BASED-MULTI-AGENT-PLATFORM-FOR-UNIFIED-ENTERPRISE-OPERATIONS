@@ -1,0 +1,4 @@
+Refunds are allowed within 7 days of purchase if the service is not activated.
+Password resets can be done automatically via the user portal.
+Billing issues must be escalated if payment is deducted but service is inactive.
+Technical outages must be routed to IT support.

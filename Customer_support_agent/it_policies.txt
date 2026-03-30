@@ -1,0 +1,5 @@
+VPN Access Policy: VPN issues should be resolved by checking credentials, network connectivity, and restarting the VPN client.
+Password Reset Policy: Users must reset passwords using the self-service portal before contacting IT.
+Critical Incident Policy: If system outages affect multiple users, escalate as a P1 incident immediately.
+Software Installation Policy: New software installations require manager approval.
+Access Request Policy: New access requests require approval from the system owner.
