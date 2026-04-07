@@ -1,9 +1,31 @@
 from fastapi import FastAPI
-from app.api.routes import router
+from fastapi.middleware.cors import CORSMiddleware
 from datetime import datetime
 import time
+import sys
+import os
+
+# Add parent directory to path to fix imports
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+try:
+    from app.api.routes import router
+except ImportError:
+    from api.routes import router
 
 app = FastAPI(title="Enterprise Document Review Agent")
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Include router
+app.include_router(router)
 
 # Track startup time for uptime calculation
 start_time = time.time()

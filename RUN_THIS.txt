@@ -2,17 +2,19 @@
 🧠 MCP UNIFIED AGENT SYSTEM - READY TO RUN
 ================================================================================
 
-ONE SCREEN. MCP DECIDES. AGENT EXECUTES.
+CHAT INTERFACE WITH HORIZONTAL TIMELINE ANIMATION
+
+Type → Horizontal Timeline Animation → Results → Continue or Home
 
 ================================================================================
 SETUP (Copy-Paste These 3 Commands - Each in a New Terminal)
 ================================================================================
 
 TERMINAL 1 - Support Agent (Port 8000):
-cd ~/Documents/SEM-6/MINI-PROJECT/Customer_support_agent && source venv/bin/activate && python main.py
+cd ~/Documents/SEM-6/MINI-PROJECT/Customer_support_agent && source .venv/bin/activate && python -m uvicorn main:app --reload --port 8000
 
 TERMINAL 2 - Document Agent (Port 8001):
-cd ~/Documents/SEM-6/MINI-PROJECT/Document_Review_agent/document_review_agent && source venv/bin/activate && python app/main.py
+cd ~/Documents/SEM-6/MINI-PROJECT/Document_Review_agent/document_review_agent && source .venv/bin/activate && python -m uvicorn app.main:app --reload --port 8001
 
 TERMINAL 3 - Dashboard (Port 8501):
 cd ~/Documents/SEM-6/MINI-PROJECT && streamlit run app.py
@@ -26,26 +28,60 @@ http://localhost:8501
 HOW IT WORKS
 ================================================================================
 
-1. USER TYPES PROBLEM
-   "My VPN connection keeps dropping"
+1. HOME PAGE
+   Type your problem or upload a PDF
+   Click Send
 
-2. MCP ANALYZES
-   - Detects: IT Support Issue
-   - Confidence: 92%
+2. HORIZONTAL TIMELINE ANIMATION
+   Shows: Input → MCP Analysis → Routing
+   Real-time millisecond tracking
 
-3. MCP DECIDES
-   - Support Agent: 0.94 ✅ SELECTED
-   - Document Agent: 0.18 ❌
+3. AGENT PROCESSING
+   Agent executes with spinner
+   Shows complete 5-step timeline when done:
+   - Input Received
+   - MCP Analysis
+   - Routing
+   - Processing
+   - Results Ready
 
-4. AGENT EXECUTES
-   - Processes request
-   - Returns solution
+4. RESPONSE DISPLAYED
+   Support: Status, Priority, Solution, Recommendations
+   Document: Risk Level, Clauses, Recommendations
 
-5. RESULT SHOWN
-   - Solution displayed
-   - Decision shown
-   - Processing time shown
-   - Added to history
+5. CONTINUE OR HOME
+   Bottom buttons to:
+   - Go Home (new request)
+   - New Request (clear and start)
+
+================================================================================
+FEATURES
+================================================================================
+
+✨ Chat Interface (like ChatGPT/Claude)
+✨ Horizontal Timeline Animation
+✨ Full-screen Timeline Display
+✨ Real execution time tracking
+✨ Smooth animations and transitions
+✨ Color-coded status indicators
+✨ Mobile responsive
+✨ New page for each request
+
+================================================================================
+TESTING
+================================================================================
+
+Support Request:
+  "My VPN keeps dropping"
+  → Timeline animation
+  → Support agent response
+  → Solution displayed
+
+Document Request:
+  "Review this contract" + upload PDF
+  → Timeline animation
+  → Document analysis
+  → Risk assessment and clauses
 
 ================================================================================
 KEY FEATURES

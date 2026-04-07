@@ -4,18 +4,49 @@
 
 ## 🚀 Quick Start (3 Terminals)
 
-### Terminal 1: Support Agent
+### ⚙️ Setup - Step 0: Configure Groq API Key (First Time Only)
+
+The Support Agent now uses **LangGraph with Groq LLM** for intelligent decision making.
+
+**1. Get your FREE Groq API Key:**
+```bash
+# Visit: https://console.groq.com/
+# ✅ Sign up (takes 2 minutes, no credit card needed)
+# ✅ Get your API key from dashboard
+```
+
+**2. Add your API key to `.env` file:**
 ```bash
 cd ~/Documents/SEM-6/MINI-PROJECT/Customer_support_agent
-source venv/bin/activate
-python main.py
+# Open .env file (or create one)
+# Add this line:
+GROQ_API_KEY=gsk_YOUR_ACTUAL_API_KEY_HERE
+```
+
+**Example .env file:**
+```
+GROQ_API_KEY=gsk_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+GROQ_MODEL=mixtral-8x7b-32768
+ENVIRONMENT=development
+LOG_LEVEL=INFO
+```
+
+**3. Save and continue with the setup below**
+
+---
+
+### Terminal 1: Support Agent (with LangGraph)
+```bash
+cd ~/Documents/SEM-6/MINI-PROJECT/Customer_support_agent
+source .venv/bin/activate
+python -m uvicorn main:app --reload --port 8000
 ```
 
 ### Terminal 2: Document Agent
 ```bash
 cd ~/Documents/SEM-6/MINI-PROJECT/Document_Review_agent/document_review_agent
-source venv/bin/activate
-python app/main.py
+source .venv/bin/activate
+python -m uvicorn app.main:app --reload --port 8001
 ```
 
 ### Terminal 3: Dashboard
@@ -161,6 +192,45 @@ Document_Review_agent/      ← Document analysis (Terminal 2)
 - `START_HERE.md` - Quick start guide
 - `INTEGRATED_DASHBOARD_GUIDE.md` - Detailed features
 - `SYSTEM_VISUAL_OVERVIEW.md` - Visual diagrams
+
+---
+
+## 🔧 LangGraph Implementation (Faculty Suggestion)
+
+### What Changed?
+The Support Agent now uses **LangGraph** for orchestrated multi-step decision making:
+
+**Before:** Single monolithic `decide_action()` function
+```python
+result = decide_action(query)  # Black box
+```
+
+**After:** LangGraph workflow with observable state transitions
+```
+Query → Policy Search → Sentiment Analysis → Classification → LLM Decision → Result
+```
+
+### Benefits Shown to Faculty:
+✅ **State Graph Visualization** - See each processing step
+✅ **Traceability** - Track agent reasoning (shown in UI)
+✅ **LLM Integration** - Groq's free Mixtral-8x7b model
+✅ **Deterministic + Intelligent** - Rules + LLM hybrid approach
+✅ **Scalable** - Easy to add parallel processing
+
+### View the LangGraph Workflow:
+1. Submit a support request via the dashboard
+2. Expand **"🔧 LangGraph Workflow"** section
+3. See the processing pipeline visualization
+4. View agent reasoning process step-by-step
+
+### API Endpoints for Graph Visualization:
+```bash
+# ASCII visualization
+curl http://localhost:8000/graph/visualization
+
+# Mermaid diagram code
+curl http://localhost:8000/graph/mermaid
+```
 
 ---
 

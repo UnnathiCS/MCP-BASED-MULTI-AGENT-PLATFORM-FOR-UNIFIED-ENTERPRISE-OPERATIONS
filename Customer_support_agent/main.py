@@ -2,20 +2,29 @@ from fastapi import FastAPI, UploadFile, File
 from fastapi.responses import JSONResponse
 from models import ITSupportRequest, ITSupportResponse
 from agent import decide_action
+from support_agent_graph import decide_action_with_graph, get_graph_visualization, get_graph_mermaid
 from voice import VoiceProcessor
 import shutil
 import logging
 from datetime import datetime
 import time
+import os
 
 # Logging setup
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-app = FastAPI(title="Enterprise IT Support Agent")
+app = FastAPI(title="Enterprise IT Support Agent with LangGraph")
 
 voice_processor = VoiceProcessor()
 start_time = time.time()
+
+# Load Groq API key from environment
+if not os.getenv("GROQ_API_KEY"):
+    logger.warning("GROQ_API_KEY not set. LangGraph will use fallback rules.")
+    
+# Use LangGraph by default, fallback to original if needed
+USE_LANGGRAPH = True
 
 # ============================================================================
 # LEGACY ENDPOINTS (backward compatible)
@@ -23,7 +32,17 @@ start_time = time.time()
 
 @app.post("/it-support/text", response_model=ITSupportResponse)
 def handle_text(req: ITSupportRequest):
-    result = decide_action(req.message)
+    """Handle text support request using LangGraph workflow"""
+    
+    if USE_LANGGRAPH:
+        try:
+            result = decide_action_with_graph(req.message, req.ticket_id)
+            logger.info(f"LangGraph decision: {result['decision']}")
+        except Exception as e:
+            logger.error(f"LangGraph error: {e}. Falling back to original agent.")
+            result = decide_action(req.message)
+    else:
+        result = decide_action(req.message)
 
     return ITSupportResponse(
         ticket_id=req.ticket_id,
@@ -179,6 +198,71 @@ def invoke_mcp(payload: dict):
                 "suggested_actions": []
             }
         )
+
+# ============================================================================
+# LANGGRAPH VISUALIZATION ENDPOINTS (For Evaluation)
+# ============================================================================
+
+@app.get("/graph/visualization")
+def get_graph_viz():
+    """
+    Get ASCII art representation of the LangGraph workflow.
+    Shows the multi-step decision making process.
+    """
+    viz = get_graph_visualization()
+    return {
+        "agent": "support-agent",
+        "framework": "LangGraph",
+        "visualization": viz,
+        "description": "Multi-step workflow with LLM-based decision making"
+    }
+
+
+@app.get("/graph/mermaid")
+def get_graph_mermaid_diagram():
+    """
+    Get Mermaid diagram code for visualizing the workflow.
+    Can be rendered at https://mermaid.live/
+    """
+    mermaid_code = get_graph_mermaid()
+    return {
+        "agent": "support-agent",
+        "framework": "LangGraph",
+        "mermaid": mermaid_code,
+        "render_url": "https://mermaid.live/",
+        "description": "Copy the 'mermaid' field to https://mermaid.live/ to visualize"
+    }
+
+# ============================================================================
+# DEBUG ENDPOINT - Test LangGraph Directly
+# ============================================================================
+
+@app.post("/debug/test-langgraph")
+def debug_test_langgraph(req: ITSupportRequest):
+    """
+    DEBUG ENDPOINT - Test LangGraph workflow and show what LLM actually decides.
+    Shows raw output from each node for debugging.
+    """
+    logger.info("=" * 80)
+    logger.info("DEBUG: Testing LangGraph workflow")
+    logger.info("=" * 80)
+    
+    result = decide_action_with_graph(req.message, req.ticket_id)
+    
+    return {
+        "status": "debug_success",
+        "ticket_id": req.ticket_id,
+        "user_query": req.message,
+        "langgraph_result": result,
+        "explanation": {
+            "step_1_policy_search": f"Found policy: {result.get('policy_confidence', 0) > 0.55}",
+            "step_2_sentiment": result.get("sentiment", "UNKNOWN"),
+            "step_3_category": result.get("category", "UNKNOWN"),
+            "step_4_llm_decision": result.get("decision", "UNKNOWN"),
+            "processing_steps": result.get("processing_steps", []),
+            "agent_reasoning": result.get("agent_thoughts", "No reasoning available")
+        }
+    }
 
 # ============================================================================
 # HEALTH CHECK ENDPOINT

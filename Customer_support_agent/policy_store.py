@@ -1,10 +1,16 @@
 from sentence_transformers import SentenceTransformer
 import faiss
 import numpy as np
+import os
+from pathlib import Path
 
 class PolicyStore:
     def __init__(self, policy_file="it_policies.txt"):
         self.model = SentenceTransformer("all-MiniLM-L6-v2")
+        # Use absolute path if relative path doesn't exist
+        if not os.path.exists(policy_file):
+            script_dir = Path(__file__).parent
+            policy_file = script_dir / policy_file
         self.policies = self._load_policies(policy_file)
         self.embeddings = self.model.encode(self.policies)
         self.index = faiss.IndexFlatL2(self.embeddings.shape[1])
