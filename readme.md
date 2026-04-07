@@ -1,4 +1,4 @@
-# 🧠 MCP Unified Agent System
+#  MCP Unified Agent System
 
 **One screen. User types problem. MCP decides which agent. Agent executes. Show result.**
 
