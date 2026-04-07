@@ -1,0 +1,163 @@
+================================================================================
+🧠 MCP UNIFIED AGENT SYSTEM - READY TO RUN
+================================================================================
+
+ONE SCREEN. MCP DECIDES. AGENT EXECUTES.
+
+================================================================================
+SETUP (Copy-Paste These 3 Commands - Each in a New Terminal)
+================================================================================
+
+TERMINAL 1 - Support Agent (Port 8000):
+cd ~/Documents/SEM-6/MINI-PROJECT/Customer_support_agent && source venv/bin/activate && python main.py
+
+TERMINAL 2 - Document Agent (Port 8001):
+cd ~/Documents/SEM-6/MINI-PROJECT/Document_Review_agent/document_review_agent && source venv/bin/activate && python app/main.py
+
+TERMINAL 3 - Dashboard (Port 8501):
+cd ~/Documents/SEM-6/MINI-PROJECT && streamlit run app.py
+
+================================================================================
+THEN OPEN BROWSER
+================================================================================
+http://localhost:8501
+
+================================================================================
+HOW IT WORKS
+================================================================================
+
+1. USER TYPES PROBLEM
+   "My VPN connection keeps dropping"
+
+2. MCP ANALYZES
+   - Detects: IT Support Issue
+   - Confidence: 92%
+
+3. MCP DECIDES
+   - Support Agent: 0.94 ✅ SELECTED
+   - Document Agent: 0.18 ❌
+
+4. AGENT EXECUTES
+   - Processes request
+   - Returns solution
+
+5. RESULT SHOWN
+   - Solution displayed
+   - Decision shown
+   - Processing time shown
+   - Added to history
+
+================================================================================
+KEY FEATURES
+================================================================================
+
+✅ Single Screen - No tabs, no manual selection
+✅ MCP Brain - Analyzes and decides which agent
+✅ Auto Routing - Routes to best agent automatically
+✅ Agent Popup - Agent appears with your input already filled
+✅ Same Screen - Everything on one page
+✅ Full History - Tracks all requests
+✅ Status Monitor - Shows agent availability
+
+================================================================================
+WHAT HAPPENS BEHIND THE SCENES
+================================================================================
+
+User Input: "My Teams keeps crashing"
+    ↓
+detect_intent() → Analyzes keywords → "Software issue"
+    ↓
+Support Agent score: 0.94 (Capability 1.0, Success 0.95, Specialization 0.98)
+Document Agent score: 0.18 (Not software related)
+    ↓
+Selected: Support Agent (highest score)
+    ↓
+execute_support() → Sends to port 8000 → Processes → Returns solution
+    ↓
+Display on screen:
+  ✓ Category: Software Issue
+  ✓ Agent: Support Agent
+  ✓ Solution: [Steps to fix Teams]
+  ✓ Time: 145ms
+  ✓ Added to history
+
+================================================================================
+EXPECTED BEHAVIOR
+================================================================================
+
+Support Request:
+  Type: "I can't login to email"
+  → MCP detects IT Support
+  → Routes to Support Agent
+  → Shows solution
+
+Document Review:
+  Type: "Review this contract"
+  Upload: PDF file
+  → MCP detects Document Review
+  → Routes to Document Agent
+  → Shows risk assessment
+
+Both Agents Online:
+  Sidebar shows: 🟢 🟢 (both green)
+  
+Agent Offline:
+  Shows error: "Cannot connect to [Agent Name] (port XXXX)"
+
+================================================================================
+FILES
+================================================================================
+
+app.py → THE MAIN FILE (what you run with streamlit)
+  - 352 lines
+  - Single unified interface
+  - MCP intent detection
+  - Agent routing
+  - Result display
+  - History tracking
+
+readme.md → Updated with correct instructions
+
+Customer_support_agent/main.py → Support Agent (run in Terminal 1)
+Document_Review_agent/.../app/main.py → Document Agent (run in Terminal 2)
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+"Agent is offline" 🔴
+→ Make sure you ran it in Terminal 1 or 2
+→ Wait for "Application startup complete"
+
+"Cannot connect to port 8000"
+→ Another process using it
+→ Try: lsof -i :8000
+→ Kill it: kill -9 <PID>
+→ Restart agent
+
+"Streamlit not found"
+→ pip install streamlit
+
+All agents must be running simultaneously!
+
+================================================================================
+YOU NOW HAVE
+================================================================================
+
+✅ Single-screen unified system
+✅ MCP as central decision-making brain
+✅ Automatic intelligent agent routing
+✅ No manual selection needed
+✅ Complete transparency on decisions
+✅ Request history tracking
+✅ Agent status monitoring
+✅ Production-ready code
+
+EVERYTHING IS CODE - NO MORE DOCUMENTATION
+
+================================================================================
+READY? GO! 🚀
+================================================================================
+
+Copy those 3 commands above into separate terminals and open the browser!
+

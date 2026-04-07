@@ -1,0 +1,29 @@
+# MCP Module Requirements
+
+# Core dependencies (already in your project)
+requests>=2.28.0
+pydantic>=1.9.0
+python-dotenv>=0.20.0
+
+# Optional: for advanced features (not required for basic functionality)
+# For async HTTP calls (upgrade decision_engine.py to async)
+httpx>=0.23.0
+
+# For real intent classification (replace placeholder model)
+transformers>=4.20.0
+torch>=1.10.0
+
+# For embeddings and semantic matching
+sentence-transformers>=2.2.0
+
+# For serialization and validation
+marshmallow>=3.17.0
+
+# Testing (optional)
+pytest>=7.0.0
+pytest-cov>=3.0.0
+pytest-asyncio>=0.20.0
+
+# Monitoring and tracing (optional, future)
+opentelemetry-api>=1.13.0
+opentelemetry-sdk>=1.13.0
