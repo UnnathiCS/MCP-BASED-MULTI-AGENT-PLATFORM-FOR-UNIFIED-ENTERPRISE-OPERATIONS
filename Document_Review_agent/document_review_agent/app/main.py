@@ -5,13 +5,11 @@ import time
 import sys
 import os
 
-# Add parent directory to path to fix imports
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# Add app directory to path to fix imports
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-try:
-    from app.api.routes import router
-except ImportError:
-    from api.routes import router
+# Import router from api module
+from api.routes import router
 
 app = FastAPI(title="Enterprise Document Review Agent")
 

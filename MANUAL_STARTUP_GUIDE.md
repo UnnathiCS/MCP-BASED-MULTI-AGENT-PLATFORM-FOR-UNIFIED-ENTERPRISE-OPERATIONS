@@ -26,7 +26,7 @@ INFO:     Uvicorn running on http://0.0.0.0:8000
 
 ```bash
 cd ~/Documents/SEM-6/MINI-PROJECT/Document_Review_agent/document_review_agent
-source .venv/bin/activate
+source venv/bin/activate
 python -m uvicorn app.main:app --reload --port 8001
 ```
 
