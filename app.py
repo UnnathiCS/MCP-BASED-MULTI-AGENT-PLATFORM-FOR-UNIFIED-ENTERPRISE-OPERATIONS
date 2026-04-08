@@ -16,6 +16,7 @@ from typing import Dict, Optional, List
 # ============================================================================
 SUPPORT_API = "http://127.0.0.1:8000"
 DOCUMENT_API = "http://127.0.0.1:8001"
+MEETING_API = "http://127.0.0.1:8002"
 REQUEST_TIMEOUT = 30
 
 st.set_page_config(
@@ -38,7 +39,7 @@ if "current_result" not in st.session_state:
 # ============================================================================
 
 def detect_intent(user_input: str) -> Dict:
-    """Detect if support or document agent"""
+    """Detect if support, document, or meeting agent"""
     user_lower = user_input.lower()
     
     support_keywords = [
@@ -54,23 +55,41 @@ def detect_intent(user_input: str) -> Dict:
         "assessment", "upload", "file", "check", "examine", "evaluate"
     ]
     
+    meeting_keywords = [
+        "meeting", "schedule", "calendar", "availability", "time",
+        "book", "conflict", "attendee", "organizer", "reschedule",
+        "suggest", "slots", "free", "busy", "agenda", "conference",
+        "sync", "standup", "huddle", "call", "zoom", "teams call"
+    ]
+    
     support_score = sum(1 for kw in support_keywords if kw in user_lower)
     doc_score = sum(1 for kw in doc_keywords if kw in user_lower)
+    meeting_score = sum(1 for kw in meeting_keywords if kw in user_lower)
     
-    if doc_score > support_score and doc_score > 0:
-        return {
-            "agent": "documents",
-            "agent_name": "Document Review Agent",
-            "category": "Document Analysis",
-            "confidence": min(0.98, (doc_score / 3.0))
-        }
-    else:
+    # Determine which agent to use based on highest score
+    scores = [
+        (support_score, "support", "Support Agent", "IT Support"),
+        (doc_score, "documents", "Document Review Agent", "Document Analysis"),
+        (meeting_score, "meetings", "Meeting Calendar Agent", "Meeting Scheduling")
+    ]
+    
+    max_score, agent, agent_name, category = max(scores, key=lambda x: x[0])
+    
+    if max_score == 0:
+        # Default to support if no keywords match
         return {
             "agent": "support",
             "agent_name": "Support Agent",
             "category": "IT Support",
-            "confidence": min(0.98, max(0.65, (support_score / 3.0)))
+            "confidence": 0.65
         }
+    
+    return {
+        "agent": agent,
+        "agent_name": agent_name,
+        "category": category,
+        "confidence": min(0.98, max(0.65, (max_score / 3.0)))
+    }
 
 def execute_support(user_input: str, request_id: str) -> Dict:
     """Send to Support Agent"""
@@ -98,6 +117,22 @@ def execute_document(user_input: str, request_id: str, uploaded_file) -> Dict:
             f"{DOCUMENT_API}/review",
             files=files,
             timeout=120
+        )
+        if response.status_code == 200:
+            return {"status": "success", "data": response.json()}
+        else:
+            return {"status": "error", "error": f"Agent error: {response.status_code}"}
+    except Exception as e:
+        return {"status": "error", "error": str(e)}
+
+def execute_meeting(user_input: str, request_id: str) -> Dict:
+    """Send to Meeting Calendar Agent"""
+    try:
+        # First try to use orchestrator endpoint for intelligent scheduling
+        response = requests.post(
+            f"{MEETING_API}/agent/orchestrate",
+            json={"request": user_input, "request_id": request_id},
+            timeout=REQUEST_TIMEOUT
         )
         if response.status_code == 200:
             return {"status": "success", "data": response.json()}
@@ -321,8 +356,10 @@ def show_results_page():
         with st.spinner("Processing..."):
             if intent["agent"] == "support":
                 response = execute_support(user_input, request_id)
-            else:
+            elif intent["agent"] == "documents":
                 response = execute_document(user_input, request_id, uploaded_file)
+            else:  # meetings
+                response = execute_meeting(user_input, request_id)
             
             execution_time = (time.time() - start_time) * 1000
         
@@ -471,7 +508,7 @@ This Support Agent uses **LangGraph** to orchestrate a multi-step decision workf
                     st.markdown("**Agent Reasoning Process:**")
                     st.code(data.get("agent_thoughts", ""), language="text")
         
-        else:  # Document
+        elif intent["agent"] == "documents":
             col1, col2, col3 = st.columns(3)
             with col1:
                 st.metric("Type", data.get("document_type", "Unknown"))
@@ -520,13 +557,83 @@ This Support Agent uses **LangGraph** to orchestrate a multi-step decision workf
             
             # Explanation
             if data.get("explanation"):
-                with st.expander("� Detailed Explanation"):
+                with st.expander("📖 Detailed Explanation"):
                     st.markdown(data.get("explanation"))
             
             st.markdown("---")
             
             if data.get("suggestions"):
                 st.markdown("### 💡 Suggestions")
+                suggestions = data.get("suggestions", [])
+                if isinstance(suggestions, list):
+                    for i, suggestion in enumerate(suggestions, 1):
+                        st.write(f"{i}. {suggestion}")
+                else:
+                    st.write(suggestions)
+        
+        else:  # Meetings
+            st.markdown("### 📅 Meeting Scheduling Result")
+            
+            # Key metrics
+            col1, col2, col3 = st.columns(3)
+            with col1:
+                st.metric("Status", data.get("status", "Pending"))
+            with col2:
+                meeting_count = len(data.get("meetings", []))
+                st.metric("Meetings", meeting_count)
+            with col3:
+                suggestion_count = len(data.get("suggestions", []))
+                st.metric("Suggestions", suggestion_count)
+            
+            st.markdown("---")
+            
+            # Meetings created/updated
+            if data.get("meetings"):
+                st.markdown("### 📌 Meetings")
+                for meeting in data.get("meetings", []):
+                    with st.expander(f"📅 {meeting.get('title', 'Meeting')}"):
+                        col1, col2 = st.columns(2)
+                        with col1:
+                            st.write(f"**Start:** {meeting.get('start_time', 'N/A')}")
+                            st.write(f"**Attendees:** {len(meeting.get('attendees', []))} people")
+                        with col2:
+                            st.write(f"**End:** {meeting.get('end_time', 'N/A')}")
+                            if meeting.get('location'):
+                                st.write(f"**Location:** {meeting.get('location')}")
+                        
+                        if meeting.get('description'):
+                            st.markdown("**Description:**")
+                            st.markdown(meeting.get('description'))
+                        
+                        if meeting.get('hangout_link'):
+                            st.markdown(f"[Join Meeting]({meeting.get('hangout_link')})")
+            
+            st.markdown("---")
+            
+            # Availability analysis
+            if data.get("availability"):
+                st.markdown("### ⏰ Availability Analysis")
+                availability = data.get("availability")
+                with st.expander("View Availability Details"):
+                    if isinstance(availability, dict):
+                        st.json(availability)
+                    else:
+                        st.write(availability)
+            
+            st.markdown("---")
+            
+            # Conflict resolution
+            if data.get("conflicts"):
+                st.markdown("### ⚠️ Conflicts Detected")
+                conflicts = data.get("conflicts", [])
+                for conflict in conflicts:
+                    st.warning(f"🔴 {conflict}")
+            
+            st.markdown("---")
+            
+            # Smart suggestions
+            if data.get("suggestions"):
+                st.markdown("### 💡 Smart Suggestions")
                 suggestions = data.get("suggestions", [])
                 if isinstance(suggestions, list):
                     for i, suggestion in enumerate(suggestions, 1):

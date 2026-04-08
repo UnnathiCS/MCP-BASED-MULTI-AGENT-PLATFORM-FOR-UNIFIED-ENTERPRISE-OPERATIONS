@@ -8,7 +8,8 @@ from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 
-CONFIG_DIR = Path(__file__).resolve().parents[2] / "config"
+# Path to credentials (in the same directory as this file)
+CONFIG_DIR = Path(__file__).resolve().parent / "config"
 CLIENT_SECRETS_FILE = CONFIG_DIR / "credentials.json"
 TOKEN_FILE = CONFIG_DIR / "token.json"
 SCOPES = ["https://www.googleapis.com/auth/calendar"]
