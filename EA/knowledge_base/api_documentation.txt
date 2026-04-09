@@ -1,0 +1,88 @@
+NexusFlow API Documentation
+
+Authentication:
+All API requests require authentication using an API key. Include your API key in the request header:
+Authorization: Bearer YOUR_API_KEY
+
+You can generate API keys from the Admin Dashboard under Settings > API Keys. Each key can have specific permissions:
+- Read: View workflows and data
+- Write: Create and modify workflows
+- Execute: Run workflows
+- Admin: Full access
+
+Base URL:
+Production: https://api.nexusflow.com/v1
+Sandbox: https://api-sandbox.nexusflow.com/v1
+
+Common Endpoints:
+
+1. Workflows
+GET /workflows - List all workflows
+POST /workflows - Create a new workflow
+GET /workflows/{id} - Get workflow details
+PUT /workflows/{id} - Update workflow
+DELETE /workflows/{id} - Delete workflow
+POST /workflows/{id}/execute - Execute a workflow
+
+2. Workflow Execution
+GET /executions - List workflow executions
+GET /executions/{id} - Get execution details
+GET /executions/{id}/logs - Get execution logs
+POST /executions/{id}/retry - Retry a failed execution
+
+3. Connectors
+GET /connectors - List available connectors
+GET /connectors/{id}/status - Check connector status
+POST /connectors/{id}/test - Test connector connection
+
+4. Analytics
+GET /analytics/workflows - Get workflow analytics
+GET /analytics/executions - Get execution metrics
+GET /analytics/performance - Get performance metrics
+
+Rate Limits:
+- Free tier: 100 requests per hour
+- Professional tier: 1,000 requests per hour
+- Enterprise tier: 10,000 requests per hour
+
+Error Codes:
+400 - Bad Request: Invalid parameters
+401 - Unauthorized: Invalid or missing API key
+403 - Forbidden: Insufficient permissions
+404 - Not Found: Resource does not exist
+429 - Too Many Requests: Rate limit exceeded
+500 - Internal Server Error: Server-side issue
+
+Response Format:
+All responses are in JSON format. Successful responses include a "data" field, while errors include an "error" field with details.
+
+Example Request:
+curl -X GET https://api.nexusflow.com/v1/workflows \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json"
+
+Example Response:
+{
+  "data": {
+    "workflows": [
+      {
+        "id": "wf_123",
+        "name": "Customer Onboarding",
+        "status": "active",
+        "created_at": "2024-01-15T10:30:00Z"
+      }
+    ]
+  }
+}
+
+Webhooks:
+You can configure webhooks to receive notifications about workflow events. Set up webhooks in the Admin Dashboard under Settings > Webhooks.
+
+Supported Events:
+- workflow.created
+- workflow.updated
+- workflow.deleted
+- execution.started
+- execution.completed
+- execution.failed
+

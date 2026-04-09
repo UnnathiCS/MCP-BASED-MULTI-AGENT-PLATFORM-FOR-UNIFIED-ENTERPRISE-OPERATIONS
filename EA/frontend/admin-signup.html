@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Sign Up - CompanyZ</title>
+    <link rel="stylesheet" href="/ui/style.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <style>
+        .signup-container {
+            max-width: 600px;
+            margin: 60px auto;
+            padding: 40px;
+        }
+        .signup-card {
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+        .signup-card h1 {
+            margin: 0 0 8px 0;
+            color: #212529;
+            font-size: 28px;
+        }
+        .signup-card p {
+            color: #6c757d;
+            margin: 0 0 32px 0;
+        }
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 16px;
+            border-radius: 4px;
+            margin: 24px 0;
+        }
+        .info-box h4 {
+            margin: 0 0 8px 0;
+            color: #1976d2;
+        }
+        .info-box p {
+            margin: 0;
+            color: #1565c0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="brand">
+            <img class="logo" src="/ui/logo.jpeg" alt="CompanyZ logo" />
+            <span>CompanyZ</span>
+        </div>
+        <div class="links">
+            <a href="/ui">Home</a>
+            <a href="/ui/admin-login.html">Login</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="signup-container">
+            <div class="signup-card">
+                <h1>Admin Registration</h1>
+                <p>Create your admin account with Google authentication</p>
+
+                <div id="step1-content">
+                    <h3 style="margin-bottom: 16px;">Google Authentication</h3>
+                    <p style="margin-bottom: 24px; color: #6c757d;">Sign in with your Google account to register as an admin.</p>
+
+                    <div id="google-signin-button" style="margin-bottom: 16px;"></div>
+
+                    <div class="info-box">
+                        <h4>Why Google Authentication?</h4>
+                        <p>Google OAuth provides secure, passwordless authentication. Your Google account credentials are never stored on our servers.</p>
+                    </div>
+                </div>
+
+                <div id="status-message" style="margin-top: 24px; padding: 12px; border-radius: 6px; display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Google Sign-In
+        window.onload = function() {
+            google.accounts.id.initialize({
+                client_id: '614492370530-miidcn5ve6sdmc0ocpt25r1bgvschlc6.apps.googleusercontent.com',
+                callback: handleGoogleSignIn
+            });
+
+            google.accounts.id.renderButton(
+                document.getElementById('google-signin-button'),
+                { theme: 'outline', size: 'large', width: '100%' }
+            );
+        };
+
+        async function handleGoogleSignIn(response) {
+            try {
+                const res = await fetch('/auth/google/verify', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include',
+                    body: JSON.stringify({ token: response.credential })
+                });
+
+                const data = await res.json();
+
+                if (data.authenticated) {
+                    showStatus('Registration successful! Redirecting to dashboard...', 'success');
+                    setTimeout(() => {
+                        window.location.href = '/ui/dashboard.html';
+                    }, 1500);
+                } else {
+                    throw new Error('Authentication failed');
+                }
+            } catch (error) {
+                console.error('Google sign-in error:', error);
+                showStatus('Google authentication failed. Please try again.', 'error');
+            }
+        }
+
+        function showStatus(message, type) {
+            const statusEl = document.getElementById('status-message');
+            statusEl.textContent = message;
+            statusEl.style.display = 'block';
+            statusEl.style.background = type === 'success' ? '#d4edda' : '#f8d7da';
+            statusEl.style.color = type === 'success' ? '#155724' : '#721c24';
+            statusEl.style.border = `1px solid ${type === 'success' ? '#c3e6cb' : '#f5c6cb'}`;
+        }
+    </script>
+</body>
+</html>

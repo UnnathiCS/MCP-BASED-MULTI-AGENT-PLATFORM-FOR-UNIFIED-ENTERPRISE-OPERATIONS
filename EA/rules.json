@@ -1,0 +1,44 @@
+{
+  "include_types": [
+    "Customer Support Requests",
+    "Sales & Inbound Leads",
+    "Internal Operations",
+    "Onboarding / Offboarding Requests",
+    "Technical Issues / Incident Reports",
+    "Compliance & Legal"
+  ],
+  "exclude_types": [
+    "Marketing newsletters",
+    "Social media notifications",
+    "System alerts",
+    "Spam",
+    "Personal messages"
+  ],
+  "intent_taxonomy": {
+    "Technical Support": {
+      "phrases": ["Server not responding"],
+      "suggested_response": "Our servers are currently facing an issue. We're working on it and will update you within 2 hours."
+    },
+    "Sales Inquiry": {
+      "phrases": ["Schedule a demo"],
+      "suggested_response": "Sure! Please let us know your availability for a 30-minute demo this week."
+    },
+    "Account Management": {
+      "phrases": ["Password reset"],
+      "suggested_response": "You can reset your password by clicking this link: [reset link]."
+    },
+    "Legal & Compliance": {
+      "phrases": ["Review NDA"],
+      "suggested_response": "We've received your NDA. Our legal team will review and respond within 24 hours."
+    },
+    "Internal Request": {
+      "phrases": ["Approve PO"],
+      "suggested_response": "The PO #1234 has been approved. Please proceed with procurement."
+    },
+    "General Information": {
+      "phrases": ["FAQs"],
+      "suggested_response": "Here’s a link to our FAQ page: [URL]. Let us know if you need anything else!"
+    }
+  }
+  
+}

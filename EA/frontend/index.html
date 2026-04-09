@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CompanyZ Mail AI Agent</title>
+    <link rel="stylesheet" href="/ui/style.css" />
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="brand">
+        <img class="logo" src="/ui/logo.jpeg" alt="CompanyZ logo" />
+        <span>CompanyZ</span>
+      </div>
+      <div class="links">
+        <a href="/ui#manual" id="nav-manual">Manual Test</a>
+        <a href="/ui/tickets.html" id="nav-tickets">Inbox & Tickets</a>
+        <a href="/ui/dashboard.html" id="nav-dashboard">Dashboard</a>
+        <a href="/ui/admin-login.html" id="nav-login">Sign In</a>
+        <button id="nav-logout" class="linklike hidden" type="button">Sign Out</button>
+      </div>
+    </nav>
+
+    <div class="container">
+      <header>
+        <h1>CompanyZ Mail AI Agent</h1>
+        <p>Ask about NexusFlow, pricing, or technical support.</p>
+      </header>
+
+      <main>
+        <section id="login" class="panel login-panel">
+          <div class="login-card">
+            <div class="avatar" aria-hidden="true">
+              <img class="logo-large" src="/ui/logo.jpeg" alt="CompanyZ logo" />
+            </div>
+            <h2>Admin Sign In</h2>
+            <p style="color: #6c757d; margin-bottom: 24px;">Sign in with your Google account</p>
+            <div id="google-signin-button" style="display: flex; justify-content: center;"></div>
+            <div id="login-status" class="muted status" style="margin-top: 16px;"></div>
+          </div>
+        </section>
+
+        <section id="manual" class="panel gated hidden">
+          <h2>Manual Test</h2>
+          <form id="query-form">
+            <label for="email-content">Email content</label>
+            <textarea id="email-content" placeholder="Paste or type an email here..."></textarea>
+
+            <button id="submit-btn" type="submit">Process</button>
+          </form>
+
+          <section id="result" class="result hidden">
+            <h3>Result</h3>
+            <pre id="result-text"></pre>
+          </section>
+        </section>
+
+        <section id="inbox" class="panel gated hidden">
+          <h2>Inbox Processing</h2>
+          <div class="row">
+            <button id="process-inbox-btn" type="button">Process Inbox Now</button>
+            <button id="refresh-tickets-btn" type="button">Refresh Tickets</button>
+            <div style="display: flex; align-items: center; gap: 12px; margin-left: auto;">
+              <label style="margin: 0; font-weight: 500;">Show:</label>
+              <select id="tickets-limit-main" style="padding: 8px 12px; border: 1px solid #dee2e6; border-radius: 6px; font-size: 14px;">
+                <option value="10">10</option>
+                <option value="50" selected>50</option>
+                <option value="100">100</option>
+                <option value="500">500</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="mode-row">
+            <div class="mode">
+              <label><input type="radio" name="mode" value="manual" checked> Manual</label>
+              <label><input type="radio" name="mode" value="auto"> Auto</label>
+            </div>
+            <div class="auto-controls hidden" id="auto-controls">
+              <label>Interval (sec)
+                <input id="auto-interval" type="number" min="10" value="60" />
+              </label>
+              <button id="start-auto" type="button">Start Auto</button>
+              <button id="stop-auto" type="button">Stop Auto</button>
+              <span id="auto-status" class="muted">Status: stopped</span>
+            </div>
+          </div>
+
+          <div class="grid">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                <h3 style="margin: 0;">Tickets</h3>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <label style="margin: 0; font-weight: 500; font-size: 14px;">Show:</label>
+                  <select id="tickets-limit-inbox" style="padding: 6px 10px; border: 1px solid #dee2e6; border-radius: 6px; font-size: 14px;">
+                    <option value="10">10</option>
+                    <option value="50" selected>50</option>
+                    <option value="100">100</option>
+                    <option value="500">500</option>
+                  </select>
+                </div>
+              </div>
+              <ul id="tickets-list" class="tickets"></ul>
+            </div>
+            <div>
+              <h3>Ticket Details</h3>
+              <div id="ticket-details" class="details muted">Select a ticket</div>
+              <h4>Conversation</h4>
+              <div id="conversation" class="conversation"></div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer class="site-footer">
+      <div class="container footer-inner center">
+        <small>© 2025 CompanyZ - All rights reserved.</small>
+      </div>
+    </footer>
+
+    <script src="/ui/app.js"></script>
+  </body>
+  </html>
+
+

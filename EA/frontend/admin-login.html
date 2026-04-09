@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - CompanyZ</title>
+    <link rel="stylesheet" href="/ui/style.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <style>
+        .login-container {
+            max-width: 600px;
+            margin: 60px auto;
+            padding: 40px;
+        }
+        .login-card {
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="brand">
+            <img class="logo" src="/ui/logo.jpeg" alt="CompanyZ logo" />
+            <span>CompanyZ</span>
+        </div>
+        <div class="links">
+            <a href="/ui">Home</a>
+            <a href="/ui/admin-signup.html">Sign Up</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="login-container">
+            <div class="login-card">
+                <h1>Admin Login</h1>
+                <p style="color: #6c757d; margin-bottom: 32px;">Sign in with your Google account</p>
+
+                <div id="google-auth-section">
+                    <h3 style="margin-bottom: 16px;">Google Authentication</h3>
+                    <div id="google-signin-button" style="margin-bottom: 16px;"></div>
+                </div>
+
+                <div id="status-message" style="margin-top: 24px; padding: 12px; border-radius: 6px; display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Google Sign-In
+        window.onload = function() {
+            google.accounts.id.initialize({
+                client_id: '614492370530-miidcn5ve6sdmc0ocpt25r1bgvschlc6.apps.googleusercontent.com',
+                callback: handleGoogleSignIn
+            });
+
+            google.accounts.id.renderButton(
+                document.getElementById('google-signin-button'),
+                { theme: 'outline', size: 'large', width: '100%' }
+            );
+        };
+
+        async function handleGoogleSignIn(response) {
+            try {
+                const res = await fetch('/auth/google/verify', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include',
+                    body: JSON.stringify({ token: response.credential })
+                });
+
+                const data = await res.json();
+
+                if (data.authenticated) {
+                    showStatus('Login successful! Redirecting to dashboard...', 'success');
+                    setTimeout(() => {
+                        window.location.href = '/ui/dashboard.html';
+                    }, 1000);
+                } else {
+                    throw new Error('Authentication failed');
+                }
+            } catch (error) {
+                console.error('Google sign-in error:', error);
+                showStatus('Google authentication failed. Please try again.', 'error');
+            }
+        }
+
+        function showStatus(message, type) {
+            const statusEl = document.getElementById('status-message');
+            statusEl.textContent = message;
+            statusEl.style.display = 'block';
+            statusEl.style.background = type === 'success' ? '#d4edda' : '#f8d7da';
+            statusEl.style.color = type === 'success' ? '#155724' : '#721c24';
+            statusEl.style.border = `1px solid ${type === 'success' ? '#c3e6cb' : '#f5c6cb'}`;
+        }
+    </script>
+</body>
+</html>
