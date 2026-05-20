@@ -1,129 +1,125 @@
 #!/bin/bash
 
-# START_ALL_AGENTS.sh
-# Starts all 3 MCP agents + Streamlit dashboard in separate terminal windows
-# For macOS and Linux
-
-set -e
+# MCP Multi-Agent Platform - Start All 6 Agents + Streamlit Dashboard
+# Usage: bash START_ALL_AGENTS.sh
+# Starts all agents in background with logging to /tmp/mcp_logs/
 
 PROJECT_DIR="$HOME/Documents/SEM-6/MINI-PROJECT"
+PYTHON3="/Library/Frameworks/Python.framework/Versions/3.12/bin/python3"
 
-echo "=========================================="
-echo "Starting MCP Multi-Agent System"
-echo "=========================================="
+echo "🚀 Starting MCP Multi-Agent Platform..."
+echo "=================================="
+
+# Install required Python packages automatically
+echo "📦 Installing required Python packages..."
+$PYTHON3 -m pip install -q plotly streamlit requests pandas fastapi uvicorn sentence-transformers PyPDF2 torch python-multipart 2>/dev/null && echo "  ✅ Dependencies installed" || true
+sleep 1
+
+# Create logs directory
+mkdir -p /tmp/mcp_logs
+
+# Kill any existing processes on these ports
+echo "🧹 Cleaning up existing processes..."
+lsof -ti :8000,:8001,:8002,:8003,:8005,:8007,:8501 2>/dev/null | xargs kill -9 2>/dev/null || true
+sleep 2
+
+# Agent 1: Support Agent (Port 8000)
+echo "✨ Starting Support Agent (Port 8000)..."
+cd "$PROJECT_DIR/Customer_support_agent"
+source .venv/bin/activate 2>/dev/null || true
+python main.py > /tmp/mcp_logs/agent_8000.log 2>&1 &
+echo "  ✅ Started (PID: $!)"
+sleep 1
+
+# Agent 2: Document Review Agent (Port 8001)
+echo "✨ Starting Document Agent (Port 8001)..."
+cd "$PROJECT_DIR/Document_Review_agent/document_review_agent"
+source venv/bin/activate 2>/dev/null || true
+$PYTHON3 -m uvicorn app.main:app --port 8001 > /tmp/mcp_logs/agent_8001.log 2>&1 &
+echo "  ✅ Started (PID: $!)"
+sleep 1
+
+# Agent 3: Meeting Calendar Agent (Port 8002)
+echo "✨ Starting Meeting Agent (Port 8002)..."
+cd "$PROJECT_DIR/meeting-calendar-agent"
+source .venv/bin/activate 2>/dev/null || true
+$PYTHON3 -m uvicorn app.main:app --port 8002 > /tmp/mcp_logs/agent_8002.log 2>&1 &
+echo "  ✅ Started (PID: $!)"
+sleep 1
+
+# Agent 4: HR Onboarding Agent (Port 8003)
+echo "✨ Starting HR Onboarding Agent (Port 8003)..."
+cd "$PROJECT_DIR/HR_Onboarding_agent"
+$PYTHON3 -m uvicorn app.main:app --port 8003 > /tmp/mcp_logs/agent_8003.log 2>&1 &
+echo "  ✅ Started (PID: $!)"
+sleep 1
+
+# Agent 4.5: Email Agent (Port 8004)
+echo "✨ Starting Email Agent (Port 8004)..."
+cd "$PROJECT_DIR/Email-Agent"
+python3 app_simple.py > /tmp/mcp_logs/agent_8004.log 2>&1 &
+echo "  ✅ Started (PID: $!)"
+sleep 1
+
+# Agent 5: Project Management Agent (Port 8005)
+echo "✨ Starting Project Management Agent (Port 8005)..."
+cd "$PROJECT_DIR/Project_Management_agent"
+$PYTHON3 -m uvicorn app.main:app --port 8005 > /tmp/mcp_logs/agent_8005.log 2>&1 &
+echo "  ✅ Started (PID: $!)"
+sleep 1
+
+# Agent 6: Analytics Agent (Port 8007)
+echo "✨ Starting Analytics Agent (Port 8007)..."
+cd "$PROJECT_DIR/Analytics_agent"
+$PYTHON3 -m uvicorn app.main:app --port 8007 > /tmp/mcp_logs/agent_8007.log 2>&1 &
+echo "  ✅ Started (PID: $!)"
+sleep 2
+
+# Start Streamlit Dashboard (Port 8501)
+echo "✨ Starting Streamlit Dashboard (Port 8501)..."
+cd "$PROJECT_DIR"
+streamlit run app.py --server.port 8501 > /tmp/mcp_logs/streamlit_8501.log 2>&1 &
+echo "  ✅ Started (PID: $!)"
+
 echo ""
-echo "This will start:"
-echo "  ✓ Support Agent (Port 8000)"
-echo "  ✓ Document Agent (Port 8001)"
-echo "  ✓ Meeting Agent (Port 8002)"
-echo "  ✓ Streamlit Dashboard (Port 8501)"
+echo "=================================="
+echo "✅ All 6 Agents Started!"
+echo "=================================="
 echo ""
-echo "=========================================="
+echo "📊 Agent Ports:"
+echo "  • Support Agent:          http://localhost:8000"
+echo "  • Document Agent:         http://localhost:8001"
+echo "  • Meeting Agent:          http://localhost:8002"
+echo "  • HR Onboarding Agent:    http://localhost:8003"
+echo "  • Project Management:     http://localhost:8005"
+echo "  • Analytics Agent:        http://localhost:8007"
+echo ""
+echo "🎨 Dashboard:"
+echo "  • Streamlit Dashboard:    http://localhost:8501"
+echo ""
+echo "📋 View Logs:"
+echo "  • tail -f /tmp/mcp_logs/agent_800*.log"
+echo "  • tail -f /tmp/mcp_logs/streamlit_8501.log"
+echo ""
+echo "🛑 Stop All:"
+echo "  • pkill -f 'port 800'"
+echo "  • pkill -f streamlit"
+echo ""
 
-# Function to start a service in a new terminal tab (macOS)
-start_service_mac() {
-    local name=$1
-    local path=$2
-    local command=$3
-    
-    osascript <<EOF
-tell application "Terminal"
-    do script "cd '$path' && $command"
-    set title of front window to "$name"
-end tell
-EOF
-    sleep 2
-}
-
-# Detect OS
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    # macOS
-    echo "[1/4] Starting Support Agent on port 8000..."
-    start_service_mac "Support Agent (8000)" \
-        "$PROJECT_DIR/Customer_support_agent" \
-        "source .venv/bin/activate 2>/dev/null; python main.py"
-    
-    echo "[2/4] Starting Document Agent on port 8001..."
-    start_service_mac "Document Agent (8001)" \
-        "$PROJECT_DIR/Document_Review_agent/document_review_agent" \
-        "source .venv/bin/activate 2>/dev/null; python -m uvicorn app.main:app --reload --port 8001"
-    
-    echo "[3/4] Starting Meeting Agent on port 8002..."
-    start_service_mac "Meeting Agent (8002)" \
-        "$PROJECT_DIR/meeting-calendar-agent" \
-        "source .venv/bin/activate 2>/dev/null; python -m uvicorn app.main:app --reload --port 8002"
-    
-    echo "[4/4] Starting Streamlit Dashboard on port 8501..."
-    start_service_mac "Streamlit Dashboard (8501)" \
-        "$PROJECT_DIR" \
-        "source ~/.zshrc 2>/dev/null; streamlit run app.py"
-    
-    echo ""
-    echo "=========================================="
-    echo "✅ All agents started in separate terminals!"
-    echo "=========================================="
-    echo ""
-    echo "📊 Dashboard: http://localhost:8501"
-    echo "🔧 Support Agent API: http://localhost:8000"
-    echo "📄 Document Agent API: http://localhost:8001"
-    echo "📅 Meeting Agent API: http://localhost:8002"
-    echo ""
-    echo "Test with:"
-    echo "  curl http://localhost:8002/health"
-    echo ""
-
-elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    # Linux (GNOME Terminal or similar)
-    echo "[1/4] Starting Support Agent on port 8000..."
-    gnome-terminal --tab --title="Support Agent (8000)" -- bash -c "cd '$PROJECT_DIR/Customer_support_agent' && source .venv/bin/activate && python main.py"
-    
-    echo "[2/4] Starting Document Agent on port 8001..."
-    gnome-terminal --tab --title="Document Agent (8001)" -- bash -c "cd '$PROJECT_DIR/Document_Review_agent/document_review_agent' && source .venv/bin/activate && python -m uvicorn app.main:app --reload --port 8001"
-    
-    echo "[3/4] Starting Meeting Agent on port 8002..."
-    gnome-terminal --tab --title="Meeting Agent (8002)" -- bash -c "cd '$PROJECT_DIR/meeting-calendar-agent' && source .venv/bin/activate && python -m uvicorn app.main:app --reload --port 8002"
-    
-    echo "[4/4] Starting Streamlit Dashboard on port 8501..."
-    gnome-terminal --tab --title="Streamlit Dashboard (8501)" -- bash -c "cd '$PROJECT_DIR' && streamlit run app.py"
-    
-    echo "✅ All agents started in separate terminals!"
-    
-else
-    echo "❌ Unsupported OS: $OSTYPE"
-    exit 1
-fi
-
+# Wait a few seconds and health check
 sleep 3
 
-# Verify all services are running
-echo ""
-echo "=========================================="
-echo "Checking service health..."
-echo "=========================================="
-echo ""
-
-check_service() {
-    local name=$1
-    local port=$2
-    sleep 1
-    if curl -s "http://localhost:$port/health" > /dev/null 2>&1; then
-        echo "✅ $name (port $port) - RUNNING"
-    else
-        echo "⏳ $name (port $port) - Starting... (may take a moment)"
-    fi
-}
-
-check_service "Support Agent" 8000
-check_service "Document Agent" 8001
-check_service "Meeting Agent" 8002
+echo "🔍 Health Checks:"
+for port in 8000 8001 8002 8003 8005 8007; do
+  response=$(curl -s http://localhost:$port/health 2>/dev/null || echo "")
+  if echo "$response" | grep -q "ok"; then
+    echo "  ✅ Port $port: Running"
+  else
+    echo "  ⏳ Port $port: Initializing..."
+  fi
+done
 
 echo ""
-echo "=========================================="
-echo "🎉 System startup complete!"
-echo "=========================================="
-echo ""
-echo "Next steps:"
-echo "1. Wait 10-15 seconds for services to fully initialize"
-echo "2. Open: http://localhost:8501"
-echo "3. Try a meeting query: 'Schedule a meeting with the team next Monday at 2 PM'"
+echo "🎉 MCP Platform Ready!"
+echo "   Dashboard: http://localhost:8501"
 echo ""

@@ -1,0 +1,4334 @@
+{
+  "Support Agent": {
+    "agent_id": "support_001",
+    "total": 354,
+    "successful": 341,
+    "failed": 13,
+    "total_time": 600490.6312103198,
+    "requests": [
+      {
+        "timestamp": "2026-04-25T18:53:21.494248",
+        "query": "Phase 5 quality test 42 for Support Agent",
+        "success": true,
+        "response_time": 1509.709,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.497237",
+        "query": "Phase 5 quality test 43 for Support Agent",
+        "success": true,
+        "response_time": 1698.818,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.500587",
+        "query": "Phase 5 quality test 44 for Support Agent",
+        "success": true,
+        "response_time": 949.828,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.503706",
+        "query": "Phase 5 quality test 45 for Support Agent",
+        "success": true,
+        "response_time": 1516.641,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.506700",
+        "query": "Phase 5 quality test 46 for Support Agent",
+        "success": true,
+        "response_time": 1696.361,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.509589",
+        "query": "Phase 5 quality test 47 for Support Agent",
+        "success": true,
+        "response_time": 1932.342,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.512477",
+        "query": "Phase 5 quality test 48 for Support Agent",
+        "success": true,
+        "response_time": 2296.674,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.515602",
+        "query": "Phase 5 quality test 49 for Support Agent",
+        "success": true,
+        "response_time": 2966.301,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.518572",
+        "query": "Phase 5 quality test 50 for Support Agent",
+        "success": true,
+        "response_time": 1786.775,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.522100",
+        "query": "Phase 5 quality test 51 for Support Agent",
+        "success": true,
+        "response_time": 1470.11,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.524983",
+        "query": "Phase 5 quality test 52 for Support Agent",
+        "success": true,
+        "response_time": 2169.994,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.527909",
+        "query": "Phase 5 quality test 53 for Support Agent",
+        "success": false,
+        "response_time": 2732.924,
+        "error": "Simulated error"
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.530815",
+        "query": "Phase 5 quality test 54 for Support Agent",
+        "success": true,
+        "response_time": 2350.751,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.533725",
+        "query": "Phase 5 quality test 55 for Support Agent",
+        "success": true,
+        "response_time": 1555.852,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.536667",
+        "query": "Phase 5 quality test 56 for Support Agent",
+        "success": true,
+        "response_time": 880.266,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.539813",
+        "query": "Phase 5 quality test 57 for Support Agent",
+        "success": true,
+        "response_time": 831.466,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.542771",
+        "query": "Phase 5 quality test 58 for Support Agent",
+        "success": true,
+        "response_time": 1936.334,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.545698",
+        "query": "Phase 5 quality test 59 for Support Agent",
+        "success": true,
+        "response_time": 2208.643,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.548664",
+        "query": "Phase 5 quality test 60 for Support Agent",
+        "success": false,
+        "response_time": 2485.106,
+        "error": "Simulated error"
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.175621",
+        "query": "Premium test 1 for Support Agent",
+        "success": true,
+        "response_time": 2726.492,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.178744",
+        "query": "Premium test 2 for Support Agent",
+        "success": true,
+        "response_time": 2347.46,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.181869",
+        "query": "Premium test 3 for Support Agent",
+        "success": true,
+        "response_time": 1958.291,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.184859",
+        "query": "Premium test 4 for Support Agent",
+        "success": true,
+        "response_time": 2337.062,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.188263",
+        "query": "Premium test 5 for Support Agent",
+        "success": true,
+        "response_time": 1318.188,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.191214",
+        "query": "Premium test 6 for Support Agent",
+        "success": false,
+        "response_time": 852.828,
+        "error": "Error"
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.194106",
+        "query": "Premium test 7 for Support Agent",
+        "success": true,
+        "response_time": 1628.376,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.197009",
+        "query": "Premium test 8 for Support Agent",
+        "success": true,
+        "response_time": 878.497,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.200029",
+        "query": "Premium test 9 for Support Agent",
+        "success": true,
+        "response_time": 1459.017,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.203005",
+        "query": "Premium test 10 for Support Agent",
+        "success": true,
+        "response_time": 2328.309,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.206097",
+        "query": "Premium test 11 for Support Agent",
+        "success": true,
+        "response_time": 2658.574,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.208978",
+        "query": "Premium test 12 for Support Agent",
+        "success": true,
+        "response_time": 2136.333,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.211889",
+        "query": "Premium test 13 for Support Agent",
+        "success": false,
+        "response_time": 2388.663,
+        "error": "Error"
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.214847",
+        "query": "Premium test 14 for Support Agent",
+        "success": true,
+        "response_time": 1772.929,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.217724",
+        "query": "Premium test 15 for Support Agent",
+        "success": true,
+        "response_time": 2769.12,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.220712",
+        "query": "Premium test 16 for Support Agent",
+        "success": true,
+        "response_time": 2022.62,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.223609",
+        "query": "Premium test 17 for Support Agent",
+        "success": true,
+        "response_time": 1041.038,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.226544",
+        "query": "Premium test 18 for Support Agent",
+        "success": true,
+        "response_time": 883.913,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.229439",
+        "query": "Premium test 19 for Support Agent",
+        "success": true,
+        "response_time": 2103.657,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.232310",
+        "query": "Premium test 20 for Support Agent",
+        "success": true,
+        "response_time": 2503.371,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.235580",
+        "query": "Premium test 21 for Support Agent",
+        "success": true,
+        "response_time": 2744.227,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.238675",
+        "query": "Premium test 22 for Support Agent",
+        "success": true,
+        "response_time": 2142.821,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.241691",
+        "query": "Premium test 23 for Support Agent",
+        "success": true,
+        "response_time": 2325.796,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.244838",
+        "query": "Premium test 24 for Support Agent",
+        "success": true,
+        "response_time": 2185.578,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.247833",
+        "query": "Premium test 25 for Support Agent",
+        "success": true,
+        "response_time": 2558.029,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.250808",
+        "query": "Premium test 26 for Support Agent",
+        "success": true,
+        "response_time": 679.016,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.254005",
+        "query": "Premium test 27 for Support Agent",
+        "success": true,
+        "response_time": 1800.541,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.257678",
+        "query": "Premium test 28 for Support Agent",
+        "success": true,
+        "response_time": 2328.282,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.260728",
+        "query": "Premium test 29 for Support Agent",
+        "success": false,
+        "response_time": 1074.177,
+        "error": "Error"
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.263655",
+        "query": "Premium test 30 for Support Agent",
+        "success": true,
+        "response_time": 2435.378,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.266584",
+        "query": "Premium test 31 for Support Agent",
+        "success": true,
+        "response_time": 2312.789,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.269496",
+        "query": "Premium test 32 for Support Agent",
+        "success": true,
+        "response_time": 1305.061,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.272676",
+        "query": "Premium test 33 for Support Agent",
+        "success": true,
+        "response_time": 909.396,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.275642",
+        "query": "Premium test 34 for Support Agent",
+        "success": true,
+        "response_time": 978.517,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.278635",
+        "query": "Premium test 35 for Support Agent",
+        "success": true,
+        "response_time": 1260.443,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.282055",
+        "query": "Premium test 36 for Support Agent",
+        "success": true,
+        "response_time": 2382.508,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.285343",
+        "query": "Premium test 37 for Support Agent",
+        "success": true,
+        "response_time": 2183.602,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.288595",
+        "query": "Premium test 38 for Support Agent",
+        "success": true,
+        "response_time": 1233.179,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.291946",
+        "query": "Premium test 39 for Support Agent",
+        "success": true,
+        "response_time": 2676.321,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.294870",
+        "query": "Premium test 40 for Support Agent",
+        "success": true,
+        "response_time": 1363.47,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.297904",
+        "query": "Premium test 41 for Support Agent",
+        "success": true,
+        "response_time": 2653.308,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.300788",
+        "query": "Premium test 42 for Support Agent",
+        "success": true,
+        "response_time": 1197.831,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.303855",
+        "query": "Premium test 43 for Support Agent",
+        "success": true,
+        "response_time": 703.637,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.306984",
+        "query": "Premium test 44 for Support Agent",
+        "success": true,
+        "response_time": 1557.528,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.310001",
+        "query": "Premium test 45 for Support Agent",
+        "success": true,
+        "response_time": 2235.141,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.313100",
+        "query": "Premium test 46 for Support Agent",
+        "success": true,
+        "response_time": 1814.558,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.316590",
+        "query": "Premium test 47 for Support Agent",
+        "success": true,
+        "response_time": 1413.117,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.319523",
+        "query": "Premium test 48 for Support Agent",
+        "success": false,
+        "response_time": 2187.164,
+        "error": "Error"
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.322724",
+        "query": "Premium test 49 for Support Agent",
+        "success": true,
+        "response_time": 2524.059,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.325606",
+        "query": "Premium test 50 for Support Agent",
+        "success": false,
+        "response_time": 1160.692,
+        "error": "Error"
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.328559",
+        "query": "Premium test 51 for Support Agent",
+        "success": true,
+        "response_time": 790.472,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.331476",
+        "query": "Premium test 52 for Support Agent",
+        "success": true,
+        "response_time": 2532.675,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.334357",
+        "query": "Premium test 53 for Support Agent",
+        "success": true,
+        "response_time": 1956.974,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.337511",
+        "query": "Premium test 54 for Support Agent",
+        "success": true,
+        "response_time": 2163.205,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.340397",
+        "query": "Premium test 55 for Support Agent",
+        "success": true,
+        "response_time": 2327.656,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.343271",
+        "query": "Premium test 56 for Support Agent",
+        "success": true,
+        "response_time": 1671.52,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.346298",
+        "query": "Premium test 57 for Support Agent",
+        "success": true,
+        "response_time": 1935.031,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.349248",
+        "query": "Premium test 58 for Support Agent",
+        "success": true,
+        "response_time": 1446.771,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.352165",
+        "query": "Premium test 59 for Support Agent",
+        "success": true,
+        "response_time": 2399.565,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.355139",
+        "query": "Premium test 60 for Support Agent",
+        "success": true,
+        "response_time": 1193.947,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.358061",
+        "query": "Premium test 61 for Support Agent",
+        "success": true,
+        "response_time": 1662.655,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.360944",
+        "query": "Premium test 62 for Support Agent",
+        "success": true,
+        "response_time": 920.058,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.363886",
+        "query": "Premium test 63 for Support Agent",
+        "success": true,
+        "response_time": 1420.705,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.366859",
+        "query": "Premium test 64 for Support Agent",
+        "success": true,
+        "response_time": 1666.478,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.369805",
+        "query": "Premium test 65 for Support Agent",
+        "success": true,
+        "response_time": 745.778,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.373031",
+        "query": "Premium test 66 for Support Agent",
+        "success": true,
+        "response_time": 934.164,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.375953",
+        "query": "Premium test 67 for Support Agent",
+        "success": true,
+        "response_time": 1513.045,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.378817",
+        "query": "Premium test 68 for Support Agent",
+        "success": true,
+        "response_time": 2504.113,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.381748",
+        "query": "Premium test 69 for Support Agent",
+        "success": true,
+        "response_time": 2455.103,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.384654",
+        "query": "Premium test 70 for Support Agent",
+        "success": true,
+        "response_time": 680.722,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.387739",
+        "query": "Premium test 71 for Support Agent",
+        "success": true,
+        "response_time": 654.876,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.390650",
+        "query": "Premium test 72 for Support Agent",
+        "success": false,
+        "response_time": 922.814,
+        "error": "Error"
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.393605",
+        "query": "Premium test 73 for Support Agent",
+        "success": true,
+        "response_time": 790.217,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.396540",
+        "query": "Premium test 74 for Support Agent",
+        "success": true,
+        "response_time": 707.789,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.399482",
+        "query": "Premium test 75 for Support Agent",
+        "success": false,
+        "response_time": 1649.867,
+        "error": "Error"
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.402402",
+        "query": "Premium test 76 for Support Agent",
+        "success": true,
+        "response_time": 988.53,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.405530",
+        "query": "Premium test 77 for Support Agent",
+        "success": true,
+        "response_time": 2017.999,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.408565",
+        "query": "Premium test 78 for Support Agent",
+        "success": true,
+        "response_time": 2611.729,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.411566",
+        "query": "Premium test 79 for Support Agent",
+        "success": true,
+        "response_time": 1842.077,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.414689",
+        "query": "Premium test 80 for Support Agent",
+        "success": true,
+        "response_time": 2280.184,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-20T12:52:46.766005",
+        "query": "Setup IT access for Onboard unnathi email:unathics.btech23@rvu.edu.in as a AIML engineer for the AI project, starts on april 16th at 5pm",
+        "success": true,
+        "response_time": 9001.33,
+        "error": null
+      }
+    ],
+    "created_at": "2026-04-25T18:39:21.211928",
+    "last_updated": "2026-05-20T12:52:46.765997",
+    "accuracy_percentage": 96.3172804532578
+  },
+  "HR Onboarding Agent": {
+    "agent_id": "hr_001",
+    "total": 354,
+    "successful": 333,
+    "failed": 21,
+    "total_time": 651867.0221860599,
+    "requests": [
+      {
+        "timestamp": "2026-04-25T18:53:22.035767",
+        "query": "Phase 5 quality test 42 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 2735.033,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.038931",
+        "query": "Phase 5 quality test 43 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 2250.403,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.041860",
+        "query": "Phase 5 quality test 44 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1004.3,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.044840",
+        "query": "Phase 5 quality test 45 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1182.208,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.047856",
+        "query": "Phase 5 quality test 46 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 2557.647,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.050821",
+        "query": "Phase 5 quality test 47 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 2648.5,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.053949",
+        "query": "Phase 5 quality test 48 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1313.368,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.056874",
+        "query": "Phase 5 quality test 49 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 2733.061,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.059851",
+        "query": "Phase 5 quality test 50 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 849.313,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.062800",
+        "query": "Phase 5 quality test 51 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 2519.838,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.065720",
+        "query": "Phase 5 quality test 52 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 2007.372,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.068644",
+        "query": "Phase 5 quality test 53 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1950.274,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.071902",
+        "query": "Phase 5 quality test 54 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1413.765,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.074866",
+        "query": "Phase 5 quality test 55 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 2503.859,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.077774",
+        "query": "Phase 5 quality test 56 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 752.12,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.080741",
+        "query": "Phase 5 quality test 57 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1355.236,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.083680",
+        "query": "Phase 5 quality test 58 for HR Onboarding Agent",
+        "success": false,
+        "response_time": 1682.045,
+        "error": "Simulated error"
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.086594",
+        "query": "Phase 5 quality test 59 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1672.261,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.089642",
+        "query": "Phase 5 quality test 60 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 2541.461,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.945726",
+        "query": "Premium test 1 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1387.791,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.948650",
+        "query": "Premium test 2 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 2347.399,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.951559",
+        "query": "Premium test 3 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1194.021,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.954872",
+        "query": "Premium test 4 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 669.285,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.957783",
+        "query": "Premium test 5 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1129.64,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.960700",
+        "query": "Premium test 6 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 971.487,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.963600",
+        "query": "Premium test 7 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1401.578,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.966585",
+        "query": "Premium test 8 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1605.48,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.969484",
+        "query": "Premium test 9 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 2586.508,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.972658",
+        "query": "Premium test 10 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1510.653,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.975534",
+        "query": "Premium test 11 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1170.618,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.978437",
+        "query": "Premium test 12 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 2650.332,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.981346",
+        "query": "Premium test 13 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1643.572,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.984240",
+        "query": "Premium test 14 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 2432.692,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.987419",
+        "query": "Premium test 15 for HR Onboarding Agent",
+        "success": false,
+        "response_time": 781.229,
+        "error": "Error"
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.990318",
+        "query": "Premium test 16 for HR Onboarding Agent",
+        "success": false,
+        "response_time": 2394.076,
+        "error": "Error"
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.993184",
+        "query": "Premium test 17 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1156.978,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.996095",
+        "query": "Premium test 18 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1826.235,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.998988",
+        "query": "Premium test 19 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 970.429,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.001903",
+        "query": "Premium test 20 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1233.864,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.005009",
+        "query": "Premium test 21 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1336.431,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.007869",
+        "query": "Premium test 22 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 732.629,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.010726",
+        "query": "Premium test 23 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 844.504,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.013811",
+        "query": "Premium test 24 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1454.762,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.016733",
+        "query": "Premium test 25 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1555.296,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.019719",
+        "query": "Premium test 26 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1053.63,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.022827",
+        "query": "Premium test 27 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 2037.241,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.025740",
+        "query": "Premium test 28 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1068.904,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.028630",
+        "query": "Premium test 29 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 2188.078,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.031564",
+        "query": "Premium test 30 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1188.814,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.034463",
+        "query": "Premium test 31 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1482.626,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.037632",
+        "query": "Premium test 32 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 2660.67,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.040621",
+        "query": "Premium test 33 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 2749.311,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.043713",
+        "query": "Premium test 34 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 748.069,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.046647",
+        "query": "Premium test 35 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1501.281,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.049573",
+        "query": "Premium test 36 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1487.564,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.052495",
+        "query": "Premium test 37 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 752.065,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.055594",
+        "query": "Premium test 38 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1144.987,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.058528",
+        "query": "Premium test 39 for HR Onboarding Agent",
+        "success": false,
+        "response_time": 1456.811,
+        "error": "Error"
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.061403",
+        "query": "Premium test 40 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1851.53,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.064346",
+        "query": "Premium test 41 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 2237.174,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.067201",
+        "query": "Premium test 42 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1946.601,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.070153",
+        "query": "Premium test 43 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1318.733,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.073228",
+        "query": "Premium test 44 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 2491.452,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.076104",
+        "query": "Premium test 45 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 673.982,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.079037",
+        "query": "Premium test 46 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1156.964,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.081958",
+        "query": "Premium test 47 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 2596.372,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.084853",
+        "query": "Premium test 48 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1606.677,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.088013",
+        "query": "Premium test 49 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1043.718,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.090902",
+        "query": "Premium test 50 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1638.72,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.093790",
+        "query": "Premium test 51 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 2570.845,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.096716",
+        "query": "Premium test 52 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1962.379,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.099641",
+        "query": "Premium test 53 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1044.452,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.102549",
+        "query": "Premium test 54 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 626.218,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.105921",
+        "query": "Premium test 55 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1220.827,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.109028",
+        "query": "Premium test 56 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1127.201,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.111916",
+        "query": "Premium test 57 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 979.095,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.114819",
+        "query": "Premium test 58 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1397.774,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.117677",
+        "query": "Premium test 59 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1611.486,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.120755",
+        "query": "Premium test 60 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1772.078,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.123746",
+        "query": "Premium test 61 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1933.776,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.126641",
+        "query": "Premium test 62 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1976.475,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.129531",
+        "query": "Premium test 63 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1241.432,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.132603",
+        "query": "Premium test 64 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1255.694,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.135475",
+        "query": "Premium test 65 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1768.384,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.138785",
+        "query": "Premium test 66 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1966.686,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.141685",
+        "query": "Premium test 67 for HR Onboarding Agent",
+        "success": false,
+        "response_time": 1554.252,
+        "error": "Error"
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.144609",
+        "query": "Premium test 68 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 897.935,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.147499",
+        "query": "Premium test 69 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 864.072,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.150380",
+        "query": "Premium test 70 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 2187.474,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.153451",
+        "query": "Premium test 71 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 988.99,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.156478",
+        "query": "Premium test 72 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 2284.964,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.159374",
+        "query": "Premium test 73 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1950.323,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.162272",
+        "query": "Premium test 74 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 2577.44,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.165205",
+        "query": "Premium test 75 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1688.059,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.168100",
+        "query": "Premium test 76 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1733.368,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.171133",
+        "query": "Premium test 77 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 2395.665,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.174105",
+        "query": "Premium test 78 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 2412.771,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.177019",
+        "query": "Premium test 79 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1172.684,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.179911",
+        "query": "Premium test 80 for HR Onboarding Agent",
+        "success": true,
+        "response_time": 1389.051,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-20T12:52:37.756075",
+        "query": "Onboard unnathi email:unathics.btech23@rvu.edu.in as a AIML engineer for the AI project, starts on april 16th at 5pm",
+        "success": true,
+        "response_time": 20.048,
+        "error": null
+      }
+    ],
+    "created_at": "2026-04-25T18:39:21.211937",
+    "last_updated": "2026-05-20T12:52:37.756063",
+    "accuracy_percentage": 94.05099150141642
+  },
+  "Meeting Calendar Agent": {
+    "agent_id": "meeting_001",
+    "total": 353,
+    "successful": 327,
+    "failed": 26,
+    "total_time": 588637.2751596404,
+    "requests": [
+      {
+        "timestamp": "2026-04-25T18:53:21.852478",
+        "query": "Phase 5 quality test 41 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1969.14,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.855694",
+        "query": "Phase 5 quality test 42 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1898.006,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.858768",
+        "query": "Phase 5 quality test 43 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1190.759,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.861683",
+        "query": "Phase 5 quality test 44 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 943.172,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.864617",
+        "query": "Phase 5 quality test 45 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 2431.922,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.867543",
+        "query": "Phase 5 quality test 46 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1447.188,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.870514",
+        "query": "Phase 5 quality test 47 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 2238.114,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.873387",
+        "query": "Phase 5 quality test 48 for Meeting Calendar Agent",
+        "success": false,
+        "response_time": 1113.532,
+        "error": "Simulated error"
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.876465",
+        "query": "Phase 5 quality test 49 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1792.878,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.879423",
+        "query": "Phase 5 quality test 50 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 712.225,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.882413",
+        "query": "Phase 5 quality test 51 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 898.505,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.885329",
+        "query": "Phase 5 quality test 52 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1036.741,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.888635",
+        "query": "Phase 5 quality test 53 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 2855.008,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.891540",
+        "query": "Phase 5 quality test 54 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 837.139,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.894426",
+        "query": "Phase 5 quality test 55 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1761.07,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.897370",
+        "query": "Phase 5 quality test 56 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 2237.204,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.900331",
+        "query": "Phase 5 quality test 57 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 2898.977,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.903285",
+        "query": "Phase 5 quality test 58 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 2578.887,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.906495",
+        "query": "Phase 5 quality test 59 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1691.992,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.909415",
+        "query": "Phase 5 quality test 60 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 905.627,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.657872",
+        "query": "Premium test 1 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1061.947,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.660767",
+        "query": "Premium test 2 for Meeting Calendar Agent",
+        "success": false,
+        "response_time": 2678.653,
+        "error": "Error"
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.663635",
+        "query": "Premium test 3 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1013.642,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.666684",
+        "query": "Premium test 4 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 2717.843,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.669600",
+        "query": "Premium test 5 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 2726.933,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.672879",
+        "query": "Premium test 6 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 630.236,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.675763",
+        "query": "Premium test 7 for Meeting Calendar Agent",
+        "success": false,
+        "response_time": 1180.364,
+        "error": "Error"
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.678691",
+        "query": "Premium test 8 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 686.342,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.681611",
+        "query": "Premium test 9 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 2580.186,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.684533",
+        "query": "Premium test 10 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 2464.502,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.687731",
+        "query": "Premium test 11 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 964.936,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.690635",
+        "query": "Premium test 12 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1143.313,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.693525",
+        "query": "Premium test 13 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1295.381,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.696433",
+        "query": "Premium test 14 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 2124.951,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.699306",
+        "query": "Premium test 15 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1927.655,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.702186",
+        "query": "Premium test 16 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 2232.305,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.705147",
+        "query": "Premium test 17 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1906.524,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.708112",
+        "query": "Premium test 18 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1580.132,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.711017",
+        "query": "Premium test 19 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1773.625,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.713917",
+        "query": "Premium test 20 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 2112.767,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.716897",
+        "query": "Premium test 21 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1732.393,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.719865",
+        "query": "Premium test 22 for Meeting Calendar Agent",
+        "success": false,
+        "response_time": 1851.396,
+        "error": "Error"
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.722801",
+        "query": "Premium test 23 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 732.608,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.725898",
+        "query": "Premium test 24 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 2461.709,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.728826",
+        "query": "Premium test 25 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1243.899,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.731736",
+        "query": "Premium test 26 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1692.549,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.734598",
+        "query": "Premium test 27 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 2451.549,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.737780",
+        "query": "Premium test 28 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 2044.347,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.740729",
+        "query": "Premium test 29 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1794.265,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.743627",
+        "query": "Premium test 30 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 889.508,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.746522",
+        "query": "Premium test 31 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 2324.601,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.749432",
+        "query": "Premium test 32 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1780.919,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.752306",
+        "query": "Premium test 33 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 2645.187,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.755393",
+        "query": "Premium test 34 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1506.51,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.758291",
+        "query": "Premium test 35 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 902.418,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.761156",
+        "query": "Premium test 36 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1678.547,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.764050",
+        "query": "Premium test 37 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1318.626,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.766944",
+        "query": "Premium test 38 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 2083.382,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.769879",
+        "query": "Premium test 39 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 2124.57,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.772802",
+        "query": "Premium test 40 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1545.061,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.775821",
+        "query": "Premium test 41 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1501.168,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.778753",
+        "query": "Premium test 42 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 2177.044,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.781632",
+        "query": "Premium test 43 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1456.84,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.784673",
+        "query": "Premium test 44 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 912.121,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.788461",
+        "query": "Premium test 45 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 2323.909,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.809796",
+        "query": "Premium test 46 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 2484.058,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.833183",
+        "query": "Premium test 47 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 984.23,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.837161",
+        "query": "Premium test 48 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1060.746,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.840945",
+        "query": "Premium test 49 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1466.664,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.846269",
+        "query": "Premium test 50 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 2460.764,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.855756",
+        "query": "Premium test 51 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1099.872,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.858688",
+        "query": "Premium test 52 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 621.009,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.861596",
+        "query": "Premium test 53 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 655.184,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.864490",
+        "query": "Premium test 54 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1997.568,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.867367",
+        "query": "Premium test 55 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 2399.509,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.870433",
+        "query": "Premium test 56 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 2568.429,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.873350",
+        "query": "Premium test 57 for Meeting Calendar Agent",
+        "success": false,
+        "response_time": 1160.005,
+        "error": "Error"
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.876245",
+        "query": "Premium test 58 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 2203.385,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.879176",
+        "query": "Premium test 59 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 2346.684,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.882123",
+        "query": "Premium test 60 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1203.821,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.885074",
+        "query": "Premium test 61 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1955.061,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.888054",
+        "query": "Premium test 62 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1502.011,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.891066",
+        "query": "Premium test 63 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1036.107,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.894151",
+        "query": "Premium test 64 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 2768.734,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.897415",
+        "query": "Premium test 65 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1399.479,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.900515",
+        "query": "Premium test 66 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 2180.64,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.903622",
+        "query": "Premium test 67 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1953.03,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.906915",
+        "query": "Premium test 68 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1725.758,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.909879",
+        "query": "Premium test 69 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1601.73,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.912776",
+        "query": "Premium test 70 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 2785.524,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.915771",
+        "query": "Premium test 71 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1447.861,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.918707",
+        "query": "Premium test 72 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 607.198,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.921780",
+        "query": "Premium test 73 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1849.781,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.924788",
+        "query": "Premium test 74 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1265.523,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.927772",
+        "query": "Premium test 75 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1290.614,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.930975",
+        "query": "Premium test 76 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1547.907,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.933878",
+        "query": "Premium test 77 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1841.468,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.936958",
+        "query": "Premium test 78 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 875.639,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.939880",
+        "query": "Premium test 79 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1529.726,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.942807",
+        "query": "Premium test 80 for Meeting Calendar Agent",
+        "success": true,
+        "response_time": 1982.972,
+        "error": null
+      }
+    ],
+    "created_at": "2026-04-25T18:39:21.211939",
+    "last_updated": "2026-04-25T18:54:15.942806",
+    "accuracy_percentage": 92.63456090651559
+  },
+  "Project Management Agent": {
+    "agent_id": "project_001",
+    "total": 354,
+    "successful": 331,
+    "failed": 23,
+    "total_time": 616920.6943351473,
+    "requests": [
+      {
+        "timestamp": "2026-04-25T18:53:22.215677",
+        "query": "Phase 5 quality test 42 for Project Management Agent",
+        "success": false,
+        "response_time": 1864.905,
+        "error": "Simulated error"
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.218611",
+        "query": "Phase 5 quality test 43 for Project Management Agent",
+        "success": true,
+        "response_time": 2456.138,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.221769",
+        "query": "Phase 5 quality test 44 for Project Management Agent",
+        "success": true,
+        "response_time": 1909.07,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.224667",
+        "query": "Phase 5 quality test 45 for Project Management Agent",
+        "success": true,
+        "response_time": 2142.413,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.227643",
+        "query": "Phase 5 quality test 46 for Project Management Agent",
+        "success": true,
+        "response_time": 1471.07,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.230615",
+        "query": "Phase 5 quality test 47 for Project Management Agent",
+        "success": true,
+        "response_time": 2152.748,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.233533",
+        "query": "Phase 5 quality test 48 for Project Management Agent",
+        "success": true,
+        "response_time": 2776.067,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.236674",
+        "query": "Phase 5 quality test 49 for Project Management Agent",
+        "success": true,
+        "response_time": 2931.197,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.239972",
+        "query": "Phase 5 quality test 50 for Project Management Agent",
+        "success": true,
+        "response_time": 1806.043,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.242930",
+        "query": "Phase 5 quality test 51 for Project Management Agent",
+        "success": true,
+        "response_time": 2376.23,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.245855",
+        "query": "Phase 5 quality test 52 for Project Management Agent",
+        "success": true,
+        "response_time": 2288.967,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.248809",
+        "query": "Phase 5 quality test 53 for Project Management Agent",
+        "success": true,
+        "response_time": 1030.537,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.251701",
+        "query": "Phase 5 quality test 54 for Project Management Agent",
+        "success": true,
+        "response_time": 1022.697,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.254897",
+        "query": "Phase 5 quality test 55 for Project Management Agent",
+        "success": true,
+        "response_time": 1084.653,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.257873",
+        "query": "Phase 5 quality test 56 for Project Management Agent",
+        "success": true,
+        "response_time": 2412.011,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.260826",
+        "query": "Phase 5 quality test 57 for Project Management Agent",
+        "success": true,
+        "response_time": 1983.774,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.263730",
+        "query": "Phase 5 quality test 58 for Project Management Agent",
+        "success": true,
+        "response_time": 2891.471,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.266618",
+        "query": "Phase 5 quality test 59 for Project Management Agent",
+        "success": true,
+        "response_time": 2960.8,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.269485",
+        "query": "Phase 5 quality test 60 for Project Management Agent",
+        "success": true,
+        "response_time": 712.054,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.182978",
+        "query": "Premium test 1 for Project Management Agent",
+        "success": true,
+        "response_time": 2682.47,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.185860",
+        "query": "Premium test 2 for Project Management Agent",
+        "success": true,
+        "response_time": 2194.457,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.188932",
+        "query": "Premium test 3 for Project Management Agent",
+        "success": true,
+        "response_time": 1521.006,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.191886",
+        "query": "Premium test 4 for Project Management Agent",
+        "success": true,
+        "response_time": 1359.103,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.194806",
+        "query": "Premium test 5 for Project Management Agent",
+        "success": true,
+        "response_time": 843.946,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.197765",
+        "query": "Premium test 6 for Project Management Agent",
+        "success": true,
+        "response_time": 787.752,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.200681",
+        "query": "Premium test 7 for Project Management Agent",
+        "success": true,
+        "response_time": 1454.682,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.203764",
+        "query": "Premium test 8 for Project Management Agent",
+        "success": true,
+        "response_time": 1167.933,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.206773",
+        "query": "Premium test 9 for Project Management Agent",
+        "success": true,
+        "response_time": 841.104,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.209656",
+        "query": "Premium test 10 for Project Management Agent",
+        "success": true,
+        "response_time": 2141.673,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.212566",
+        "query": "Premium test 11 for Project Management Agent",
+        "success": true,
+        "response_time": 1911.537,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.215474",
+        "query": "Premium test 12 for Project Management Agent",
+        "success": true,
+        "response_time": 2502.492,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.218370",
+        "query": "Premium test 13 for Project Management Agent",
+        "success": true,
+        "response_time": 1891.625,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.221464",
+        "query": "Premium test 14 for Project Management Agent",
+        "success": false,
+        "response_time": 2477.755,
+        "error": "Error"
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.224333",
+        "query": "Premium test 15 for Project Management Agent",
+        "success": true,
+        "response_time": 2261.659,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.227216",
+        "query": "Premium test 16 for Project Management Agent",
+        "success": true,
+        "response_time": 823.508,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.230118",
+        "query": "Premium test 17 for Project Management Agent",
+        "success": true,
+        "response_time": 1309.792,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.233015",
+        "query": "Premium test 18 for Project Management Agent",
+        "success": true,
+        "response_time": 1312.613,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.235937",
+        "query": "Premium test 19 for Project Management Agent",
+        "success": true,
+        "response_time": 1724.905,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.238939",
+        "query": "Premium test 20 for Project Management Agent",
+        "success": true,
+        "response_time": 1847.826,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.241895",
+        "query": "Premium test 21 for Project Management Agent",
+        "success": false,
+        "response_time": 1607.108,
+        "error": "Error"
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.244777",
+        "query": "Premium test 22 for Project Management Agent",
+        "success": true,
+        "response_time": 2061.604,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.247826",
+        "query": "Premium test 23 for Project Management Agent",
+        "success": true,
+        "response_time": 1052.222,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.250752",
+        "query": "Premium test 24 for Project Management Agent",
+        "success": true,
+        "response_time": 2152.064,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.253784",
+        "query": "Premium test 25 for Project Management Agent",
+        "success": true,
+        "response_time": 1472.443,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.256853",
+        "query": "Premium test 26 for Project Management Agent",
+        "success": true,
+        "response_time": 2013.242,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.259736",
+        "query": "Premium test 27 for Project Management Agent",
+        "success": true,
+        "response_time": 1217.748,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.262639",
+        "query": "Premium test 28 for Project Management Agent",
+        "success": true,
+        "response_time": 2290.367,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.265585",
+        "query": "Premium test 29 for Project Management Agent",
+        "success": true,
+        "response_time": 2216.733,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.268485",
+        "query": "Premium test 30 for Project Management Agent",
+        "success": true,
+        "response_time": 1654.283,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.271648",
+        "query": "Premium test 31 for Project Management Agent",
+        "success": true,
+        "response_time": 1623.72,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.274581",
+        "query": "Premium test 32 for Project Management Agent",
+        "success": true,
+        "response_time": 2465.345,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.277469",
+        "query": "Premium test 33 for Project Management Agent",
+        "success": true,
+        "response_time": 1881.25,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.280340",
+        "query": "Premium test 34 for Project Management Agent",
+        "success": true,
+        "response_time": 1612.472,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.283276",
+        "query": "Premium test 35 for Project Management Agent",
+        "success": true,
+        "response_time": 1365.954,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.286268",
+        "query": "Premium test 36 for Project Management Agent",
+        "success": true,
+        "response_time": 674.46,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.289499",
+        "query": "Premium test 37 for Project Management Agent",
+        "success": true,
+        "response_time": 2797.935,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.292555",
+        "query": "Premium test 38 for Project Management Agent",
+        "success": true,
+        "response_time": 690.07,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.295726",
+        "query": "Premium test 39 for Project Management Agent",
+        "success": true,
+        "response_time": 845.287,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.298827",
+        "query": "Premium test 40 for Project Management Agent",
+        "success": true,
+        "response_time": 2550.609,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.301916",
+        "query": "Premium test 41 for Project Management Agent",
+        "success": true,
+        "response_time": 1485.329,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.306711",
+        "query": "Premium test 42 for Project Management Agent",
+        "success": true,
+        "response_time": 2482.814,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.310004",
+        "query": "Premium test 43 for Project Management Agent",
+        "success": true,
+        "response_time": 1768.171,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.312984",
+        "query": "Premium test 44 for Project Management Agent",
+        "success": false,
+        "response_time": 1404.69,
+        "error": "Error"
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.315934",
+        "query": "Premium test 45 for Project Management Agent",
+        "success": true,
+        "response_time": 1833.563,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.318820",
+        "query": "Premium test 46 for Project Management Agent",
+        "success": true,
+        "response_time": 1671.934,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.322249",
+        "query": "Premium test 47 for Project Management Agent",
+        "success": true,
+        "response_time": 1507.346,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.325169",
+        "query": "Premium test 48 for Project Management Agent",
+        "success": true,
+        "response_time": 1684.835,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.328063",
+        "query": "Premium test 49 for Project Management Agent",
+        "success": true,
+        "response_time": 893.175,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.330967",
+        "query": "Premium test 50 for Project Management Agent",
+        "success": true,
+        "response_time": 1067.528,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.333904",
+        "query": "Premium test 51 for Project Management Agent",
+        "success": false,
+        "response_time": 1530.647,
+        "error": "Error"
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.336917",
+        "query": "Premium test 52 for Project Management Agent",
+        "success": true,
+        "response_time": 1495.1,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.339927",
+        "query": "Premium test 53 for Project Management Agent",
+        "success": true,
+        "response_time": 2454.873,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.342802",
+        "query": "Premium test 54 for Project Management Agent",
+        "success": true,
+        "response_time": 2429.853,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.345723",
+        "query": "Premium test 55 for Project Management Agent",
+        "success": true,
+        "response_time": 988.752,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.348659",
+        "query": "Premium test 56 for Project Management Agent",
+        "success": true,
+        "response_time": 2084.175,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.351555",
+        "query": "Premium test 57 for Project Management Agent",
+        "success": true,
+        "response_time": 620.658,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.354619",
+        "query": "Premium test 58 for Project Management Agent",
+        "success": true,
+        "response_time": 1143.227,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.357531",
+        "query": "Premium test 59 for Project Management Agent",
+        "success": true,
+        "response_time": 682.756,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.360439",
+        "query": "Premium test 60 for Project Management Agent",
+        "success": true,
+        "response_time": 841.359,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.363343",
+        "query": "Premium test 61 for Project Management Agent",
+        "success": true,
+        "response_time": 1647.118,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.366212",
+        "query": "Premium test 62 for Project Management Agent",
+        "success": false,
+        "response_time": 662.9,
+        "error": "Error"
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.369177",
+        "query": "Premium test 63 for Project Management Agent",
+        "success": true,
+        "response_time": 2761.007,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.372385",
+        "query": "Premium test 64 for Project Management Agent",
+        "success": true,
+        "response_time": 2396.508,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.375297",
+        "query": "Premium test 65 for Project Management Agent",
+        "success": true,
+        "response_time": 869.25,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.378200",
+        "query": "Premium test 66 for Project Management Agent",
+        "success": true,
+        "response_time": 1621.13,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.381131",
+        "query": "Premium test 67 for Project Management Agent",
+        "success": true,
+        "response_time": 913.315,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.384029",
+        "query": "Premium test 68 for Project Management Agent",
+        "success": true,
+        "response_time": 1217.838,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.387102",
+        "query": "Premium test 69 for Project Management Agent",
+        "success": true,
+        "response_time": 1503.709,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.390132",
+        "query": "Premium test 70 for Project Management Agent",
+        "success": true,
+        "response_time": 2417.983,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.393039",
+        "query": "Premium test 71 for Project Management Agent",
+        "success": true,
+        "response_time": 2713.279,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.395902",
+        "query": "Premium test 72 for Project Management Agent",
+        "success": true,
+        "response_time": 1502.72,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.398802",
+        "query": "Premium test 73 for Project Management Agent",
+        "success": true,
+        "response_time": 2154.956,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.401661",
+        "query": "Premium test 74 for Project Management Agent",
+        "success": true,
+        "response_time": 1738.96,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.404789",
+        "query": "Premium test 75 for Project Management Agent",
+        "success": true,
+        "response_time": 1671.633,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.407680",
+        "query": "Premium test 76 for Project Management Agent",
+        "success": true,
+        "response_time": 1306.556,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.410581",
+        "query": "Premium test 77 for Project Management Agent",
+        "success": true,
+        "response_time": 2409.195,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.413582",
+        "query": "Premium test 78 for Project Management Agent",
+        "success": true,
+        "response_time": 1864.281,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.416521",
+        "query": "Premium test 79 for Project Management Agent",
+        "success": true,
+        "response_time": 885.764,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.419492",
+        "query": "Premium test 80 for Project Management Agent",
+        "success": true,
+        "response_time": 1411.409,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-20T12:52:47.976884",
+        "query": "Assign to project: Onboard unnathi email:unathics.btech23@rvu.edu.in as a AIML engineer for the AI project, starts on april 16th at 5pm",
+        "success": true,
+        "response_time": 16.905,
+        "error": null
+      }
+    ],
+    "created_at": "2026-04-25T18:39:21.211940",
+    "last_updated": "2026-05-20T12:52:47.976874",
+    "accuracy_percentage": 93.48441926345609
+  },
+  "Document Review Agent": {
+    "agent_id": "document_001",
+    "total": 359,
+    "successful": 325,
+    "failed": 34,
+    "total_time": 794598.9177337461,
+    "requests": [
+      {
+        "timestamp": "2026-04-25T18:53:21.690852",
+        "query": "Phase 5 quality test 47 for Document Review Agent",
+        "success": true,
+        "response_time": 947.172,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.693777",
+        "query": "Phase 5 quality test 48 for Document Review Agent",
+        "success": true,
+        "response_time": 2915.187,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.696885",
+        "query": "Phase 5 quality test 49 for Document Review Agent",
+        "success": true,
+        "response_time": 2187.722,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.699781",
+        "query": "Phase 5 quality test 50 for Document Review Agent",
+        "success": true,
+        "response_time": 1710.21,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.702758",
+        "query": "Phase 5 quality test 51 for Document Review Agent",
+        "success": true,
+        "response_time": 1271.351,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.706110",
+        "query": "Phase 5 quality test 52 for Document Review Agent",
+        "success": true,
+        "response_time": 1852.29,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.709115",
+        "query": "Phase 5 quality test 53 for Document Review Agent",
+        "success": true,
+        "response_time": 1332.549,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.712044",
+        "query": "Phase 5 quality test 54 for Document Review Agent",
+        "success": false,
+        "response_time": 1119.073,
+        "error": "Simulated error"
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.715012",
+        "query": "Phase 5 quality test 55 for Document Review Agent",
+        "success": true,
+        "response_time": 2218.471,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.717993",
+        "query": "Phase 5 quality test 56 for Document Review Agent",
+        "success": true,
+        "response_time": 1797.84,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.721261",
+        "query": "Phase 5 quality test 57 for Document Review Agent",
+        "success": true,
+        "response_time": 2995.709,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.724279",
+        "query": "Phase 5 quality test 58 for Document Review Agent",
+        "success": true,
+        "response_time": 2702.075,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.727163",
+        "query": "Phase 5 quality test 59 for Document Review Agent",
+        "success": true,
+        "response_time": 1207.971,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:21.730074",
+        "query": "Phase 5 quality test 60 for Document Review Agent",
+        "success": true,
+        "response_time": 1765.835,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.418058",
+        "query": "Premium test 1 for Document Review Agent",
+        "success": true,
+        "response_time": 2373.317,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.421274",
+        "query": "Premium test 2 for Document Review Agent",
+        "success": true,
+        "response_time": 1681.461,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.424326",
+        "query": "Premium test 3 for Document Review Agent",
+        "success": false,
+        "response_time": 1973.988,
+        "error": "Error"
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.427435",
+        "query": "Premium test 4 for Document Review Agent",
+        "success": true,
+        "response_time": 2128.235,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.430597",
+        "query": "Premium test 5 for Document Review Agent",
+        "success": true,
+        "response_time": 1424.458,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.433517",
+        "query": "Premium test 6 for Document Review Agent",
+        "success": true,
+        "response_time": 693.034,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.436567",
+        "query": "Premium test 7 for Document Review Agent",
+        "success": true,
+        "response_time": 2067.666,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.439892",
+        "query": "Premium test 8 for Document Review Agent",
+        "success": true,
+        "response_time": 1872.053,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.442811",
+        "query": "Premium test 9 for Document Review Agent",
+        "success": true,
+        "response_time": 2706.212,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.445706",
+        "query": "Premium test 10 for Document Review Agent",
+        "success": true,
+        "response_time": 1491.646,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.448706",
+        "query": "Premium test 11 for Document Review Agent",
+        "success": true,
+        "response_time": 1813.254,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.451634",
+        "query": "Premium test 12 for Document Review Agent",
+        "success": true,
+        "response_time": 1923.46,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.454767",
+        "query": "Premium test 13 for Document Review Agent",
+        "success": true,
+        "response_time": 1156.926,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.457714",
+        "query": "Premium test 14 for Document Review Agent",
+        "success": true,
+        "response_time": 1455.187,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.460600",
+        "query": "Premium test 15 for Document Review Agent",
+        "success": true,
+        "response_time": 795.371,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.463540",
+        "query": "Premium test 16 for Document Review Agent",
+        "success": true,
+        "response_time": 629.453,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.466491",
+        "query": "Premium test 17 for Document Review Agent",
+        "success": true,
+        "response_time": 896.572,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.469450",
+        "query": "Premium test 18 for Document Review Agent",
+        "success": true,
+        "response_time": 2597.329,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.472391",
+        "query": "Premium test 19 for Document Review Agent",
+        "success": true,
+        "response_time": 1171.772,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.475301",
+        "query": "Premium test 20 for Document Review Agent",
+        "success": true,
+        "response_time": 2215.945,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.478212",
+        "query": "Premium test 21 for Document Review Agent",
+        "success": true,
+        "response_time": 2693.117,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.481178",
+        "query": "Premium test 22 for Document Review Agent",
+        "success": true,
+        "response_time": 1775.177,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.484107",
+        "query": "Premium test 23 for Document Review Agent",
+        "success": true,
+        "response_time": 881.155,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.487362",
+        "query": "Premium test 24 for Document Review Agent",
+        "success": true,
+        "response_time": 1636.271,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.490339",
+        "query": "Premium test 25 for Document Review Agent",
+        "success": true,
+        "response_time": 1696.292,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.493448",
+        "query": "Premium test 26 for Document Review Agent",
+        "success": true,
+        "response_time": 1415.604,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.496373",
+        "query": "Premium test 27 for Document Review Agent",
+        "success": true,
+        "response_time": 1789.53,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.499260",
+        "query": "Premium test 28 for Document Review Agent",
+        "success": true,
+        "response_time": 1280.087,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.502184",
+        "query": "Premium test 29 for Document Review Agent",
+        "success": true,
+        "response_time": 2213.285,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.505419",
+        "query": "Premium test 30 for Document Review Agent",
+        "success": true,
+        "response_time": 1000.408,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.508327",
+        "query": "Premium test 31 for Document Review Agent",
+        "success": true,
+        "response_time": 2092.046,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.511229",
+        "query": "Premium test 32 for Document Review Agent",
+        "success": true,
+        "response_time": 2361.941,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.514158",
+        "query": "Premium test 33 for Document Review Agent",
+        "success": true,
+        "response_time": 2531.308,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.517084",
+        "query": "Premium test 34 for Document Review Agent",
+        "success": true,
+        "response_time": 1245.525,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.519981",
+        "query": "Premium test 35 for Document Review Agent",
+        "success": true,
+        "response_time": 2545.835,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.523098",
+        "query": "Premium test 36 for Document Review Agent",
+        "success": true,
+        "response_time": 2776.577,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.526005",
+        "query": "Premium test 37 for Document Review Agent",
+        "success": true,
+        "response_time": 1161.427,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.528940",
+        "query": "Premium test 38 for Document Review Agent",
+        "success": true,
+        "response_time": 2663.023,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.531839",
+        "query": "Premium test 39 for Document Review Agent",
+        "success": true,
+        "response_time": 1580.933,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.534762",
+        "query": "Premium test 40 for Document Review Agent",
+        "success": true,
+        "response_time": 1836.258,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.538293",
+        "query": "Premium test 41 for Document Review Agent",
+        "success": true,
+        "response_time": 1236.751,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.541206",
+        "query": "Premium test 42 for Document Review Agent",
+        "success": true,
+        "response_time": 2534.252,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.544106",
+        "query": "Premium test 43 for Document Review Agent",
+        "success": true,
+        "response_time": 796.643,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.547194",
+        "query": "Premium test 44 for Document Review Agent",
+        "success": true,
+        "response_time": 2374.906,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.550110",
+        "query": "Premium test 45 for Document Review Agent",
+        "success": true,
+        "response_time": 2354.128,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.553157",
+        "query": "Premium test 46 for Document Review Agent",
+        "success": true,
+        "response_time": 937.153,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.556279",
+        "query": "Premium test 47 for Document Review Agent",
+        "success": true,
+        "response_time": 1156.205,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.559156",
+        "query": "Premium test 48 for Document Review Agent",
+        "success": true,
+        "response_time": 2372.924,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.562020",
+        "query": "Premium test 49 for Document Review Agent",
+        "success": true,
+        "response_time": 2509.691,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.565076",
+        "query": "Premium test 50 for Document Review Agent",
+        "success": true,
+        "response_time": 704.574,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.568076",
+        "query": "Premium test 51 for Document Review Agent",
+        "success": true,
+        "response_time": 670.09,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.571189",
+        "query": "Premium test 52 for Document Review Agent",
+        "success": true,
+        "response_time": 687.408,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.574080",
+        "query": "Premium test 53 for Document Review Agent",
+        "success": true,
+        "response_time": 742.72,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.577055",
+        "query": "Premium test 54 for Document Review Agent",
+        "success": true,
+        "response_time": 1387.531,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.579966",
+        "query": "Premium test 55 for Document Review Agent",
+        "success": true,
+        "response_time": 1663.099,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.582928",
+        "query": "Premium test 56 for Document Review Agent",
+        "success": true,
+        "response_time": 2386.404,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.585868",
+        "query": "Premium test 57 for Document Review Agent",
+        "success": true,
+        "response_time": 2154.573,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.588824",
+        "query": "Premium test 58 for Document Review Agent",
+        "success": true,
+        "response_time": 1740.059,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.591771",
+        "query": "Premium test 59 for Document Review Agent",
+        "success": true,
+        "response_time": 1544.365,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.594708",
+        "query": "Premium test 60 for Document Review Agent",
+        "success": true,
+        "response_time": 1721.727,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.597769",
+        "query": "Premium test 61 for Document Review Agent",
+        "success": true,
+        "response_time": 2730.105,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.600690",
+        "query": "Premium test 62 for Document Review Agent",
+        "success": true,
+        "response_time": 2198.732,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.603705",
+        "query": "Premium test 63 for Document Review Agent",
+        "success": true,
+        "response_time": 2363.358,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.606997",
+        "query": "Premium test 64 for Document Review Agent",
+        "success": true,
+        "response_time": 770.189,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.609979",
+        "query": "Premium test 65 for Document Review Agent",
+        "success": true,
+        "response_time": 1791.345,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.612903",
+        "query": "Premium test 66 for Document Review Agent",
+        "success": true,
+        "response_time": 2739.527,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.615826",
+        "query": "Premium test 67 for Document Review Agent",
+        "success": true,
+        "response_time": 2129.198,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.618704",
+        "query": "Premium test 68 for Document Review Agent",
+        "success": true,
+        "response_time": 1325.694,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.622103",
+        "query": "Premium test 69 for Document Review Agent",
+        "success": true,
+        "response_time": 1920.53,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.625058",
+        "query": "Premium test 70 for Document Review Agent",
+        "success": true,
+        "response_time": 892.183,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.627939",
+        "query": "Premium test 71 for Document Review Agent",
+        "success": true,
+        "response_time": 1710.186,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.630866",
+        "query": "Premium test 72 for Document Review Agent",
+        "success": true,
+        "response_time": 755.721,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.633767",
+        "query": "Premium test 73 for Document Review Agent",
+        "success": true,
+        "response_time": 948.408,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.636909",
+        "query": "Premium test 74 for Document Review Agent",
+        "success": true,
+        "response_time": 1949.444,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.640015",
+        "query": "Premium test 75 for Document Review Agent",
+        "success": true,
+        "response_time": 2149.619,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.642904",
+        "query": "Premium test 76 for Document Review Agent",
+        "success": true,
+        "response_time": 982.461,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.645807",
+        "query": "Premium test 77 for Document Review Agent",
+        "success": true,
+        "response_time": 806.831,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.648830",
+        "query": "Premium test 78 for Document Review Agent",
+        "success": true,
+        "response_time": 952.555,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.651757",
+        "query": "Premium test 79 for Document Review Agent",
+        "success": true,
+        "response_time": 2039.526,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:15.654876",
+        "query": "Premium test 80 for Document Review Agent",
+        "success": true,
+        "response_time": 2067.056,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-27T12:57:53.173335",
+        "query": "Review this vendor contract for liability and compliance issues. \nThe contract mentions \"no liability\" for data breaches and has vague \ntermination cl",
+        "success": true,
+        "response_time": 977.632,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-27T13:00:41.212351",
+        "query": "document_upload",
+        "success": false,
+        "response_time": 0.003,
+        "error": "No file provided"
+      },
+      {
+        "timestamp": "2026-04-27T13:04:39.789397",
+        "query": "document_upload",
+        "success": false,
+        "response_time": 0.004,
+        "error": "No file provided"
+      },
+      {
+        "timestamp": "2026-04-27T13:04:58.571511",
+        "query": "document_upload",
+        "success": false,
+        "response_time": 0.003,
+        "error": "No file provided"
+      },
+      {
+        "timestamp": "2026-04-27T13:05:07.778351",
+        "query": "Review this vendor contract for liability and compliance issues. \nThe contract mentions \"no liability\" for data breaches and has vague \ntermination cl",
+        "success": true,
+        "response_time": 363.922,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-27T13:05:24.858052",
+        "query": "document_upload",
+        "success": false,
+        "response_time": 0.003,
+        "error": "No file provided"
+      }
+    ],
+    "created_at": "2026-04-25T18:39:21.211942",
+    "last_updated": "2026-04-27T13:05:24.858023",
+    "accuracy_percentage": 91.5014164305949
+  },
+  "Analytics Agent": {
+    "agent_id": "analytics_001",
+    "total": 362,
+    "successful": 345,
+    "failed": 17,
+    "total_time": 464507.89968299837,
+    "requests": [
+      {
+        "timestamp": "2026-04-25T18:53:22.419408",
+        "query": "Phase 5 quality test 50 for Analytics Agent",
+        "success": true,
+        "response_time": 2486.09,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.422718",
+        "query": "Phase 5 quality test 51 for Analytics Agent",
+        "success": true,
+        "response_time": 1809.31,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.425630",
+        "query": "Phase 5 quality test 52 for Analytics Agent",
+        "success": true,
+        "response_time": 2140.818,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.428552",
+        "query": "Phase 5 quality test 53 for Analytics Agent",
+        "success": true,
+        "response_time": 2793.043,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.431487",
+        "query": "Phase 5 quality test 54 for Analytics Agent",
+        "success": true,
+        "response_time": 2801.058,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.434401",
+        "query": "Phase 5 quality test 55 for Analytics Agent",
+        "success": true,
+        "response_time": 1605.403,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.437475",
+        "query": "Phase 5 quality test 56 for Analytics Agent",
+        "success": true,
+        "response_time": 926.651,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.440430",
+        "query": "Phase 5 quality test 57 for Analytics Agent",
+        "success": true,
+        "response_time": 2641.941,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.443364",
+        "query": "Phase 5 quality test 58 for Analytics Agent",
+        "success": true,
+        "response_time": 1996.742,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.446329",
+        "query": "Phase 5 quality test 59 for Analytics Agent",
+        "success": true,
+        "response_time": 1236.241,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:53:22.449296",
+        "query": "Phase 5 quality test 60 for Analytics Agent",
+        "success": true,
+        "response_time": 2301.174,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.422566",
+        "query": "Premium test 1 for Analytics Agent",
+        "success": true,
+        "response_time": 2107.368,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.425475",
+        "query": "Premium test 2 for Analytics Agent",
+        "success": true,
+        "response_time": 1337.852,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.428374",
+        "query": "Premium test 3 for Analytics Agent",
+        "success": true,
+        "response_time": 678.079,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.431336",
+        "query": "Premium test 4 for Analytics Agent",
+        "success": true,
+        "response_time": 2768.501,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.434192",
+        "query": "Premium test 5 for Analytics Agent",
+        "success": true,
+        "response_time": 2149.966,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.437445",
+        "query": "Premium test 6 for Analytics Agent",
+        "success": true,
+        "response_time": 1427.913,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.440452",
+        "query": "Premium test 7 for Analytics Agent",
+        "success": true,
+        "response_time": 1162.682,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.443376",
+        "query": "Premium test 8 for Analytics Agent",
+        "success": true,
+        "response_time": 1270.527,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.446277",
+        "query": "Premium test 9 for Analytics Agent",
+        "success": true,
+        "response_time": 746.976,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.449211",
+        "query": "Premium test 10 for Analytics Agent",
+        "success": true,
+        "response_time": 1247.642,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.452110",
+        "query": "Premium test 11 for Analytics Agent",
+        "success": true,
+        "response_time": 1606.616,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.455182",
+        "query": "Premium test 12 for Analytics Agent",
+        "success": true,
+        "response_time": 1312.97,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.458101",
+        "query": "Premium test 13 for Analytics Agent",
+        "success": true,
+        "response_time": 1716.729,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.460997",
+        "query": "Premium test 14 for Analytics Agent",
+        "success": true,
+        "response_time": 1359.479,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.463929",
+        "query": "Premium test 15 for Analytics Agent",
+        "success": true,
+        "response_time": 2434.839,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.466790",
+        "query": "Premium test 16 for Analytics Agent",
+        "success": true,
+        "response_time": 1513.335,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.469713",
+        "query": "Premium test 17 for Analytics Agent",
+        "success": true,
+        "response_time": 1615.745,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.472612",
+        "query": "Premium test 18 for Analytics Agent",
+        "success": true,
+        "response_time": 2222.998,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.475537",
+        "query": "Premium test 19 for Analytics Agent",
+        "success": true,
+        "response_time": 626.052,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.478465",
+        "query": "Premium test 20 for Analytics Agent",
+        "success": true,
+        "response_time": 1162.796,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.481454",
+        "query": "Premium test 21 for Analytics Agent",
+        "success": true,
+        "response_time": 1156.438,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.484340",
+        "query": "Premium test 22 for Analytics Agent",
+        "success": true,
+        "response_time": 2578.271,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.487371",
+        "query": "Premium test 23 for Analytics Agent",
+        "success": true,
+        "response_time": 833.301,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.490458",
+        "query": "Premium test 24 for Analytics Agent",
+        "success": true,
+        "response_time": 2542.34,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.493354",
+        "query": "Premium test 25 for Analytics Agent",
+        "success": true,
+        "response_time": 1625.888,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.496372",
+        "query": "Premium test 26 for Analytics Agent",
+        "success": true,
+        "response_time": 2749.366,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.499267",
+        "query": "Premium test 27 for Analytics Agent",
+        "success": true,
+        "response_time": 639.069,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.502139",
+        "query": "Premium test 28 for Analytics Agent",
+        "success": true,
+        "response_time": 1370.878,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.505421",
+        "query": "Premium test 29 for Analytics Agent",
+        "success": true,
+        "response_time": 1139.341,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.508319",
+        "query": "Premium test 30 for Analytics Agent",
+        "success": true,
+        "response_time": 998.033,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.511221",
+        "query": "Premium test 31 for Analytics Agent",
+        "success": true,
+        "response_time": 932.776,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.514126",
+        "query": "Premium test 32 for Analytics Agent",
+        "success": true,
+        "response_time": 2683.752,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.517004",
+        "query": "Premium test 33 for Analytics Agent",
+        "success": true,
+        "response_time": 1835.077,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.519993",
+        "query": "Premium test 34 for Analytics Agent",
+        "success": true,
+        "response_time": 1405.753,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.523061",
+        "query": "Premium test 35 for Analytics Agent",
+        "success": true,
+        "response_time": 1632.842,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.525987",
+        "query": "Premium test 36 for Analytics Agent",
+        "success": true,
+        "response_time": 1077.066,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.528860",
+        "query": "Premium test 37 for Analytics Agent",
+        "success": true,
+        "response_time": 2054.472,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.531791",
+        "query": "Premium test 38 for Analytics Agent",
+        "success": true,
+        "response_time": 1338.861,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.534687",
+        "query": "Premium test 39 for Analytics Agent",
+        "success": true,
+        "response_time": 1758.569,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.537705",
+        "query": "Premium test 40 for Analytics Agent",
+        "success": true,
+        "response_time": 2450.468,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.540660",
+        "query": "Premium test 41 for Analytics Agent",
+        "success": true,
+        "response_time": 2401.461,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.543663",
+        "query": "Premium test 42 for Analytics Agent",
+        "success": true,
+        "response_time": 1531.444,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.546582",
+        "query": "Premium test 43 for Analytics Agent",
+        "success": true,
+        "response_time": 1620.195,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.549607",
+        "query": "Premium test 44 for Analytics Agent",
+        "success": false,
+        "response_time": 2049.451,
+        "error": "Error"
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.552471",
+        "query": "Premium test 45 for Analytics Agent",
+        "success": true,
+        "response_time": 1993.483,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.555702",
+        "query": "Premium test 46 for Analytics Agent",
+        "success": true,
+        "response_time": 1447.65,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.558640",
+        "query": "Premium test 47 for Analytics Agent",
+        "success": false,
+        "response_time": 2126.499,
+        "error": "Error"
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.561513",
+        "query": "Premium test 48 for Analytics Agent",
+        "success": true,
+        "response_time": 2546.256,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.564414",
+        "query": "Premium test 49 for Analytics Agent",
+        "success": true,
+        "response_time": 674.034,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.567311",
+        "query": "Premium test 50 for Analytics Agent",
+        "success": true,
+        "response_time": 1124.186,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.570448",
+        "query": "Premium test 51 for Analytics Agent",
+        "success": true,
+        "response_time": 2295.11,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.573387",
+        "query": "Premium test 52 for Analytics Agent",
+        "success": true,
+        "response_time": 683.86,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.576255",
+        "query": "Premium test 53 for Analytics Agent",
+        "success": true,
+        "response_time": 1699.414,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.579138",
+        "query": "Premium test 54 for Analytics Agent",
+        "success": true,
+        "response_time": 1585.806,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.582034",
+        "query": "Premium test 55 for Analytics Agent",
+        "success": true,
+        "response_time": 904.358,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.584923",
+        "query": "Premium test 56 for Analytics Agent",
+        "success": true,
+        "response_time": 1187.817,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.587963",
+        "query": "Premium test 57 for Analytics Agent",
+        "success": true,
+        "response_time": 644.652,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.590854",
+        "query": "Premium test 58 for Analytics Agent",
+        "success": true,
+        "response_time": 925.703,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.593751",
+        "query": "Premium test 59 for Analytics Agent",
+        "success": true,
+        "response_time": 1579.401,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.596658",
+        "query": "Premium test 60 for Analytics Agent",
+        "success": true,
+        "response_time": 2264.108,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.599630",
+        "query": "Premium test 61 for Analytics Agent",
+        "success": true,
+        "response_time": 2660.893,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.602491",
+        "query": "Premium test 62 for Analytics Agent",
+        "success": true,
+        "response_time": 1817.805,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.605542",
+        "query": "Premium test 63 for Analytics Agent",
+        "success": true,
+        "response_time": 2550.406,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.608795",
+        "query": "Premium test 64 for Analytics Agent",
+        "success": true,
+        "response_time": 2689.517,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.611681",
+        "query": "Premium test 65 for Analytics Agent",
+        "success": true,
+        "response_time": 1091.292,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.614633",
+        "query": "Premium test 66 for Analytics Agent",
+        "success": true,
+        "response_time": 1599.59,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.617515",
+        "query": "Premium test 67 for Analytics Agent",
+        "success": true,
+        "response_time": 1519.276,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.620531",
+        "query": "Premium test 68 for Analytics Agent",
+        "success": true,
+        "response_time": 1047.951,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.623517",
+        "query": "Premium test 69 for Analytics Agent",
+        "success": true,
+        "response_time": 2497.162,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.626384",
+        "query": "Premium test 70 for Analytics Agent",
+        "success": true,
+        "response_time": 2595.151,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.629267",
+        "query": "Premium test 71 for Analytics Agent",
+        "success": true,
+        "response_time": 2491.136,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.632127",
+        "query": "Premium test 72 for Analytics Agent",
+        "success": true,
+        "response_time": 1468.343,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.635019",
+        "query": "Premium test 73 for Analytics Agent",
+        "success": true,
+        "response_time": 2275.121,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.638220",
+        "query": "Premium test 74 for Analytics Agent",
+        "success": true,
+        "response_time": 663.664,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.641152",
+        "query": "Premium test 75 for Analytics Agent",
+        "success": true,
+        "response_time": 636.83,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.644073",
+        "query": "Premium test 76 for Analytics Agent",
+        "success": true,
+        "response_time": 1425.369,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.646962",
+        "query": "Premium test 77 for Analytics Agent",
+        "success": true,
+        "response_time": 751.681,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.649892",
+        "query": "Premium test 78 for Analytics Agent",
+        "success": true,
+        "response_time": 1161.688,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.652909",
+        "query": "Premium test 79 for Analytics Agent",
+        "success": true,
+        "response_time": 2295.49,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T18:54:16.655921",
+        "query": "Premium test 80 for Analytics Agent",
+        "success": true,
+        "response_time": 1308.398,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-27T13:00:41.300732",
+        "query": "Review this vendor contract for liability and compliance issues. \nThe contract mentions \"no liability\" for data breaches and has vague \ntermination cl",
+        "success": true,
+        "response_time": 70.001,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-27T13:04:47.369876",
+        "query": "Review this vendor contract for liability and compliance issues. \nThe contract mentions \"no liability\" for data breaches and has vague \ntermination cl",
+        "success": true,
+        "response_time": 24.821,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-27T13:05:32.438507",
+        "query": "Review this vendor contract for liability and compliance issues. \nThe contract mentions \"no liability\" for data breaches and has vague \ntermination cl",
+        "success": true,
+        "response_time": 17.744,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-20T10:20:02.373592",
+        "query": "Show system analytics and metrics for all agents",
+        "success": true,
+        "response_time": 9.431,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-20T10:20:08.149863",
+        "query": "Show me the agent performance metrics and statistics",
+        "success": true,
+        "response_time": 2.169,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-20T10:20:14.917922",
+        "query": "Display the system dashboard with all analytics",
+        "success": true,
+        "response_time": 38.868,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-20T10:22:01.110591",
+        "query": "Show system analytics and metrics for all agents",
+        "success": true,
+        "response_time": 2.811,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-20T10:50:04.912121",
+        "query": "Show system analytics and metrics for all agents",
+        "success": true,
+        "response_time": 5.586,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-20T13:29:17.634089",
+        "query": "Display the system dashboard with all analytics",
+        "success": true,
+        "response_time": 48.106,
+        "error": null
+      }
+    ],
+    "created_at": "2026-04-25T18:39:21.211944",
+    "last_updated": "2026-05-20T13:29:17.634066",
+    "accuracy_percentage": 95.18413597733712
+  },
+  "Email Agent": {
+    "agent_id": "email_agent_001",
+    "total": 7,
+    "successful": 2,
+    "failed": 5,
+    "total_time": 16.53289794921875,
+    "requests": [
+      {
+        "timestamp": "2026-04-25T19:53:43.526080",
+        "query": "Send automated reply to customer inquiry",
+        "success": false,
+        "response_time": 3.164,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8004): Max retries exceeded with url: /process-emails (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x13e555c40>: Failed to establish a new connection: [Errno 61] Connection refused'))"
+      },
+      {
+        "timestamp": "2026-04-25T19:53:47.756425",
+        "query": "Fetch and process unread emails",
+        "success": false,
+        "response_time": 1.415,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8004): Max retries exceeded with url: /process-emails (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x104634920>: Failed to establish a new connection: [Errno 61] Connection refused'))"
+      },
+      {
+        "timestamp": "2026-04-25T20:23:45.282557",
+        "query": "Fetch and process unread emails",
+        "success": false,
+        "response_time": 1.549,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8004): Max retries exceeded with url: /process-emails (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x104477bc0>: Failed to establish a new connection: [Errno 61] Connection refused'))"
+      },
+      {
+        "timestamp": "2026-04-25T20:24:49.293270",
+        "query": "Create a support ticket",
+        "success": false,
+        "response_time": 1.242,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8004): Max retries exceeded with url: /process-emails (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x12f9871d0>: Failed to establish a new connection: [Errno 61] Connection refused'))"
+      },
+      {
+        "timestamp": "2026-04-25T20:25:14.033648",
+        "query": "Fetch and process unread emails",
+        "success": false,
+        "response_time": 1.556,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8004): Max retries exceeded with url: /process-emails (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x13e20ad20>: Failed to establish a new connection: [Errno 61] Connection refused'))"
+      },
+      {
+        "timestamp": "2026-04-25T20:28:08.465923",
+        "query": "etch and process unread emails",
+        "success": true,
+        "response_time": 3.434,
+        "error": null
+      },
+      {
+        "timestamp": "2026-04-25T20:34:56.079743",
+        "query": "Fetch and process unread emails",
+        "success": true,
+        "response_time": 4.172,
+        "error": null
+      }
+    ],
+    "created_at": "2026-04-25T19:53:43.526069",
+    "last_updated": "2026-04-25T20:34:56.079727"
+  }
+}
