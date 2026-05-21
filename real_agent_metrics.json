@@ -1,39 +1,11 @@
 {
   "Support Agent": {
     "agent_id": "support_001",
-    "total": 354,
-    "successful": 341,
-    "failed": 13,
-    "total_time": 600490.6312103198,
+    "total": 358,
+    "successful": 344,
+    "failed": 14,
+    "total_time": 630527.9587383197,
     "requests": [
-      {
-        "timestamp": "2026-04-25T18:53:21.494248",
-        "query": "Phase 5 quality test 42 for Support Agent",
-        "success": true,
-        "response_time": 1509.709,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:53:21.497237",
-        "query": "Phase 5 quality test 43 for Support Agent",
-        "success": true,
-        "response_time": 1698.818,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:53:21.500587",
-        "query": "Phase 5 quality test 44 for Support Agent",
-        "success": true,
-        "response_time": 949.828,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:53:21.503706",
-        "query": "Phase 5 quality test 45 for Support Agent",
-        "success": true,
-        "response_time": 1516.641,
-        "error": null
-      },
       {
         "timestamp": "2026-04-25T18:53:21.506700",
         "query": "Phase 5 quality test 46 for Support Agent",
@@ -708,23 +680,16 @@
       }
     ],
     "created_at": "2026-04-25T18:39:21.211928",
-    "last_updated": "2026-05-20T12:52:46.765997",
+    "last_updated": "2026-05-21T14:21:24.154433",
     "accuracy_percentage": 96.3172804532578
   },
   "HR Onboarding Agent": {
     "agent_id": "hr_001",
-    "total": 354,
-    "successful": 333,
+    "total": 355,
+    "successful": 334,
     "failed": 21,
-    "total_time": 651867.0221860599,
+    "total_time": 651904.0781552981,
     "requests": [
-      {
-        "timestamp": "2026-04-25T18:53:22.035767",
-        "query": "Phase 5 quality test 42 for HR Onboarding Agent",
-        "success": true,
-        "response_time": 2735.033,
-        "error": null
-      },
       {
         "timestamp": "2026-04-25T18:53:22.038931",
         "query": "Phase 5 quality test 43 for HR Onboarding Agent",
@@ -1420,7 +1385,7 @@
       }
     ],
     "created_at": "2026-04-25T18:39:21.211937",
-    "last_updated": "2026-05-20T12:52:37.756063",
+    "last_updated": "2026-05-21T14:21:16.173279",
     "accuracy_percentage": 94.05099150141642
   },
   "Meeting Calendar Agent": {
@@ -2137,25 +2102,11 @@
   },
   "Project Management Agent": {
     "agent_id": "project_001",
-    "total": 354,
-    "successful": 331,
+    "total": 356,
+    "successful": 333,
     "failed": 23,
-    "total_time": 616920.6943351473,
+    "total_time": 616956.2759238924,
     "requests": [
-      {
-        "timestamp": "2026-04-25T18:53:22.215677",
-        "query": "Phase 5 quality test 42 for Project Management Agent",
-        "success": false,
-        "response_time": 1864.905,
-        "error": "Simulated error"
-      },
-      {
-        "timestamp": "2026-04-25T18:53:22.218611",
-        "query": "Phase 5 quality test 43 for Project Management Agent",
-        "success": true,
-        "response_time": 2456.138,
-        "error": null
-      },
       {
         "timestamp": "2026-04-25T18:53:22.221769",
         "query": "Phase 5 quality test 44 for Project Management Agent",
@@ -2841,10 +2792,24 @@
         "success": true,
         "response_time": 16.905,
         "error": null
+      },
+      {
+        "timestamp": "2026-05-21T14:21:24.251634",
+        "query": "Assign to project: onboard Aditi",
+        "success": true,
+        "response_time": 28.067,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-21T14:25:12.643180",
+        "query": "whats the project status",
+        "success": true,
+        "response_time": 7.514,
+        "error": null
       }
     ],
     "created_at": "2026-04-25T18:39:21.211940",
-    "last_updated": "2026-05-20T12:52:47.976874",
+    "last_updated": "2026-05-21T14:25:12.643164",
     "accuracy_percentage": 93.48441926345609
   },
   "Document Review Agent": {
@@ -3561,25 +3526,11 @@
   },
   "Analytics Agent": {
     "agent_id": "analytics_001",
-    "total": 362,
-    "successful": 345,
+    "total": 364,
+    "successful": 347,
     "failed": 17,
-    "total_time": 464507.89968299837,
+    "total_time": 464727.62171554536,
     "requests": [
-      {
-        "timestamp": "2026-04-25T18:53:22.419408",
-        "query": "Phase 5 quality test 50 for Analytics Agent",
-        "success": true,
-        "response_time": 2486.09,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:53:22.422718",
-        "query": "Phase 5 quality test 51 for Analytics Agent",
-        "success": true,
-        "response_time": 1809.31,
-        "error": null
-      },
       {
         "timestamp": "2026-04-25T18:53:22.425630",
         "query": "Phase 5 quality test 52 for Analytics Agent",
@@ -4265,18 +4216,32 @@
         "success": true,
         "response_time": 48.106,
         "error": null
+      },
+      {
+        "timestamp": "2026-05-21T14:20:44.542914",
+        "query": "I want to  reply to all email ",
+        "success": true,
+        "response_time": 124.182,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-21T14:25:39.157769",
+        "query": "Execute all 6 agents in sequence",
+        "success": true,
+        "response_time": 95.54,
+        "error": null
       }
     ],
     "created_at": "2026-04-25T18:39:21.211944",
-    "last_updated": "2026-05-20T13:29:17.634066",
+    "last_updated": "2026-05-21T14:25:39.157752",
     "accuracy_percentage": 95.18413597733712
   },
   "Email Agent": {
     "agent_id": "email_agent_001",
-    "total": 7,
-    "successful": 2,
+    "total": 9,
+    "successful": 4,
     "failed": 5,
-    "total_time": 16.53289794921875,
+    "total_time": 218.78790855407715,
     "requests": [
       {
         "timestamp": "2026-04-25T19:53:43.526080",
@@ -4326,9 +4291,23 @@
         "success": true,
         "response_time": 4.172,
         "error": null
+      },
+      {
+        "timestamp": "2026-05-21T18:10:15.242832",
+        "query": "Show my email stats",
+        "success": true,
+        "response_time": 138.194,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-21T18:17:10.599721",
+        "query": "Show  email stats",
+        "success": true,
+        "response_time": 64.061,
+        "error": null
       }
     ],
     "created_at": "2026-04-25T19:53:43.526069",
-    "last_updated": "2026-04-25T20:34:56.079727"
+    "last_updated": "2026-05-21T18:17:10.599705"
   }
 }

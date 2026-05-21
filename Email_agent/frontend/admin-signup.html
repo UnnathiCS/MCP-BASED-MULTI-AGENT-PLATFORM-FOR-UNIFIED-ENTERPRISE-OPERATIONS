@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Access - Email Agent</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        .signup-container {
+            max-width: 600px;
+            margin: 60px auto;
+            padding: 40px;
+        }
+        .signup-card {
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+        .signup-card h1 {
+            margin: 0 0 8px 0;
+            color: #212529;
+            font-size: 28px;
+        }
+        .signup-card p {
+            color: #6c757d;
+            margin: 0 0 32px 0;
+        }
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 16px;
+            border-radius: 4px;
+            margin: 24px 0;
+        }
+        .info-box h4 {
+            margin: 0 0 8px 0;
+            color: #1976d2;
+        }
+        .info-box p {
+            margin: 0;
+            color: #1565c0;
+            font-size: 14px;
+        }
+        .primary-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="brand">
+            <img class="logo" src="/logo.png" alt="Email Agent logo" />
+            <span>Email Agent</span>
+        </div>
+        <div class="links">
+            <a href="/ui">Home</a>
+            <a href="/admin-login.html">Login</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="signup-container">
+            <div class="signup-card">
+                <h1>Admin Access</h1>
+                <p>The email dashboard uses the mailbox configured in the local .env file. No manual sign-in is required.</p>
+
+                <div id="step1-content">
+                    <h3 style="margin-bottom: 16px;">Automatic Session Setup</h3>
+                    <p style="margin-bottom: 24px; color: #6c757d;">The app initializes the mailbox session automatically, so you can go straight to the dashboard.</p>
+
+                    <div class="info-box">
+                        <h4>What changed?</h4>
+                        <p>Authentication has been removed from this page. The app now assumes the configured mailbox account is already signed in.</p>
+                    </div>
+
+                    <a class="primary-button" href="/dashboard.html">Open Email Dashboard</a>
+                </div>
+
+                <div id="status-message" style="margin-top: 24px; padding: 12px; border-radius: 6px; display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            autoLogin();
+        };
+
+        async function autoLogin() {
+            try {
+                const res = await fetch('/auth/auto-login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include'
+                });
+
+                const data = await res.json();
+
+                if (data.authenticated) {
+                    showStatus(`Session ready for ${maskEmail(data.email || 'configured mailbox')}.`, 'success');
+                } else {
+                    throw new Error('Automatic sign-in failed');
+                }
+            } catch (error) {
+                console.error('Auto-login error:', error);
+                showStatus('Automatic sign-in failed. Check the EMAIL_ADDRESS value in .env.', 'error');
+            }
+        }
+
+        function maskEmail(email) {
+            if (!email || !email.includes('@')) {
+                return email;
+            }
+            const [name, domain] = email.split('@');
+            const visible = name.slice(0, 2);
+            return `${visible}${name.length > 2 ? '***' : ''}@${domain}`;
+        }
+
+        function showStatus(message, type) {
+            const statusEl = document.getElementById('status-message');
+            statusEl.textContent = message;
+            statusEl.style.display = 'block';
+            statusEl.style.background = type === 'success' ? '#d4edda' : '#f8d7da';
+            statusEl.style.color = type === 'success' ? '#155724' : '#721c24';
+            statusEl.style.border = `1px solid ${type === 'success' ? '#c3e6cb' : '#f5c6cb'}`;
+        }
+    </script>
+</body>
+</html>

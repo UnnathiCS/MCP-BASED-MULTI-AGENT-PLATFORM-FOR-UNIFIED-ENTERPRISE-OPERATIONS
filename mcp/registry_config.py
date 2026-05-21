@@ -94,6 +94,43 @@ AGENT_REGISTRY_CONFIG: Dict[str, Any] = {
                 "team": "support"
             }
         }
+        ,
+        "email-agent": {
+            "agent_id": "email-agent",
+            "name": "Email Agent",
+            "endpoint": "http://127.0.0.1:8004",
+            "capabilities": [
+                {
+                    "action": "email.process",
+                    "description": "Process incoming emails and generate responses or tickets",
+                    "sample_inputs": ["Help with billing question", "My API is returning 500"],
+                    "required_fields": ["text"]
+                },
+                {
+                    "action": "email.analytics",
+                    "description": "Provide email statistics and recent tickets",
+                    "sample_inputs": ["show recent tickets", "show email stats"],
+                    "required_fields": []
+                }
+            ],
+            "allowed_tenants": ["*"],
+            "status": "registered",
+            "sla": {
+                "timeout_ms": 30000,
+                "concurrency_limit": 5
+            },
+            "health_check_path": "/health",
+            "auth": {
+                "type": "none"
+            },
+            "priority": 65,
+            "version": "1.0.0",
+            "metadata": {
+                "cost_estimate": 0.05,
+                "region": "local",
+                "team": "email"
+            }
+        }
     },
     "capability_index": {
         "document.review": ["document-review-agent"],

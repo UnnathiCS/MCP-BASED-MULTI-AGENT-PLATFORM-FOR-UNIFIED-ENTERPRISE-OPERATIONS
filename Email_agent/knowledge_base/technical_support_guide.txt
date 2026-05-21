@@ -1,0 +1,43 @@
+NexusFlow - Common Technical Issues and Support Procedures
+
+Support Contact Information:
+- Email: support@companyz.com
+- Response Time: 24 hours (Professional), 48 hours (Free), 1 hour (Enterprise critical)
+- Phone Support: Available for Enterprise customers
+- Documentation: https://docs.nexusflow.com
+- Community Forum: https://community.nexusflow.com
+
+Issue: User receives a '401 Unauthorized' error when connecting to the API.
+Solution: This error means the API key is invalid or expired. Please generate a new API key from the Admin Dashboard under Settings > API Keys. Ensure the key has the correct read/write permissions assigned to it. Also verify the API key is included in the Authorization header as "Bearer YOUR_API_KEY". If the issue persists, check that your account is active and not suspended.
+
+Issue: A workflow is stuck in the 'Processing' state.
+Solution: This can happen if an external service call (like a Salesforce update) times out. Check the detailed logs for the workflow step to identify the error. You can manually retry the step from the workflow dashboard. Review execution logs: Workflows > [Workflow Name] > Executions > [Execution ID] > Logs. If the issue persists, contact support with the Workflow ID and Execution ID for faster resolution.
+
+Issue: The analytics dashboard is loading slowly.
+Solution: Our dashboards process large volumes of data. First, try clearing your browser cache and cookies. The initial load of a complex dashboard may take up to 10-15 seconds. Subsequent loads will be faster. Try reducing the date range in your queries. If consistently slow, try a different browser or incognito mode. Contact support if the issue persists.
+
+Issue: Connector authentication fails repeatedly.
+Solution: Verify your credentials are correct in the connector settings. Some connectors require OAuth re-authentication - check the connector status and re-authenticate if needed. Ensure your account with the external service is active. For IP-restricted connectors, verify your IP is whitelisted. Test the connection manually: Connectors > [Connector Name] > Test Connection.
+
+Issue: Workflow execution fails with "Rate limit exceeded" error.
+Solution: Check your account tier limits in Settings > Account > Limits. Reduce the frequency of workflow executions if possible. Wait for the rate limit window to reset (typically 1 hour). Consider upgrading to a higher tier if you consistently hit limits. Enterprise customers can request custom rate limits.
+
+Issue: Data not appearing in workflows after connector sync.
+Solution: Check connector status and ensure it's connected and syncing. Verify data filters aren't too restrictive. Review connector logs for errors. Manually trigger a sync: Connectors > [Connector Name] > Sync Now. Check that the data source has new data to sync.
+
+Issue: Cannot access account after payment.
+Solution: Check payment status in Settings > Billing > Payment History. Verify your payment method is valid and not expired. Check for failed payment notifications in your email. Contact billing support at billing@companyz.com if payment was successful but access is still restricted.
+
+Issue: Webhook not receiving events.
+Solution: Verify the webhook URL is accessible and returns a 200 status code. Check webhook configuration in Settings > Webhooks. Review webhook logs for delivery attempts and errors. Ensure your webhook endpoint isn't blocking requests. Test the webhook manually: Webhooks > [Webhook Name] > Test.
+
+When Contacting Support:
+Always include the following information for faster resolution:
+- Account email address
+- Workflow ID (if applicable)
+- Execution ID (if applicable)
+- Error messages (screenshot if possible)
+- Steps to reproduce the issue
+- What you've already tried
+- Browser and version (for UI issues)
+- Time and timezone when issue occurred

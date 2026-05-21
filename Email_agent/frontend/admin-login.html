@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Email Agent</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        .login-container {
+            max-width: 600px;
+            margin: 60px auto;
+            padding: 40px;
+        }
+        .login-card {
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+        .primary-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="brand">
+            <img class="logo" src="/logo.png" alt="Email Agent logo" />
+            <span>Email Agent</span>
+        </div>
+        <div class="links">
+            <a href="/ui">Home</a>
+            <a href="/admin-signup.html">Sign Up</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="login-container">
+            <div class="login-card">
+                <h1>Admin Access</h1>
+                <p style="color: #6c757d; margin-bottom: 24px;">This workspace signs you in automatically with the mailbox configured in the local .env file.</p>
+
+                <div id="auth-status" style="margin-bottom: 24px; padding: 12px 14px; border-radius: 8px; background: #f8fafc; color: #334155; border: 1px solid #e2e8f0;">
+                    Preparing automatic sign-in...
+                </div>
+
+                <a class="primary-button" href="/dashboard.html">Open Email Dashboard</a>
+
+                <div id="status-message" style="margin-top: 24px; padding: 12px; border-radius: 6px; display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            autoLogin();
+        };
+
+        async function autoLogin() {
+            try {
+                const res = await fetch('/auth/auto-login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include'
+                });
+
+                const data = await res.json();
+
+                if (data.authenticated) {
+                    showStatus(`Signed in automatically as ${maskEmail(data.email || 'configured mailbox')}.`, 'success');
+                } else {
+                    throw new Error('Automatic sign-in failed');
+                }
+            } catch (error) {
+                console.error('Auto-login error:', error);
+                showStatus('Automatic sign-in failed. Check the EMAIL_ADDRESS value in .env.', 'error');
+            }
+        }
+
+        function maskEmail(email) {
+            if (!email || !email.includes('@')) {
+                return email;
+            }
+            const [name, domain] = email.split('@');
+            const visible = name.slice(0, 2);
+            return `${visible}${name.length > 2 ? '***' : ''}@${domain}`;
+        }
+
+        function showStatus(message, type) {
+            const statusEl = document.getElementById('status-message');
+            const authStatusEl = document.getElementById('auth-status');
+            statusEl.textContent = message;
+            statusEl.style.display = 'block';
+            statusEl.style.background = type === 'success' ? '#d4edda' : '#f8d7da';
+            statusEl.style.color = type === 'success' ? '#155724' : '#721c24';
+            statusEl.style.border = `1px solid ${type === 'success' ? '#c3e6cb' : '#f5c6cb'}`;
+            if (authStatusEl) {
+                authStatusEl.textContent = message;
+                authStatusEl.style.background = type === 'success' ? '#ecfdf5' : '#fef2f2';
+                authStatusEl.style.color = type === 'success' ? '#065f46' : '#991b1b';
+                authStatusEl.style.border = `1px solid ${type === 'success' ? '#a7f3d0' : '#fecaca'}`;
+            }
+        }
+    </script>
+</body>
+</html>

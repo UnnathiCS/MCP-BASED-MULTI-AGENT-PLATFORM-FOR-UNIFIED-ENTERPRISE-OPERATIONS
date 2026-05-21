@@ -1,0 +1,61 @@
+Frequently Asked Questions - Pricing & Trials
+
+Q1: How is NexusFlow priced?
+A1: We offer three main tiers:
+
+Free Plan:
+- Price: $0/month
+- Ideal for: Individuals and small teams getting started
+- Includes: Up to 5 workflows, 1,000 executions/month, basic connectors, community support
+- Best for: Testing and small-scale automation
+
+Professional Plan:
+- Price: $99/month (billed monthly) or $999/year (billed annually, save 15%)
+- Ideal for: Growing businesses and teams
+- Includes: Unlimited workflows, 50,000 executions/month, all connectors, priority support (24-hour response), advanced analytics, custom integrations
+- Best for: Production automation and scaling operations
+
+Enterprise Plan:
+- Price: Custom pricing based on requirements
+- Ideal for: Large organizations with complex needs
+- Includes: Unlimited workflows and executions, dedicated infrastructure, 24/7 phone and email support, custom SLA, on-premise deployment option, SSO, advanced security, dedicated account manager, custom training
+- Best for: Enterprise-scale automation with strict security and compliance requirements
+
+Q2: Do you offer a free trial?
+A2: Yes, we offer a full-featured 14-day free trial of our Professional plan. No credit card is required to sign up. You'll have access to all Professional features during the trial period. After 14 days, your account will automatically convert to the Free plan unless you choose to upgrade.
+
+Q3: What happens after my trial ends?
+A3: Your account will be automatically moved to our free plan with limited features. You can choose to upgrade at any time to continue using the Professional features. All your workflows and data will be preserved during the transition.
+
+Q4: Can I change plans later?
+A4: Yes, you can upgrade or downgrade your plan at any time. Upgrades take effect immediately. Downgrades take effect at the end of your current billing period, and you'll receive a prorated credit for the unused portion.
+
+Q5: Are there any setup fees?
+A5: No, there are no setup fees for any plan. You only pay the monthly or annual subscription fee.
+
+Q6: What payment methods do you accept?
+A6: We accept all major credit cards (Visa, MasterCard, American Express) and ACH/bank transfers for Enterprise customers. Annual billing is available with a 15% discount.
+
+Q7: Is there a discount for annual billing?
+A7: Yes, annual billing includes a 15% discount compared to monthly billing. For example, Professional plan is $99/month or $999/year (equivalent to $83.25/month).
+
+Q8: Do you offer refunds?
+A8: We offer a 30-day money-back guarantee for new subscriptions. If you're not satisfied, contact us within 30 days for a full refund.
+
+Q9: What happens if I exceed my plan limits?
+A9: If you exceed execution limits, workflows will be paused until the next billing cycle or you can upgrade your plan. We'll notify you when you're approaching limits so you can plan accordingly.
+
+Q10: Are there any hidden fees?
+A10: No hidden fees. The price you see is the price you pay. Enterprise plans may include additional costs for custom features, but these are discussed and agreed upon upfront.
+
+Q11: Do you offer discounts for non-profits or educational institutions?
+A11: Yes, we offer special pricing for qualified non-profit organizations and educational institutions. Contact sales@companyz.com for more information.
+
+Q12: Can I get a custom quote for my organization?
+A12: Yes, Enterprise plans are fully customizable. Contact our sales team at sales@companyz.com or schedule a demo to discuss your specific requirements and get a custom quote.
+
+Q13: What's included in Enterprise pricing?
+A13: Enterprise pricing is customized based on your specific needs, including number of users, execution volume, required features, support level, and deployment options. Contact sales for a detailed quote.
+
+Q14: Is there a minimum contract term?
+A14: Free and Professional plans are month-to-month with no long-term commitment. Enterprise plans typically have annual contracts with custom terms based on your requirements.

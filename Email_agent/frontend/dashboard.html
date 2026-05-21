@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Email Agent</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        .dashboard-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 32px 24px;
+        }
+        .dashboard-header {
+            margin-bottom: 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .dashboard-header h1 {
+            margin: 0;
+            color: #212529;
+            font-size: 32px;
+            font-weight: 700;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        .stat-card {
+            background: #ffffff;
+            border: 1px solid #dee2e6;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: all 0.2s ease;
+        }
+        .stat-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            transform: translateY(-2px);
+        }
+        .stat-card h3 {
+            margin: 0 0 12px 0;
+            color: #6c757d;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+        .stat-card .value {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #212529;
+            margin: 8px 0;
+            line-height: 1.2;
+        }
+        .stat-card .change {
+            font-size: 14px;
+            color: #6c757d;
+            margin-top: 8px;
+        }
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        .chart-card {
+            background: #ffffff;
+            border: 1px solid #dee2e6;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .chart-card h3 {
+            margin: 0 0 24px 0;
+            color: #212529;
+            font-size: 18px;
+            font-weight: 600;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e9ecef;
+        }
+        .chart-container {
+            position: relative;
+            height: 300px;
+        }
+        .recent-tickets {
+            background: #ffffff;
+            border: 1px solid #dee2e6;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .recent-tickets h3 {
+            margin: 0 0 24px 0;
+            color: #212529;
+            font-size: 18px;
+            font-weight: 600;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e9ecef;
+        }
+        .ticket-item {
+            padding: 16px;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s ease;
+        }
+        .ticket-item:hover {
+            background: #f8f9fa;
+        }
+        .ticket-item:last-child {
+            border-bottom: none;
+        }
+        .ticket-info {
+            flex: 1;
+        }
+        .ticket-subject {
+            font-weight: 600;
+            color: #212529;
+            margin-bottom: 6px;
+            font-size: 15px;
+        }
+        .ticket-meta {
+            font-size: 13px;
+            color: #6c757d;
+        }
+        .ticket-badge {
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .badge-spam {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .badge-processed {
+            background: #d4edda;
+            color: #155724;
+        }
+        .badge-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+        .loading {
+            text-align: center;
+            padding: 60px 20px;
+            color: #6c757d;
+            font-size: 16px;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 24px 0;
+            border: 1px solid #f5c6cb;
+        }
+        .refresh-btn {
+            background: #0066cc;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+        }
+        .refresh-btn:hover {
+            background: #0052a3;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+            transform: translateY(-1px);
+        }
+        @media (max-width: 768px) {
+            .dashboard-container {
+                padding: 20px 16px;
+            }
+            .dashboard-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="brand">
+            <img class="logo" src="/logo.png" alt="Email Agent logo" />
+            <span>Email Agent</span>
+        </div>
+        <div class="links">
+            <a href="/ui" id="nav-manual">Manual Test</a>
+            <a href="/tickets.html" id="nav-tickets">Inbox & Tickets</a>
+            <a href="/dashboard.html" class="active" id="nav-dashboard">Dashboard</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="dashboard-container">
+            <div class="dashboard-header">
+                <h1>Analytics Dashboard</h1>
+                <button class="refresh-btn" onclick="loadDashboard()">Refresh</button>
+            </div>
+
+            <div id="error-container"></div>
+
+            <div id="loading" class="loading">Loading dashboard data...</div>
+
+            <div id="dashboard-content" style="display: none;">
+                <!-- Statistics Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Total Tickets</h3>
+                        <div class="value" id="stat-total">0</div>
+                        <div class="change">Last 30 days</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Processing Rate</h3>
+                        <div class="value" id="stat-processing">0%</div>
+                        <div class="change" id="stat-processed-count">0 processed</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Spam Rate</h3>
+                        <div class="value" id="stat-spam">0%</div>
+                        <div class="change" id="stat-spam-count">0 spam</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Top Intent</h3>
+                        <div class="value" id="stat-top-intent">-</div>
+                        <div class="change" id="stat-intent-count">-</div>
+                    </div>
+                </div>
+
+                <!-- Charts -->
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <h3>Daily Ticket Volume</h3>
+                        <div class="chart-container">
+                            <canvas id="volumeChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Intent Distribution</h3>
+                        <div class="chart-container">
+                            <canvas id="intentChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Status Distribution</h3>
+                        <div class="chart-container">
+                            <canvas id="statusChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Tickets -->
+                <div class="recent-tickets">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <h3 style="margin: 0;">Recent Tickets</h3>
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <label style="margin: 0; font-weight: 500; font-size: 14px;">Show:</label>
+                            <select id="dashboard-tickets-limit" style="padding: 8px 12px; border: 1px solid #dee2e6; border-radius: 6px; font-size: 14px;">
+                                <option value="10" selected>10</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="recent-tickets-list" style="max-height: 500px; overflow-y: auto; overflow-x: hidden;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container footer-inner center">
+            <small>© 2026 Email Agent - All rights reserved.</small>
+        </div>
+    </footer>
+
+    <script>
+        let volumeChart, intentChart, statusChart;
+
+        async function loadDashboard() {
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('dashboard-content').style.display = 'none';
+            document.getElementById('error-container').innerHTML = '';
+
+            const ticketsLimit = parseInt(document.getElementById('dashboard-tickets-limit')?.value || '10');
+            
+            try {
+                // Load all data in parallel
+                const [statsRes, recentRes, performanceRes, trendsRes] = await Promise.all([
+                    fetch('/api/analytics/statistics?days=30', { credentials: 'include' }),
+                    fetch(`/api/analytics/recent-tickets?limit=${ticketsLimit}`, { credentials: 'include' }),
+                    fetch('/api/analytics/performance?days=30', { credentials: 'include' }),
+                    fetch('/api/analytics/trends?days=30', { credentials: 'include' })
+                ]);
+
+                // Check each response
+                if (!statsRes.ok) {
+                    const errorText = await statsRes.text();
+                    throw new Error(`Statistics failed: ${statsRes.status} - ${errorText}`);
+                }
+                if (!recentRes.ok) {
+                    const errorText = await recentRes.text();
+                    throw new Error(`Recent tickets failed: ${recentRes.status} - ${errorText}`);
+                }
+                if (!performanceRes.ok) {
+                    const errorText = await performanceRes.text();
+                    throw new Error(`Performance failed: ${performanceRes.status} - ${errorText}`);
+                }
+                if (!trendsRes.ok) {
+                    const errorText = await trendsRes.text();
+                    throw new Error(`Trends failed: ${trendsRes.status} - ${errorText}`);
+                }
+
+                const stats = await statsRes.json();
+                const recent = await recentRes.json();
+                const performance = await performanceRes.json();
+                const trends = await trendsRes.json();
+
+                // Update statistics cards
+                document.getElementById('stat-total').textContent = stats.total_tickets || 0;
+                document.getElementById('stat-processing').textContent = performance.processing_rate + '%';
+                document.getElementById('stat-processed-count').textContent = `${performance.total_processed} processed`;
+                document.getElementById('stat-spam').textContent = performance.spam_rate + '%';
+                document.getElementById('stat-spam-count').textContent = `${performance.spam_count} spam`;
+
+                // Top intent
+                const intents = Object.entries(stats.intent_counts || {});
+                if (intents.length > 0) {
+                    const topIntent = intents.sort((a, b) => b[1] - a[1])[0];
+                    document.getElementById('stat-top-intent').textContent = topIntent[0] || '-';
+                    document.getElementById('stat-intent-count').textContent = `${topIntent[1]} tickets`;
+                }
+
+                // Update charts
+                updateVolumeChart(trends.daily_trends || []);
+                updateIntentChart(stats.intent_distribution || {});
+                updateStatusChart(stats.status_counts || {});
+
+                // Update recent tickets
+                updateRecentTickets(recent.tickets || []);
+
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('dashboard-content').style.display = 'block';
+
+            } catch (error) {
+                console.error('Error loading dashboard:', error);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error-container').innerHTML = 
+                    `<div class="error">Error loading dashboard: ${error.message}</div>`;
+            }
+        }
+
+        function updateVolumeChart(trends) {
+            const ctx = document.getElementById('volumeChart').getContext('2d');
+            const labels = trends.map(t => t.date);
+            const totalData = trends.map(t => t.total);
+            const processedData = trends.map(t => t.processed);
+            const spamData = trends.map(t => t.spam);
+
+            if (volumeChart) {
+                volumeChart.destroy();
+            }
+
+            volumeChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Total',
+                            data: totalData,
+                            borderColor: '#000',
+                            backgroundColor: 'rgba(0,0,0,0.1)',
+                            tension: 0.4
+                        },
+                        {
+                            label: 'Processed',
+                            data: processedData,
+                            borderColor: '#060',
+                            backgroundColor: 'rgba(0,100,0,0.1)',
+                            tension: 0.4
+                        },
+                        {
+                            label: 'Spam',
+                            data: spamData,
+                            borderColor: '#c00',
+                            backgroundColor: 'rgba(200,0,0,0.1)',
+                            tension: 0.4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateIntentChart(distribution) {
+            const ctx = document.getElementById('intentChart').getContext('2d');
+            const labels = Object.keys(distribution);
+            const data = Object.values(distribution);
+
+            if (intentChart) {
+                intentChart.destroy();
+            }
+
+            intentChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: data,
+                        backgroundColor: [
+                            '#000',
+                            '#333',
+                            '#666',
+                            '#999',
+                            '#ccc',
+                            '#ddd'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateStatusChart(statusCounts) {
+            const ctx = document.getElementById('statusChart').getContext('2d');
+            const labels = Object.keys(statusCounts);
+            const data = Object.values(statusCounts);
+
+            if (statusChart) {
+                statusChart.destroy();
+            }
+
+            statusChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Tickets',
+                        data: data,
+                        backgroundColor: [
+                            '#060',
+                            '#c00',
+                            '#660'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateRecentTickets(tickets) {
+            const container = document.getElementById('recent-tickets-list');
+            if (tickets.length === 0) {
+                container.innerHTML = '<p style="color: #666; text-align: center; padding: 20px;">No recent tickets</p>';
+                return;
+            }
+
+            container.innerHTML = tickets.map(ticket => {
+                // Determine status based on intent and response
+                let badgeClass, badgeText;
+                if (ticket.intent === 'SPAM') {
+                    badgeClass = 'badge-spam';
+                    badgeText = 'SPAM';
+                } else if (ticket.response && ticket.response.trim() && ticket.response !== 'SPAM') {
+                    badgeClass = 'badge-processed';
+                    badgeText = 'Processed';
+                } else {
+                    badgeClass = 'badge-pending';
+                    badgeText = 'Pending';
+                }
+                
+                const date = ticket.date ? new Date(ticket.date).toLocaleDateString() : 'Unknown date';
+
+                return `
+                    <div class="ticket-item">
+                        <div class="ticket-info">
+                            <div class="ticket-subject">${escapeHtml(ticket.subject || 'No subject')}</div>
+                            <div class="ticket-meta">
+                                ${escapeHtml(ticket.sender || 'Unknown')} • ${date}
+                            </div>
+                        </div>
+                        <span class="ticket-badge ${badgeClass}">${badgeText}</span>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Add pagination change handler
+        document.getElementById('dashboard-tickets-limit')?.addEventListener('change', loadDashboard);
+
+        // Initialize dashboard on load
+        window.addEventListener('DOMContentLoaded', async () => {
+            // Check auth first
+            const isAuth = await checkAuth();
+            if (isAuth) {
+                loadDashboard();
+                // Auto-refresh every 5 minutes
+                setInterval(loadDashboard, 5 * 60 * 1000);
+            }
+        });
+    </script>
+</body>
+</html>
+

@@ -2141,3 +2141,14 @@
 {"timestamp": "2026-05-20T12:52:46.770442", "agent": "Support Agent", "query": "Setup IT access for Onboard unnathi email:unathics.btech23@rvu.edu.in as a AIML engineer for the AI project, starts on april 16th at 5pm", "success": true, "response_time": 9001.33, "error": null}
 {"timestamp": "2026-05-20T12:52:47.983313", "agent": "Project Management Agent", "query": "Assign to project: Onboard unnathi email:unathics.btech23@rvu.edu.in as a AIML engineer for the AI project, starts on april 16th at 5pm", "success": true, "response_time": 16.905, "error": null}
 {"timestamp": "2026-05-20T13:29:17.638667", "agent": "Analytics Agent", "query": "Display the system dashboard with all analytics", "success": true, "response_time": 48.106, "error": null}
+{"timestamp": "2026-05-21T13:56:53.060139", "agent": "Support Agent", "query": "My VPN keeps dropping", "success": false, "response_time": 2051.222, "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /it-support/text (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it\"))"}
+{"timestamp": "2026-05-21T14:19:06.549031", "agent": "Support Agent", "query": "My VPN is dropping", "success": true, "response_time": 12087.257, "error": null}
+{"timestamp": "2026-05-21T14:20:12.700257", "agent": "Support Agent", "query": "The platform is not working", "success": true, "response_time": 7968.964, "error": null}
+{"timestamp": "2026-05-21T14:20:44.591085", "agent": "Analytics Agent", "query": "I want to  reply to all email ", "success": true, "response_time": 124.182, "error": null}
+{"timestamp": "2026-05-21T14:21:16.218223", "agent": "HR Onboarding Agent", "query": "onboard Aditi", "success": true, "response_time": 37.056, "error": null}
+{"timestamp": "2026-05-21T14:21:24.191551", "agent": "Support Agent", "query": "Setup IT access for onboard Aditi", "success": true, "response_time": 7929.884, "error": null}
+{"timestamp": "2026-05-21T14:21:24.291729", "agent": "Project Management Agent", "query": "Assign to project: onboard Aditi", "success": true, "response_time": 28.067, "error": null}
+{"timestamp": "2026-05-21T14:25:12.672403", "agent": "Project Management Agent", "query": "whats the project status", "success": true, "response_time": 7.514, "error": null}
+{"timestamp": "2026-05-21T14:25:39.191204", "agent": "Analytics Agent", "query": "Execute all 6 agents in sequence", "success": true, "response_time": 95.54, "error": null}
+{"timestamp": "2026-05-21T18:10:15.272576", "agent": "Email Agent", "query": "Show my email stats", "success": true, "response_time": 138.194, "error": null}
+{"timestamp": "2026-05-21T18:17:10.633055", "agent": "Email Agent", "query": "Show  email stats", "success": true, "response_time": 64.061, "error": null}

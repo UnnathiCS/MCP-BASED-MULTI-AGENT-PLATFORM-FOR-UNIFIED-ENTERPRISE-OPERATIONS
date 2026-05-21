@@ -121,3 +121,16 @@ class AgentRegistry:
         except Exception as e:
             logger.error(f"Failed to save registry to {filepath}: {e}")
             return False
+
+
+    @staticmethod
+    def from_config(config: Dict[str, Any]) -> "AgentRegistry":
+        registry = AgentRegistry()
+        agents = config.get("agents", {})
+        for agent_id, agent_dict in agents.items():
+            try:
+                agent = AgentRecord.from_dict(agent_dict)
+                registry.register_agent(agent)
+            except Exception as e:
+                logger.warning(f"Failed to load agent {agent_id} from config: {e}")
+        return registry

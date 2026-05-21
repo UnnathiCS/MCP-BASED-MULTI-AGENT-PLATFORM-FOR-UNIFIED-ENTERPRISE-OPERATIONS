@@ -1,0 +1,119 @@
+NexusFlow Account Management Guide
+
+Account Types:
+
+1. Free Plan
+- Up to 5 workflows
+- 1,000 executions per month
+- Basic connectors
+- Community support
+- Email support (48-hour response)
+
+2. Professional Plan
+- Unlimited workflows
+- 50,000 executions per month
+- All connectors
+- Priority email support (24-hour response)
+- Advanced analytics
+- Custom integrations
+
+3. Enterprise Plan
+- Unlimited workflows and executions
+- All features included
+- Dedicated account manager
+- 24/7 phone and email support
+- Custom SLA
+- On-premise deployment option
+- Single Sign-On (SSO)
+- Advanced security features
+
+Account Settings:
+
+Password Management:
+- Passwords must be at least 12 characters
+- Must include uppercase, lowercase, numbers, and special characters
+- Password reset: Go to Settings > Security > Change Password
+- Forgot password: Click "Forgot Password" on login page, check email for reset link
+
+Two-Factor Authentication (2FA):
+- Recommended for all accounts
+- Enable in Settings > Security > Two-Factor Authentication
+- Supports authenticator apps (Google Authenticator, Authy)
+- Backup codes provided during setup
+
+API Key Management:
+- Generate keys in Settings > API Keys
+- Each key can have specific permissions
+- Keys can be revoked at any time
+- Last 4 characters of key are visible for identification
+- Full key shown only once at creation
+
+Team Management:
+- Add team members in Settings > Team
+- Assign roles: Admin, Developer, Viewer
+- Admin: Full access to all settings
+- Developer: Can create and modify workflows
+- Viewer: Read-only access
+
+Billing and Subscriptions:
+
+Payment Methods:
+- Credit cards (Visa, MasterCard, American Express)
+- ACH/Bank transfer (Enterprise only)
+- Annual billing available with 15% discount
+
+Billing Cycle:
+- Monthly: Charged on the same date each month
+- Annual: Charged once per year, 15% discount applied
+
+Upgrade/Downgrade:
+- Upgrade: Immediate access to new features
+- Downgrade: Takes effect at end of current billing period
+- Prorated credits applied for downgrades
+
+Invoice Access:
+- View invoices in Settings > Billing > Invoices
+- Download PDF invoices
+- Email invoices to accounting team
+
+Trial Period:
+- 14-day free trial of Professional plan
+- No credit card required
+- Full access to all Professional features
+- Automatic conversion to Free plan after trial ends
+- Can upgrade anytime during or after trial
+
+Account Limits:
+
+Workflow Limits:
+- Free: 5 workflows maximum
+- Professional: Unlimited
+- Enterprise: Unlimited
+
+Execution Limits:
+- Free: 1,000 executions/month
+- Professional: 50,000 executions/month
+- Enterprise: Unlimited
+
+Storage Limits:
+- Free: 1 GB
+- Professional: 100 GB
+- Enterprise: Unlimited
+
+Data Retention:
+- Free: 30 days
+- Professional: 1 year
+- Enterprise: Unlimited
+
+Account Deletion:
+- Request deletion in Settings > Account > Delete Account
+- 30-day grace period before permanent deletion
+- All data permanently deleted after grace period
+- Cannot be undone
+
+Data Export:
+- Export all data before deletion
+- Available in Settings > Data Export
+- Includes workflows, execution history, and logs
+- Export format: JSON
+

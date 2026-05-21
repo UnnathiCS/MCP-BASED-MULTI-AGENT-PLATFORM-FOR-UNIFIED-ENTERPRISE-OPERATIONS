@@ -540,6 +540,8 @@ MEETING_API = "http://127.0.0.1:8002"
 HR_API = "http://127.0.0.1:8003"
 PROJECTS_API = "http://127.0.0.1:8005"
 ANALYTICS_API = "http://127.0.0.1:8007"
+EMAIL_API = "http://127.0.0.1:8004"
+EMAIL_DASHBOARD_URL = "http://127.0.0.1:8004/dashboard.html"
 REQUEST_TIMEOUT = 30
 
 st.set_page_config(
@@ -611,6 +613,12 @@ def detect_intent(user_input: str) -> Dict:
         "project", "assign", "team", "resource", "milestone", "deadline",
         "allocation", "progress", "task", "budget", "member", "manager", "status"
     ]
+
+    email_keywords = [
+        "email", "mail", "inbox", "ticket", "fetch emails", "process email",
+        "auto reply", "customer email", "support ticket", "email agent",
+        "unread", "reply", "send email", "email support"
+    ]
     
     support_score = sum(1 for kw in support_keywords if kw in user_lower)
     doc_score = sum(1 for kw in doc_keywords if kw in user_lower)
@@ -622,6 +630,9 @@ def detect_intent(user_input: str) -> Dict:
     
     hr_score = sum(1 for kw in hr_keywords if kw in user_lower)
     analytics_score = sum(1 for kw in analytics_keywords if kw in user_lower)
+    email_score = sum(1 for kw in email_keywords if kw in user_lower)
+    if "email" in user_lower or "mail" in user_lower or "inbox" in user_lower:
+        email_score += 2
     
     # Project score - only count if explicitly mentions "project", "assign", "resource allocation"
     project_score = sum(1 for kw in project_keywords if kw in user_lower)
@@ -638,7 +649,8 @@ def detect_intent(user_input: str) -> Dict:
         (doc_score, "documents", "Document Review Agent", "Document Analysis"),
         (meeting_score, "meetings", "Meeting Calendar Agent", "Meeting Scheduling"),
         (hr_score, "hr", "HR Onboarding Agent", "HR Management"),
-        (project_score, "projects", "Project Manager Agent", "Project Management")
+        (project_score, "projects", "Project Manager Agent", "Project Management"),
+        (email_score, "email", "Email Agent", "Email Support"),
     ]
     
     max_score, agent, agent_name, category = max(scores, key=lambda x: x[0])
@@ -1535,6 +1547,171 @@ def execute_analytics(user_input: str, request_id: str) -> Dict:
             )
     
     return result
+def execute_email(user_input: str, request_id: str) -> Dict:
+    """Send to Email Agent"""
+    start_time = time.time()
+    success = False
+    error_msg = None
+    result = None
+    email_address = ""
+    # Prefer registry discovery if available
+    try:
+        from mcp.registry_config import get_default_registry_config
+        from mcp.agent_registry import AgentRegistry
+        cfg = get_default_registry_config()
+        registry = AgentRegistry.from_config(cfg)
+        agent_rec = registry.get_agent("email-agent")
+        if agent_rec and getattr(agent_rec, "endpoint", None):
+            resolved_email_api = agent_rec.endpoint
+        else:
+            resolved_email_api = EMAIL_API
+    except Exception:
+        resolved_email_api = EMAIL_API
+
+    try:
+        # Auto-login first to ensure session
+        login_resp = requests.post(f"{resolved_email_api}/auth/auto-login", timeout=5)
+        if login_resp.ok:
+            login_data = login_resp.json()
+            email_address = login_data.get("email", "")
+
+        # Fetch stats and recent tickets in parallel
+        stats_resp = requests.get(f"{resolved_email_api}/api/analytics/statistics?days=30", timeout=10)
+        recent_resp = requests.get(f"{resolved_email_api}/api/analytics/recent-tickets?limit=5", timeout=10)
+        perf_resp = requests.get(f"{resolved_email_api}/api/analytics/performance?days=30", timeout=10)
+
+        stats = stats_resp.json() if stats_resp.status_code == 200 else {}
+        recent = recent_resp.json() if recent_resp.status_code == 200 else {}
+        perf = perf_resp.json() if perf_resp.status_code == 200 else {}
+
+        success = True
+        result = {
+            "status": "success",
+            "data": {
+                "statistics": stats,
+                "recent_tickets": recent.get("tickets", []),
+                "performance": perf,
+                "email_address": email_address
+            }
+        }
+    except Exception as e:
+        error_msg = str(e)
+        result = {
+            "status": "error",
+            "error": f"Email Agent unavailable: {str(e)}"
+        }
+    finally:
+        response_time = (time.time() - start_time) * 1000
+        if metrics_collector:
+            metrics_collector.record_request(
+                agent_name="Email Agent",
+                query=user_input,
+                success=success,
+                response_time=response_time,
+                error=error_msg
+            )
+    return result
+
+
+def display_email_results(result: Dict, email_dashboard_url: str):
+    """Display Email Agent results in the MCP dashboard style"""
+    if result.get("status") == "error":
+        st.error(f"❌ {result.get('error', 'Email Agent unavailable')}")
+        st.markdown(
+            f'<a href="{email_dashboard_url}" target="_blank">'
+            f'<button style="background:#0066ff;color:white;border:none;padding:12px 24px;'
+            f'border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;margin-top:12px;">'
+            f'📧 Open Email Dashboard</button></a>',
+            unsafe_allow_html=True
+        )
+        return
+
+    data = result.get("data", {})
+    stats = data.get("statistics", {})
+    perf = data.get("performance", {})
+    recent_tickets = data.get("recent_tickets", [])
+    email_address = data.get("email_address", "")
+
+    st.markdown(
+        """
+        <div style="background: linear-gradient(135deg, rgba(0,102,255,0.12) 0%, rgba(118,75,162,0.12) 100%); border: 1px solid rgba(0,102,255,0.18); border-radius: 16px; padding: 20px 24px; margin-bottom: 18px;">
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">
+                <div style="font-size:28px;">📧</div>
+                <div>
+                    <div style="font-size:18px; font-weight:700; color:#1f2937;">Email Agent Response</div>
+                    <div style="font-size:13px; color:#6b7280;">Configured mailbox session is active and the dashboard is available in a new tab.</div>
+                </div>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+    st.success("✅ Email Agent — Inbox Overview")
+
+    # Key metrics
+    col1, col2, col3, col4 = st.columns(4)
+    with col1:
+        st.metric("📧 Mailbox", email_address.split("@")[0] if email_address else "N/A")
+    with col2:
+        st.metric("📨 Total Tickets", stats.get("total_tickets", 0))
+    with col3:
+        st.metric("✅ Processing Rate", f"{perf.get('processing_rate', 0)}%")
+    with col4:
+        st.metric("🚫 Spam Rate", f"{perf.get('spam_rate', 0)}%")
+
+    st.markdown("---")
+
+    # Intent distribution
+    intent_counts = stats.get("intent_counts", {})
+    if intent_counts:
+        st.markdown("### 📊 Email Intent Breakdown")
+        intent_df = pd.DataFrame(
+            [{"Intent": k.replace("_", " ").title(), "Count": v} for k, v in intent_counts.items()]
+        )
+        fig = px.bar(
+            intent_df, x="Intent", y="Count",
+            color="Count", color_continuous_scale="Blues",
+            title="Tickets by Intent"
+        )
+        fig.update_layout(height=300, showlegend=False, hovermode="x unified")
+        st.plotly_chart(fig, use_container_width=True)
+
+    # Recent tickets table
+    if recent_tickets:
+        st.markdown("### 📋 Recent Tickets")
+        ticket_data = []
+        for t in recent_tickets:
+            intent = t.get("intent", "-")
+            response = t.get("response", "")
+            if intent == "SPAM":
+                status = "🚫 Spam"
+            elif response and response.strip():
+                status = "✅ Processed"
+            else:
+                status = "⏳ Pending"
+            ticket_data.append({
+                "Ticket ID": t.get("ticket_id", "-"),
+                "Subject": (t.get("subject") or "No subject")[:50],
+                "From": t.get("sender", "-"),
+                "Intent": intent or "-",
+                "Status": status
+            })
+        st.dataframe(pd.DataFrame(ticket_data), use_container_width=True, hide_index=True)
+
+    st.markdown("---")
+
+    # Dashboard button — opens in new tab
+    st.markdown(
+        f'<a href="{email_dashboard_url}" target="_blank">'
+        f'<button style="background:linear-gradient(135deg,#0066ff,#764ba2);color:white;border:none;'
+        f'padding:14px 28px;border-radius:10px;font-size:16px;font-weight:700;cursor:pointer;'
+        f'box-shadow:0 4px 15px rgba(0,102,255,0.3);letter-spacing:0.5px;">'
+        f'📧 Open Email Dashboard</button></a>',
+        unsafe_allow_html=True
+    )
+
+
 def show_horizontal_timeline(steps: List[Dict]) -> None:
     """Display horizontal timeline with animations"""
     
@@ -2037,6 +2214,8 @@ def show_results_page():
                     response = execute_projects(user_input, request_id, is_example=is_example)
                 elif intent["agent"] == "analytics":
                     response = execute_analytics(user_input, request_id)
+                elif intent["agent"] == "email":
+                    response = execute_email(user_input, request_id)
                 else:
                     response = execute_analytics(user_input, request_id)  # Default to analytics
             
@@ -3638,6 +3817,9 @@ This Support Agent uses **LangGraph** to orchestrate a multi-step decision workf
                 st.markdown("---")
                 with st.expander("�‍💻 Developer View - Raw JSON"):
                     st.json(data)
+
+            elif intent["agent"] == "email":
+                display_email_results(response, EMAIL_DASHBOARD_URL)
             
             else:  # Meetings
                 st.markdown("### 📅 Meeting Scheduling Result")
