@@ -2,6 +2,7 @@
 MCP UNIFIED AGENT SYSTEM - Enterprise Multi-Agent Orchestration
 Master Control Program with Human-in-the-Loop + Dynamic UI Transitions
 Features: Single unified interface, HITL approval, agent orchestration, audit trails
+✨ CINEMATIC HOLOGRAPHIC OPERATING SYSTEM INTERFACE ✨
 """
 
 import streamlit as st
@@ -16,6 +17,24 @@ import plotly.graph_objects as go
 import plotly.express as px
 import pandas as pd
 import re
+
+# Import cinematic UI components
+try:
+    from cinematic_ui import (
+        configure_cinematic_theme,
+        render_holographic_header,
+        render_holographic_card,
+        display_cinematic_metrics,
+        render_agent_orchestration_flow,
+        render_cinematic_timeline,
+        render_system_status,
+        render_workflow_stage_indicator,
+        render_agent_status_grid,
+        CINEMATIC_COLORS
+    )
+    CINEMATIC_UI_AVAILABLE = True
+except ImportError:
+    CINEMATIC_UI_AVAILABLE = False
 
 # Import real metrics collector
 try:
@@ -180,43 +199,413 @@ class MCPOrchestrator:
 # ============================================================================
 
 def apply_enterprise_styling():
-    """Apply enterprise CSS styling"""
+    """Apply futuristic cinematic AI OS styling"""
     st.markdown("""
     <style>
-        :root {
-            --primary: #0066ff;
-            --success: #00cc88;
-            --warning: #ffb84d;
-            --danger: #ff4444;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
+        :root {
+            --primary: #00d4ff;
+            --primary-dark: #0099cc;
+            --secondary: #ff006e;
+            --success: #00ff88;
+            --warning: #ffb81c;
+            --danger: #ff0055;
+            --bg-dark: #0a0e27;
+            --bg-darker: #05070f;
+            --accent: #00d4ff;
+            --text-primary: #e0e6ff;
+            --text-secondary: #a8afd8;
+            --border-color: rgba(0, 212, 255, 0.3);
+            --neon-glow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+        
+        html, body, [data-testid="stAppViewContainer"] {
+            background: linear-gradient(135deg, #0a0e27 0%, #0f1545 100%);
+            background-attachment: fixed;
+            color: var(--text-primary);
+            font-family: 'Courier New', 'Courier', monospace;
+        }
+        
+        /* Animated background grid */
+        [data-testid="stAppViewContainer"]::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(0deg, transparent 24%, rgba(0, 212, 255, 0.05) 25%, rgba(0, 212, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 212, 255, 0.05) 75%, rgba(0, 212, 255, 0.05) 76%, transparent 77%, transparent),
+                linear-gradient(90deg, transparent 24%, rgba(0, 212, 255, 0.05) 25%, rgba(0, 212, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 212, 255, 0.05) 75%, rgba(0, 212, 255, 0.05) 76%, transparent 77%, transparent);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        /* Neural particles animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 10px rgba(0, 212, 255, 0.5), inset 0 0 10px rgba(0, 212, 255, 0.1); }
+            50% { box-shadow: 0 0 30px rgba(0, 212, 255, 0.8), inset 0 0 20px rgba(0, 212, 255, 0.2); }
+        }
+        
+        @keyframes cyber-pulse {
+            0%, 100% { border-color: rgba(0, 212, 255, 0.3); }
+            50% { border-color: rgba(0, 212, 255, 0.8); }
+        }
+        
+        @keyframes scan-line {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        
+        @keyframes neon-flicker {
+            0%, 100% { text-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent); }
+            50% { text-shadow: 0 0 20px var(--accent), 0 0 40px var(--accent), 0 0 60px var(--accent); }
+        }
+        
+        /* Holographic card effect */
+        .holographic-card {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(255, 0, 110, 0.05) 100%);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 
+                0 0 30px rgba(0, 212, 255, 0.3),
+                inset 0 0 30px rgba(0, 212, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+        
+        .holographic-card:hover {
+            border-color: var(--accent);
+            box-shadow: 
+                0 0 50px rgba(0, 212, 255, 0.6),
+                inset 0 0 30px rgba(0, 212, 255, 0.2);
+            transform: translateY(-5px);
+        }
+        
+        .holographic-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: scan-line 3s infinite;
+        }
+        
+        /* Glass morphism effect */
         .glass-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
+            background: rgba(10, 14, 39, 0.7);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
             padding: 20px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
         }
         
+        .glass-card:hover {
+            background: rgba(10, 14, 39, 0.9);
+            border-color: var(--accent);
+            box-shadow: 0 8px 32px rgba(0, 212, 255, 0.2);
+        }
+        
+        /* Cyber modal */
         .premium-modal {
-            background: rgba(26, 31, 58, 0.95);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 102, 255, 0.3);
+            background: linear-gradient(135deg, rgba(5, 7, 15, 0.98) 0%, rgba(15, 21, 69, 0.95) 100%);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--accent);
             border-radius: 16px;
-            padding: 32px;
+            padding: 40px;
             text-align: center;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            box-shadow: 
+                0 0 60px rgba(0, 212, 255, 0.4),
+                0 25px 50px rgba(0, 0, 0, 0.5);
+            position: relative;
+            animation: pulse-glow 2s ease-in-out infinite;
         }
         
-        .status-active { color: #00cc88; font-weight: bold; }
-        .status-waiting { color: #ffb84d; font-weight: bold; }
-        .status-completed { color: #4444ff; font-weight: bold; }
+        .premium-modal::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px solid transparent;
+            border-radius: 16px;
+            background: linear-gradient(45deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            animation: cyber-pulse 2s ease-in-out infinite;
+            pointer-events: none;
+        }
         
-        .fade-in { animation: slideIn 0.4s ease; }
+        /* Status indicators */
+        .status-active { 
+            color: var(--success); 
+            font-weight: bold;
+            text-shadow: 0 0 10px var(--success);
+            animation: neon-flicker 2s ease-in-out infinite;
+        }
+        .status-waiting { 
+            color: var(--warning); 
+            font-weight: bold;
+            text-shadow: 0 0 10px var(--warning);
+        }
+        .status-completed { 
+            color: var(--accent); 
+            font-weight: bold;
+            text-shadow: 0 0 10px var(--accent);
+        }
+        .status-error { 
+            color: var(--danger); 
+            font-weight: bold;
+            text-shadow: 0 0 10px var(--danger);
+        }
+        
+        /* Animations */
+        .fade-in { animation: slideIn 0.6s ease; }
+        .pulse-animation { animation: pulse-glow 2s ease-in-out infinite; }
+        
         @keyframes slideIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { 
+                opacity: 0; 
+                transform: translateY(20px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+        
+        /* Cyber title */
+        .cyber-title {
+            font-size: 2.5em;
+            font-weight: bold;
+            background: linear-gradient(90deg, var(--accent), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+            letter-spacing: 2px;
+            animation: neon-flicker 3s ease-in-out infinite;
+        }
+        
+        /* Agent node */
+        .agent-node {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(255, 0, 110, 0.05) 100%);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px;
+            margin: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .agent-node::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: scan-line 2s infinite;
+        }
+        
+        .agent-node:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+            transform: scale(1.05);
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(255, 0, 110, 0.1) 100%);
+        }
+        
+        /* Metric display */
+        .metric-display {
+            background: rgba(0, 212, 255, 0.05);
+            border-left: 3px solid var(--accent);
+            border-radius: 4px;
+            padding: 12px 16px;
+            margin: 8px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            box-shadow: inset 0 0 20px rgba(0, 212, 255, 0.1);
+        }
+        
+        /* Workflow step */
+        .workflow-step {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.08) 0%, rgba(15, 21, 69, 0.8) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 8px 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .workflow-step.active {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(15, 21, 69, 0.9) 100%);
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+        
+        .workflow-step.completed {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, rgba(15, 21, 69, 0.8) 100%);
+            border-color: var(--success);
+        }
+        
+        /* Button styling */
+        .stButton > button {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(255, 0, 110, 0.1) 100%) !important;
+            border: 2px solid var(--accent) !important;
+            color: var(--text-primary) !important;
+            font-weight: bold !important;
+            border-radius: 8px !important;
+            padding: 12px 24px !important;
+            transition: all 0.3s ease !important;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.2) !important;
+            font-family: 'Courier New', monospace !important;
+            letter-spacing: 1px !important;
+        }
+        
+        .stButton > button:hover {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.4) 0%, rgba(255, 0, 110, 0.2) 100%) !important;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.5) !important;
+            transform: translateY(-2px) !important;
+        }
+        
+        /* Input fields */
+        .stTextInput > div > div > input,
+        .stTextArea > div > div > textarea {
+            background: rgba(0, 212, 255, 0.05) !important;
+            border: 1px solid var(--border-color) !important;
+            color: var(--text-primary) !important;
+            border-radius: 8px !important;
+            font-family: 'Courier New', monospace !important;
+        }
+        
+        .stTextInput > div > div > input:focus,
+        .stTextArea > div > div > textarea:focus {
+            border-color: var(--accent) !important;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.3) !important;
+        }
+        
+        /* Header styling */
+        .main-header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(255, 0, 110, 0.05) 100%);
+            border-bottom: 2px solid var(--border-color);
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+        }
+        
+        .system-stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            background: rgba(0, 212, 255, 0.08);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px 25px;
+            min-width: 150px;
+            text-align: center;
+            box-shadow: inset 0 0 15px rgba(0, 212, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-item:hover {
+            background: rgba(0, 212, 255, 0.15);
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3), inset 0 0 15px rgba(0, 212, 255, 0.1);
+        }
+        
+        .stat-label {
+            font-size: 0.85em;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 8px;
+        }
+        
+        .stat-value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: var(--accent);
+            text-shadow: 0 0 10px var(--accent);
+        }
+        
+        /* Approval box */
+        .approval-box {
+            background: linear-gradient(135deg, rgba(255, 184, 28, 0.1) 0%, rgba(255, 0, 110, 0.05) 100%);
+            border: 2px solid var(--warning);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+            box-shadow: 0 0 30px rgba(255, 184, 28, 0.2);
+            animation: cyber-pulse 2s ease-in-out infinite;
+        }
+        
+        /* Success notification */
+        .success-box {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, rgba(0, 212, 255, 0.05) 100%);
+            border: 2px solid var(--success);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.2);
+        }
+        
+        /* Error box */
+        .error-box {
+            background: linear-gradient(135deg, rgba(255, 0, 85, 0.1) 0%, rgba(255, 0, 110, 0.05) 100%);
+            border: 2px solid var(--danger);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+            box-shadow: 0 0 30px rgba(255, 0, 85, 0.2);
+        }
+        
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 12px;
+            height: 12px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 212, 255, 0.05);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--accent), var(--secondary));
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
         }
     </style>
     """, unsafe_allow_html=True)
@@ -544,15 +933,17 @@ EMAIL_API = "http://127.0.0.1:8004"
 EMAIL_DASHBOARD_URL = "http://127.0.0.1:8004/dashboard.html"
 REQUEST_TIMEOUT = 30
 
-st.set_page_config(
-    page_title="MCP Enterprise Platform",
-    page_icon="🚀",
-    layout="wide",
-    initial_sidebar_state="collapsed"
-)
-
-# Apply enterprise styling
-apply_enterprise_styling()
+# Configure cinematic theme if available
+if CINEMATIC_UI_AVAILABLE:
+    configure_cinematic_theme()
+else:
+    st.set_page_config(
+        page_title="MCP Enterprise Platform",
+        page_icon="🚀",
+        layout="wide",
+        initial_sidebar_state="collapsed"
+    )
+    apply_enterprise_styling()
 
 # ============================================================================
 # SESSION STATE
@@ -1892,111 +2283,217 @@ def show_horizontal_timeline(steps: List[Dict]) -> None:
 # HOME PAGE
 # ============================================================================
 def show_home_page():
-    """Home with input"""
-    st.markdown("# MCP Agent System")
-    st.markdown("*Intelligent routing. Transparent processing.*")
+    """Home with cinematic holographic interface"""
     
-    st.markdown("---")
-    st.markdown("## What can I help you with?")
+    # Futuristic header with cinematic styling
+    st.markdown("""
+    <style>
+        .cinematic-header {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.15) 0%, rgba(124, 58, 237, 0.1) 100%);
+            border: 2px solid rgba(0, 217, 255, 0.3);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 
+                0 0 60px rgba(0, 217, 255, 0.2),
+                inset 0 0 40px rgba(0, 217, 255, 0.05);
+            backdrop-filter: blur(20px);
+        }
+        
+        .main-title {
+            background: linear-gradient(135deg, #00d9ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 48px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            margin: 0;
+            text-shadow: 0 0 40px rgba(0, 217, 255, 0.5);
+            animation: glow 3s ease-in-out infinite;
+        }
+        
+        .main-subtitle {
+            background: linear-gradient(135deg, #ff006e, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-top: 15px;
+            animation: glow 3s ease-in-out infinite;
+        }
+        
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 20px rgba(0, 217, 255, 0.5); }
+            50% { text-shadow: 0 0 40px rgba(0, 217, 255, 0.8); }
+        }
+    </style>
+    
+    <div class="cinematic-header">
+        <div class="main-title">🌌 MCP ENTERPRISE AI OPERATING SYSTEM</div>
+        <div class="main-subtitle">↤ Autonomous Multi-Agent Orchestration Platform ↦</div>
+        <div style="margin-top: 20px; color: rgba(0, 217, 255, 0.7); font-size: 14px; letter-spacing: 1px; text-transform: uppercase;">
+            Intelligent · Transparent · Autonomous · Enterprise-Grade
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Main input section with holographic styling
+    st.markdown("""
+    <div style="
+        background: linear-gradient(135deg, rgba(0, 217, 255, 0.08) 0%, rgba(124, 58, 237, 0.08) 100%);
+        border: 2px solid rgba(0, 217, 255, 0.2);
+        border-radius: 16px;
+        padding: 30px;
+        margin-bottom: 30px;
+        backdrop-filter: blur(20px);
+        box-shadow: 0 0 40px rgba(0, 217, 255, 0.1);
+    ">
+        <div style="color: #00d9ff; font-size: 18px; font-weight: 700; letter-spacing: 1px; margin-bottom: 20px; text-transform: uppercase;">
+            🎯 Submit Your Request
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
     
     col1, col2 = st.columns([3, 1])
     
     with col1:
         user_input = st.text_area(
             "Message",
-            placeholder="Example: My VPN keeps dropping\nOR: Review this contract",
+            placeholder="💭 Describe what you need...\nExample: My VPN keeps dropping\nExample: Review this contract for risks",
             height=140,
             label_visibility="collapsed"
         )
     
     with col2:
-        st.markdown("### 📎 Attach")
+        st.markdown("### 📎 Attach File")
         uploaded_file = st.file_uploader(
             "PDF", type=["pdf"], label_visibility="collapsed"
         )
     
     st.markdown("---")
     
-    if st.button("📤 Send", use_container_width=True, type="primary"):
-        if user_input.strip():
-            st.session_state.current_result = {
-                "input": user_input,
-                "file": uploaded_file,
-                "request_id": str(uuid.uuid4())[:8],
-                "start_time": time.time()
-            }
-            st.session_state.page = "results"
-            st.rerun()
-        else:
-            st.warning("Please enter a message")
+    # Cinematic action buttons
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        if st.button("� INITIATE MCP WORKFLOW", use_container_width=True):
+            if user_input.strip():
+                st.session_state.current_result = {
+                    "input": user_input,
+                    "file": uploaded_file,
+                    "request_id": str(uuid.uuid4())[:8],
+                    "start_time": time.time()
+                }
+                st.session_state.page = "results"
+                st.rerun()
+            else:
+                st.warning("⚠️ Please enter a message first")
     
-    # Example prompts section
+    # System Status Display
     st.markdown("---")
-    st.markdown("### 💡 Try These Examples")
+    st.markdown("""
+    <div style="
+        text-align: center;
+        color: #00d9ff;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin: 30px 0 20px 0;
+    ">✨ System Status ✨</div>
+    """, unsafe_allow_html=True)
     
-    # Create tabs for Individual Agents and Multi-Agent Workflows
-    tab1, tab2, tab3 = st.tabs(["� MCP Enterprise Workflows", "�📌 Individual Agents", "🔗 Multi-Agent Workflows"])
+    # Agent status grid
+    agent_status = {
+        "Document Review": {"status": "operational", "description": "Contract & document analysis", "metrics": "99.8% accuracy"},
+        "IT Support": {"status": "operational", "description": "Technical assistance & routing", "metrics": "< 2s response"},
+        "Meeting Calendar": {"status": "operational", "description": "Schedule optimization", "metrics": "100% uptime"},
+        "HR Onboarding": {"status": "operational", "description": "Employee lifecycle management", "metrics": "Real-time"},
+        "Project Management": {"status": "operational", "description": "Resource & timeline planning", "metrics": "Live sync"},
+        "Analytics": {"status": "operational", "description": "System insights & reporting", "metrics": "Live telemetry"},
+    }
+    
+    if CINEMATIC_UI_AVAILABLE:
+        render_agent_status_grid(agent_status)
+    else:
+        cols = st.columns(3)
+        for idx, (agent_name, info) in enumerate(agent_status.items()):
+            with cols[idx % 3]:
+                st.markdown(f"""
+                <div style="
+                    background: linear-gradient(135deg, rgba(0, 217, 255, 0.08) 0%, rgba(124, 58, 237, 0.08) 100%);
+                    border: 1.5px solid rgba(0, 217, 255, 0.2);
+                    border-radius: 12px;
+                    padding: 16px;
+                    backdrop-filter: blur(20px);
+                    box-shadow: 0 8px 32px rgba(0, 217, 255, 0.1);
+                ">
+                    <div style="font-weight: 700; color: #00d9ff; margin-bottom: 8px;">{agent_name}</div>
+                    <div style="font-size: 12px; color: rgba(0, 217, 255, 0.7); margin-bottom: 10px;">{info['description']}</div>
+                    <div style="color: #00ff88; font-size: 11px; font-weight: 700;">🟢 {info['status'].upper()}</div>
+                </div>
+                """, unsafe_allow_html=True)
+    
+    # Example workflows section
+    st.markdown("---")
+    st.markdown("""
+    <div style="
+        text-align: center;
+        color: #00d9ff;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin: 30px 0 20px 0;
+    ">💡 Orchestration Workflows 💡</div>
+    """, unsafe_allow_html=True)
+    
+    # Create tabs for workflow types
+    tab1, tab2, tab3 = st.tabs(["🌀 Unified MCP", "🎯 Individual Agents", "🔗 Multi-Agent"])
     
     with tab1:
-        st.markdown("#### 🎯 Unified MCP Orchestration")
-        st.info("🎯 **Use your input above!** Click a button below to trigger the full MCP workflow with your text.\n\nThe system will automatically:\n1. Analyze your input for risks\n2. Route to appropriate agents\n3. Show HITL approval if needed\n4. Execute all 6 agents in sequence")
+        st.markdown("""
+        <div style="
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.1) 0%, rgba(124, 58, 237, 0.05) 100%);
+            border: 1.5px solid rgba(0, 217, 255, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            backdrop-filter: blur(20px);
+        ">
+            <div style="color: #00d9ff; font-weight: 700; font-size: 16px; margin-bottom: 15px;">🎯 UNIFIED MCP ORCHESTRATION</div>
+            <div style="color: rgba(0, 217, 255, 0.8); font-size: 13px; line-height: 1.6;">
+                The system automatically analyzes your request and routes it through the appropriate agents in optimal sequence:
+                <br/><br/>
+                ✓ Risk Analysis & Document Review<br/>
+                ✓ Human-in-the-Loop Approval Gate<br/>
+                ✓ IT Support & Technical Assessment<br/>
+                ✓ Meeting Scheduling & Calendar Optimization<br/>
+                ✓ HR Onboarding & Employee Management<br/>
+                ✓ Project Assignment & Resource Planning<br/>
+                ✓ Analytics & Performance Insights<br/>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
         
         col1, col2 = st.columns(2)
         
         with col1:
-            if st.button("📋 Contract Review Workflow", use_container_width=True, key="mcp_contract"):
-                if user_input.strip():
-                    with st.spinner("🚀 Launching MCP Orchestration..."):
-                        workflow_id = execute_unified_mcp_workflow(user_input)
-                        st.success(f"✅ Workflow completed: {workflow_id}")
-                        st.session_state.current_workflow = st.session_state.mcp_orchestrator.get_workflow(workflow_id)
-                        st.rerun()
-                else:
-                    st.warning("⚠️ Please enter your message in the text area first!")
+            if st.button("📋 START: Contract Review Flow", use_container_width=True):
+                st.session_state.example_input = "Analyze this employment agreement for legal risks and compliance issues"
         
         with col2:
-            if st.button("👤 Employee Onboarding", use_container_width=True, key="mcp_onboard"):
-                if user_input.strip():
-                    with st.spinner("🚀 Launching MCP Orchestration..."):
-                        workflow_id = execute_unified_mcp_workflow(user_input)
-                        st.success(f"✅ Workflow completed: {workflow_id}")
-                        st.session_state.current_workflow = st.session_state.mcp_orchestrator.get_workflow(workflow_id)
-                        st.rerun()
-                else:
-                    st.warning("⚠️ Please enter your message in the text area first!")
-        
-        # Show workflow summary if available
-        if st.session_state.current_workflow:
-            st.markdown("---")
-            st.markdown("### 📊 Workflow Summary")
-            workflow = st.session_state.current_workflow
-            
-            col1, col2, col3, col4 = st.columns(4)
-            with col1:
-                st.metric("Status", workflow.status.upper())
-            with col2:
-                st.metric("Stages Completed", len(workflow.completed_steps))
-            with col3:
-                st.metric("Risk Level", workflow.risk_level.value.upper() if workflow.risk_level else "N/A")
-            with col4:
-                st.metric("Total Agents", len(workflow.agent_results))
-            
-            # Timeline
-            st.markdown("---")
-            show_workflow_timeline(workflow)
-            
-            # Results
-            if workflow.agent_results:
-                st.markdown("---")
-                with st.expander("📄 Full Execution Report"):
-                    st.json(workflow.agent_results)
+            if st.button("👤 START: Onboarding Flow", use_container_width=True):
+                st.session_state.example_input = "Onboard new employee and set up all systems and access"
     
     with tab2:
-        st.markdown("#### Support Agent")
+        st.markdown("#### 🎫 Support Agent")
         col1, col2, col3 = st.columns(3)
         
         with col1:
-            if st.button("🎫 Support Issue", use_container_width=True):
+            if st.button("🛠️ Technical Issue", use_container_width=True):
                 st.session_state.example_input = "My VPN keeps disconnecting"
         
         with col2:
@@ -2004,29 +2501,29 @@ def show_home_page():
                 st.session_state.example_input = "Database query is timing out"
         
         with col3:
-            if st.button("🔧 Technical Help", use_container_width=True):
+            if st.button("🔑 Access Help", use_container_width=True):
                 st.session_state.example_input = "How do I reset my password?"
         
-        st.markdown("#### Document Review Agent")
+        st.markdown("#### � Document Review Agent")
         col1, col2, col3 = st.columns(3)
         
         with col1:
-            if st.button("📄 Review Contract", use_container_width=True):
-                st.session_state.example_input = "Review this NDA for compliance issues"
-        
-        with col2:
             if st.button("⚖️ Legal Document", use_container_width=True):
                 st.session_state.example_input = "Analyze this employment agreement for risks"
         
-        with col3:
+        with col2:
             if st.button("📋 Policy Review", use_container_width=True):
                 st.session_state.example_input = "Check this document for policy violations"
         
-        st.markdown("#### Meeting Calendar Agent")
+        with col3:
+            if st.button("📑 Compliance Check", use_container_width=True):
+                st.session_state.example_input = "Verify compliance with regulations"
+        
+        st.markdown("#### 📅 Meeting Calendar Agent")
         col1, col2, col3 = st.columns(3)
         
         with col1:
-            if st.button("📅 Schedule Meeting", use_container_width=True):
+            if st.button("📆 Schedule Meeting", use_container_width=True):
                 st.session_state.example_input = "Schedule a meeting with the team next Tuesday at 2pm"
         
         with col2:
@@ -2037,78 +2534,37 @@ def show_home_page():
             if st.button("⏰ Quick Call", use_container_width=True):
                 st.session_state.example_input = "Schedule a 30-minute call with john@company.com"
         
-        st.markdown("#### HR Onboarding Agent")
+        st.markdown("#### 👤 HR Onboarding Agent")
         col1, col2, col3 = st.columns(3)
         
         with col1:
-            if st.button("👤 Onboard Employee", use_container_width=True):
-                st.session_state.example_input = "Onboard unnathi to the company"
+            if st.button("👥 Onboard Employee", use_container_width=True):
+                st.session_state.example_input = "Onboard new employee to the company"
         
         with col2:
             if st.button("🎓 New Team Member", use_container_width=True):
-                st.session_state.example_input = "Complete onboarding process for rajesh"
+                st.session_state.example_input = "Complete onboarding process for new hire"
         
         with col3:
             if st.button("📋 HR Setup", use_container_width=True):
-                st.session_state.example_input = "Set up HR records for new hire"
+                st.session_state.example_input = "Set up HR records for new employee"
         
-        st.markdown("#### Project Management Agent")
+        st.markdown("#### 🎯 Project Management Agent")
         col1, col2, col3 = st.columns(3)
         
         with col1:
-            if st.button("🎯 Assign Project", use_container_width=True):
-                st.session_state.example_input = "Assign unnathi to the AI project"
+            if st.button("📊 Assign Project", use_container_width=True):
+                st.session_state.example_input = "Assign team member to the AI project"
         
         with col2:
-            if st.button("📊 Project Status", use_container_width=True):
-                st.session_state.example_input = "Show project status and details for the AI project"
+            if st.button("👥 Team Assignment", use_container_width=True):
+                st.session_state.example_input = "Create project team and assign roles"
         
         with col3:
-            if st.button("👨‍💼 Resource Allocation", use_container_width=True):
-                st.session_state.example_input = "Allocate resources to the Q2 Mobile App Launch project"
-        
-        st.markdown("#### Analytics Agent")
-        col1, col2, col3 = st.columns(3)
-        
-        with col1:
-            if st.button("📈 System Metrics", use_container_width=True):
-                st.session_state.example_input = "Show system analytics and metrics for all agents"
-        
-        with col2:
-            if st.button("📊 Agent Performance", use_container_width=True):
-                st.session_state.example_input = "Show me the agent performance metrics and statistics"
-        
-        with col3:
-            if st.button("🔍 System Dashboard", use_container_width=True):
-                st.session_state.example_input = "Display the system dashboard with all analytics"
-        
-        st.markdown("#### Email Agent")
-        col1, col2, col3 = st.columns(3)
-        
-        with col1:
-            if st.button("📧 Fetch Emails", use_container_width=True):
-                st.session_state.example_input = "Fetch and process unread emails"
-        
-        with col2:
-            if st.button("🎫 Create Ticket", use_container_width=True):
-                st.session_state.example_input = "Create a support ticket from customer email"
-        
-        with col3:
-            if st.button("💬 Auto Reply", use_container_width=True):
-                st.session_state.example_input = "Send automated reply to customer inquiry"
+            if st.button("⏱️ Timeline Setup", use_container_width=True):
+                st.session_state.example_input = "Set up project timeline and milestones"
     
     with tab3:
-        st.markdown("#### Complete Workflows")
-        col1, col2 = st.columns(2)
-        
-        with col1:
-            if st.button("🚀 Full Onboarding Workflow", use_container_width=True):
-                st.session_state.example_input = "Onboard unnathi - set up HR, IT access, schedule meetings, and assign to AI project"
-        
-        with col2:
-            if st.button("📋 Complete Offboarding", use_container_width=True):
-                st.session_state.example_input = "Offboard rajesh - revoke access, schedule exit meeting, and transfer projects"
-        
         st.markdown("#### Smart Combinations")
         col1, col2 = st.columns(2)
         
@@ -2117,7 +2573,7 @@ def show_home_page():
                 st.session_state.example_input = "Create a new project and assign team members to it"
         
         with col2:
-            if st.button("📅 Meeting + Resource Planning", use_container_width=True):
+            if st.button("� Meeting + Resource Planning", use_container_width=True):
                 st.session_state.example_input = "Schedule project kickoff meeting and allocate resources"
         
         st.markdown("#### Batch Operations")
@@ -2128,27 +2584,70 @@ def show_home_page():
                 st.session_state.example_input = "Run system health check and get analytics on all agents"
         
         with col2:
-            if st.button("🔄 Full System Status", use_container_width=True):
-                st.session_state.example_input = "Show all system status, projects, meetings and analytics"
+            if st.button("📈 Performance Report", use_container_width=True):
+                st.session_state.example_input = "Generate performance report for all agents"
     
-    # Check if example was clicked and update input
+    # If example input set, navigate to results
     if "example_input" in st.session_state and st.session_state.example_input:
         st.session_state.current_result = {
             "input": st.session_state.example_input,
             "file": None,
             "request_id": str(uuid.uuid4())[:8],
-            "start_time": time.time(),
-            "is_example": True
+            "start_time": time.time()
         }
+        del st.session_state.example_input
         st.session_state.page = "results"
-        st.session_state.example_input = None  # Reset
         st.rerun()
+
 
 # ============================================================================
 # RESULTS PAGE
 # ============================================================================
 def show_results_page():
     """Results with timeline and agent response"""
+    
+    # Cinematic results header
+    st.markdown("""
+    <style>
+        .results-header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.15) 0%, rgba(124, 58, 237, 0.1) 100%);
+            border: 2px solid rgba(0, 217, 255, 0.3);
+            border-radius: 16px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 60px rgba(0, 217, 255, 0.15);
+            backdrop-filter: blur(20px);
+        }
+        .results-title {
+            background: linear-gradient(135deg, #00d9ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 36px;
+            font-weight: 900;
+            margin: 0;
+            letter-spacing: 2px;
+        }
+    </style>
+    
+    <div class="results-header">
+        <div class="results-title">⚡ ORCHESTRATION IN PROGRESS ⚡</div>
+        <div style="margin-top: 12px; color: rgba(0, 217, 255, 0.7); font-size: 13px; letter-spacing: 1px; text-transform: uppercase;">
+            Multi-Agent Workflow Execution
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Back button
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col1:
+        if st.button("← Back to Home", use_container_width=True):
+            st.session_state.page = "home"
+            st.rerun()
+    
+    st.markdown("---")
+    
     result_data = st.session_state.current_result
     user_input = result_data["input"]
     uploaded_file = result_data["file"]
@@ -2270,7 +2769,17 @@ def show_results_page():
             data = clean_data_recursive(data)
         
         st.markdown("---")
-        st.markdown("## 📋 Response")
+        st.markdown("""
+        <div style="
+            text-align: center;
+            color: #00d9ff;
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin: 30px 0 20px 0;
+            text-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+        ">✨ WORKFLOW RESULTS ✨</div>
+        """, unsafe_allow_html=True)
         
         if is_multi_agent:
             # Detect multi-agent workflow type
@@ -2287,7 +2796,24 @@ def show_results_page():
                 "project_team_setup": "🚀 Multi-Agent Project & Team Setup Workflow"
             }.get(workflow_type, "🎯 Multi-Agent Workflow")
             
-            st.markdown(f"### {workflow_title}")
+            st.markdown(f"""
+            <div style="
+                background: linear-gradient(135deg, rgba(0, 217, 255, 0.1) 0%, rgba(124, 58, 237, 0.05) 100%);
+                border: 1.5px solid rgba(0, 217, 255, 0.2);
+                border-radius: 12px;
+                padding: 20px;
+                backdrop-filter: blur(20px);
+                margin-bottom: 20px;
+            ">
+                <div style="
+                    color: #00d9ff;
+                    font-size: 20px;
+                    font-weight: 800;
+                    letter-spacing: 1px;
+                    text-shadow: 0 0 15px rgba(0, 217, 255, 0.4);
+                ">{workflow_title}</div>
+            </div>
+            """, unsafe_allow_html=True)
             
             # Enhanced animated popup CSS with modal effects
             popup_css = """

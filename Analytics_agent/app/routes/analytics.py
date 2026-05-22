@@ -76,27 +76,32 @@ async def orchestrate_analytics(request: AgentRequest) -> AnalyticsResponse:
             dashboard = AnalyticsService.get_dashboard_data()
             insights = AnalyticsService.generate_insights()
             
+            # Ensure all agent_metrics have last_updated
+            agent_metrics_list = []
+            for m in dashboard["agent_metrics"]:
+                agent_metrics_list.append({
+                    "agent_name": m.get("agent_name", "Unknown"),
+                    "requests_processed": m.get("requests_processed", 0),
+                    "avg_response_time": m.get("avg_response_time", 0),
+                    "success_rate": m.get("success_rate", 0),
+                    "last_updated": m.get("last_updated", dashboard.get("timestamp"))
+                })
+            
             return AnalyticsResponse(
                 status="success",
                 decision="dashboard_generated",
                 dashboard={
-                    "timestamp": dashboard["timestamp"],
-                    "agent_metrics": [
-                        {
-                            "agent_name": m["agent_name"],
-                            "requests_processed": m["requests_processed"],
-                            "avg_response_time": m["avg_response_time"],
-                            "success_rate": m["success_rate"],
-                            "last_updated": m["last_updated"]
-                        }
-                        for m in dashboard["agent_metrics"]
-                    ],
+                    "timestamp": dashboard.get("timestamp"),
+                    "agent_metrics": agent_metrics_list,
                     "system_metrics": {
                         "total_agents": dashboard["system_metrics"]["total_agents"],
                         "active_agents": dashboard["system_metrics"]["active_agents"],
                         "total_requests": dashboard["system_metrics"]["total_requests"],
+                        "total_response_time": dashboard["system_metrics"].get("total_response_time", 0.0),
                         "system_health": dashboard["system_metrics"]["system_health"]
-                    }
+                    },
+                    "top_agents": [],
+                    "alerts": []
                 },
                 insights=insights,
                 recommendations=[
@@ -131,10 +136,36 @@ async def orchestrate_analytics(request: AgentRequest) -> AnalyticsResponse:
         elif any(word in request_lower for word in ["workflow", "multi-agent", "orchestration", "integration"]):
             workflow = AnalyticsService.query_multi_agent_workflow()
             multi_insights = AnalyticsService.get_multi_agent_insights()
+            dashboard = AnalyticsService.get_dashboard_data()
+            insights = AnalyticsService.generate_insights()
+            
+            # Ensure all agent_metrics have last_updated
+            agent_metrics_list = []
+            for m in dashboard["agent_metrics"]:
+                agent_metrics_list.append({
+                    "agent_name": m.get("agent_name", "Unknown"),
+                    "requests_processed": m.get("requests_processed", 0),
+                    "avg_response_time": m.get("avg_response_time", 0),
+                    "success_rate": m.get("success_rate", 0),
+                    "last_updated": m.get("last_updated", dashboard.get("timestamp"))
+                })
             
             return AnalyticsResponse(
                 status="success",
                 decision="multi_agent_workflow",
+                dashboard={
+                    "timestamp": dashboard.get("timestamp"),
+                    "agent_metrics": agent_metrics_list,
+                    "system_metrics": {
+                        "total_agents": dashboard["system_metrics"]["total_agents"],
+                        "active_agents": dashboard["system_metrics"]["active_agents"],
+                        "total_requests": dashboard["system_metrics"]["total_requests"],
+                        "total_response_time": dashboard["system_metrics"].get("total_response_time", 0.0),
+                        "system_health": dashboard["system_metrics"]["system_health"]
+                    },
+                    "top_agents": [],
+                    "alerts": []
+                },
                 metrics=workflow,
                 insights=multi_insights,
                 recommendations=[
@@ -166,11 +197,36 @@ async def orchestrate_analytics(request: AgentRequest) -> AnalyticsResponse:
         else:
             # Default: return full dashboard
             dashboard = AnalyticsService.get_dashboard_data()
+            insights = AnalyticsService.generate_insights()
+            
+            # Ensure all agent_metrics have last_updated
+            agent_metrics_list = []
+            for m in dashboard["agent_metrics"]:
+                agent_metrics_list.append({
+                    "agent_name": m.get("agent_name", "Unknown"),
+                    "requests_processed": m.get("requests_processed", 0),
+                    "avg_response_time": m.get("avg_response_time", 0),
+                    "success_rate": m.get("success_rate", 0),
+                    "last_updated": m.get("last_updated", dashboard.get("timestamp"))
+                })
+            
             return AnalyticsResponse(
                 status="success",
                 decision="analytics_query",
-                metrics=dashboard,
-                insights=AnalyticsService.generate_insights(),
+                dashboard={
+                    "timestamp": dashboard.get("timestamp"),
+                    "agent_metrics": agent_metrics_list,
+                    "system_metrics": {
+                        "total_agents": dashboard["system_metrics"]["total_agents"],
+                        "active_agents": dashboard["system_metrics"]["active_agents"],
+                        "total_requests": dashboard["system_metrics"]["total_requests"],
+                        "total_response_time": dashboard["system_metrics"].get("total_response_time", 0.0),
+                        "system_health": dashboard["system_metrics"]["system_health"]
+                    },
+                    "top_agents": [],
+                    "alerts": []
+                },
+                insights=insights,
                 recommendations=[
                     "Review dashboard for system overview",
                     "Check performance trends"

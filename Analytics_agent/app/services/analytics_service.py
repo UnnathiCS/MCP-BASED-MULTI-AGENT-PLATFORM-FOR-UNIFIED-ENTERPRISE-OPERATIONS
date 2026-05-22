@@ -214,6 +214,9 @@ class AnalyticsService:
         trends = AnalyticsService.get_performance_trends()
         insights = AnalyticsService.generate_insights()
         
+        # Get current timestamp once to ensure consistency
+        current_time = datetime.now().isoformat()
+        
         agent_metrics = []
         for agent_id, stat in stats.items():
             agent_metrics.append({
@@ -221,15 +224,16 @@ class AnalyticsService:
                 "requests_processed": stat.get("requests_today", 0),
                 "avg_response_time": stat.get("avg_response_time", 0),
                 "success_rate": stat.get("success_rate", 0),
-                "last_updated": datetime.now().isoformat()
+                "last_updated": current_time
             })
         
         return {
-            "timestamp": datetime.now().isoformat(),
+            "timestamp": current_time,
             "system_metrics": {
                 "total_agents": system["total_agents"],
                 "active_agents": system["healthy_agents"],
                 "total_requests": trends["total_requests"],
+                "total_response_time": 0.0,
                 "system_health": system["system_status"],
                 "uptime": system["uptime_percentage"]
             },

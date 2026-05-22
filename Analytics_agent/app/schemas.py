@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import List, Optional, Dict, Any
 from datetime import datetime
 
@@ -7,7 +7,7 @@ class AgentMetrics(BaseModel):
     requests_processed: int
     avg_response_time: float
     success_rate: float
-    last_updated: str
+    last_updated: Optional[str] = None
 
 class SystemMetrics(BaseModel):
     total_agents: int
