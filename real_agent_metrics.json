@@ -1,39 +1,11 @@
 {
   "Support Agent": {
     "agent_id": "support_001",
-    "total": 368,
-    "successful": 354,
+    "total": 372,
+    "successful": 358,
     "failed": 14,
-    "total_time": 690324.6813888476,
+    "total_time": 716957.0556754993,
     "requests": [
-      {
-        "timestamp": "2026-04-25T18:53:21.524983",
-        "query": "Phase 5 quality test 52 for Support Agent",
-        "success": true,
-        "response_time": 2169.994,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:53:21.527909",
-        "query": "Phase 5 quality test 53 for Support Agent",
-        "success": false,
-        "response_time": 2732.924,
-        "error": "Simulated error"
-      },
-      {
-        "timestamp": "2026-04-25T18:53:21.530815",
-        "query": "Phase 5 quality test 54 for Support Agent",
-        "success": true,
-        "response_time": 2350.751,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:53:21.533725",
-        "query": "Phase 5 quality test 55 for Support Agent",
-        "success": true,
-        "response_time": 1555.852,
-        "error": null
-      },
       {
         "timestamp": "2026-04-25T18:53:21.536667",
         "query": "Phase 5 quality test 56 for Support Agent",
@@ -705,47 +677,47 @@
         "success": true,
         "response_time": 5980.434,
         "error": null
+      },
+      {
+        "timestamp": "2026-05-23T13:46:15.750964",
+        "query": "Setup IT access for Onboard new employee to the company",
+        "success": true,
+        "response_time": 6616.535,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-23T13:56:51.038190",
+        "query": "Setup IT access for Onboard new employee and set up all systems and access",
+        "success": true,
+        "response_time": 6348.577,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-23T13:59:37.266925",
+        "query": "Setup IT access for Create 'Client Emergency - Healthcare Crisis' project.\n        Assign 3 new hires + 5 existing team members.\n        Budget: $50K ",
+        "success": true,
+        "response_time": 6122.596,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-23T14:55:24.457084",
+        "query": "Setup IT access for Onboard unnathi email:unathics.btech23@rvu.edu.in as a AIML engineer for the AI project, starts on may 23rd at 5pm",
+        "success": true,
+        "response_time": 7544.666,
+        "error": null
       }
     ],
     "created_at": "2026-04-25T18:39:21.211928",
-    "last_updated": "2026-05-23T12:27:48.759969",
+    "last_updated": "2026-05-23T14:55:24.457076",
     "accuracy_percentage": 96.3172804532578
   },
   "HR Onboarding Agent": {
     "agent_id": "hr_001",
-    "total": 362,
-    "successful": 341,
+    "total": 366,
+    "successful": 345,
     "failed": 21,
-    "total_time": 651946.3063771914,
+    "total_time": 651972.845464487,
     "requests": [
-      {
-        "timestamp": "2026-04-25T18:53:22.056874",
-        "query": "Phase 5 quality test 49 for HR Onboarding Agent",
-        "success": true,
-        "response_time": 2733.061,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:53:22.059851",
-        "query": "Phase 5 quality test 50 for HR Onboarding Agent",
-        "success": true,
-        "response_time": 849.313,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:53:22.062800",
-        "query": "Phase 5 quality test 51 for HR Onboarding Agent",
-        "success": true,
-        "response_time": 2519.838,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:53:22.065720",
-        "query": "Phase 5 quality test 52 for HR Onboarding Agent",
-        "success": true,
-        "response_time": 2007.372,
-        "error": null
-      },
       {
         "timestamp": "2026-04-25T18:53:22.068644",
         "query": "Phase 5 quality test 53 for HR Onboarding Agent",
@@ -1417,33 +1389,47 @@
         "success": true,
         "response_time": 7.752,
         "error": null
+      },
+      {
+        "timestamp": "2026-05-23T13:46:09.129228",
+        "query": "Onboard new employee to the company",
+        "success": true,
+        "response_time": 6.857,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-23T13:56:44.684272",
+        "query": "Onboard new employee and set up all systems and access",
+        "success": true,
+        "response_time": 5.846,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-23T13:59:31.140048",
+        "query": "Create 'Client Emergency - Healthcare Crisis' project.\n        Assign 3 new hires + 5 existing team members.\n        Budget: $50K emergency allocation",
+        "success": true,
+        "response_time": 5.259,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-23T14:55:16.903970",
+        "query": "Onboard unnathi email:unathics.btech23@rvu.edu.in as a AIML engineer for the AI project, starts on may 23rd at 5pm",
+        "success": true,
+        "response_time": 8.577,
+        "error": null
       }
     ],
     "created_at": "2026-04-25T18:39:21.211937",
-    "last_updated": "2026-05-23T12:27:10.445611",
+    "last_updated": "2026-05-23T14:55:16.903960",
     "accuracy_percentage": 94.05099150141642
   },
   "Meeting Calendar Agent": {
     "agent_id": "meeting_001",
-    "total": 354,
-    "successful": 328,
+    "total": 356,
+    "successful": 330,
     "failed": 26,
-    "total_time": 588642.3913839293,
+    "total_time": 589614.93510036,
     "requests": [
-      {
-        "timestamp": "2026-04-25T18:53:21.855694",
-        "query": "Phase 5 quality test 42 for Meeting Calendar Agent",
-        "success": true,
-        "response_time": 1898.006,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:53:21.858768",
-        "query": "Phase 5 quality test 43 for Meeting Calendar Agent",
-        "success": true,
-        "response_time": 1190.759,
-        "error": null
-      },
       {
         "timestamp": "2026-04-25T18:53:21.861683",
         "query": "Phase 5 quality test 44 for Meeting Calendar Agent",
@@ -2129,61 +2115,33 @@
         "success": true,
         "response_time": 5.116,
         "error": null
+      },
+      {
+        "timestamp": "2026-05-23T13:45:44.071583",
+        "query": "Schedule a meeting with the team next Tuesday at 2pm",
+        "success": true,
+        "response_time": 967.965,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-23T13:45:54.774199",
+        "query": "Set up a weekly sync meeting for Mondays",
+        "success": true,
+        "response_time": 4.579,
+        "error": null
       }
     ],
     "created_at": "2026-04-25T18:39:21.211939",
-    "last_updated": "2026-05-23T11:59:07.275443",
+    "last_updated": "2026-05-23T13:45:54.774191",
     "accuracy_percentage": 92.63456090651559
   },
   "Project Management Agent": {
     "agent_id": "project_001",
-    "total": 370,
-    "successful": 347,
+    "total": 376,
+    "successful": 353,
     "failed": 23,
-    "total_time": 617003.7159759249,
+    "total_time": 617023.2384044374,
     "requests": [
-      {
-        "timestamp": "2026-04-25T18:53:22.263730",
-        "query": "Phase 5 quality test 58 for Project Management Agent",
-        "success": true,
-        "response_time": 2891.471,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:53:22.266618",
-        "query": "Phase 5 quality test 59 for Project Management Agent",
-        "success": true,
-        "response_time": 2960.8,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:53:22.269485",
-        "query": "Phase 5 quality test 60 for Project Management Agent",
-        "success": true,
-        "response_time": 712.054,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.182978",
-        "query": "Premium test 1 for Project Management Agent",
-        "success": true,
-        "response_time": 2682.47,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.185860",
-        "query": "Premium test 2 for Project Management Agent",
-        "success": true,
-        "response_time": 2194.457,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.188932",
-        "query": "Premium test 3 for Project Management Agent",
-        "success": true,
-        "response_time": 1521.006,
-        "error": null
-      },
       {
         "timestamp": "2026-04-25T18:54:16.191886",
         "query": "Premium test 4 for Project Management Agent",
@@ -2841,145 +2799,61 @@
         "success": true,
         "response_time": 1.57,
         "error": null
+      },
+      {
+        "timestamp": "2026-05-23T13:44:34.319903",
+        "query": "Assign team member to the AI project",
+        "success": true,
+        "response_time": 4.136,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-23T13:46:15.759645",
+        "query": "Assign to project: Onboard new employee to the company",
+        "success": true,
+        "response_time": 1.347,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-23T13:56:51.055288",
+        "query": "Assign to project: Onboard new employee and set up all systems and access",
+        "success": true,
+        "response_time": 3.697,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-23T13:59:37.277652",
+        "query": "Assign to project: Create 'Client Emergency - Healthcare Crisis' project.\n        Assign 3 new hires + 5 existing team members.\n        Budget: $50K e",
+        "success": true,
+        "response_time": 1.493,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-23T14:45:00.060413",
+        "query": "\ud83d\udea8 EMERGENCY REQUEST \ud83d\udea8\nImmediate team expansion for critical healthcare client crisis\n\n- 3 new senior engineers starting TODAY\n- urgent legal contracts",
+        "success": true,
+        "response_time": 5.108,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-23T14:55:25.451084",
+        "query": "Assign to project: Onboard unnathi email:unathics.btech23@rvu.edu.in as a AIML engineer for the AI project, starts on may 23rd at 5pm",
+        "success": true,
+        "response_time": 3.741,
+        "error": null
       }
     ],
     "created_at": "2026-04-25T18:39:21.211940",
-    "last_updated": "2026-05-23T12:27:16.370805",
+    "last_updated": "2026-05-23T14:55:25.451076",
     "accuracy_percentage": 93.48441926345609
   },
   "Document Review Agent": {
     "agent_id": "document_001",
-    "total": 360,
-    "successful": 326,
-    "failed": 34,
-    "total_time": 795308.0439678007,
+    "total": 378,
+    "successful": 331,
+    "failed": 47,
+    "total_time": 801933.5727802091,
     "requests": [
-      {
-        "timestamp": "2026-04-25T18:53:21.693777",
-        "query": "Phase 5 quality test 48 for Document Review Agent",
-        "success": true,
-        "response_time": 2915.187,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:53:21.696885",
-        "query": "Phase 5 quality test 49 for Document Review Agent",
-        "success": true,
-        "response_time": 2187.722,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:53:21.699781",
-        "query": "Phase 5 quality test 50 for Document Review Agent",
-        "success": true,
-        "response_time": 1710.21,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:53:21.702758",
-        "query": "Phase 5 quality test 51 for Document Review Agent",
-        "success": true,
-        "response_time": 1271.351,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:53:21.706110",
-        "query": "Phase 5 quality test 52 for Document Review Agent",
-        "success": true,
-        "response_time": 1852.29,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:53:21.709115",
-        "query": "Phase 5 quality test 53 for Document Review Agent",
-        "success": true,
-        "response_time": 1332.549,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:53:21.712044",
-        "query": "Phase 5 quality test 54 for Document Review Agent",
-        "success": false,
-        "response_time": 1119.073,
-        "error": "Simulated error"
-      },
-      {
-        "timestamp": "2026-04-25T18:53:21.715012",
-        "query": "Phase 5 quality test 55 for Document Review Agent",
-        "success": true,
-        "response_time": 2218.471,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:53:21.717993",
-        "query": "Phase 5 quality test 56 for Document Review Agent",
-        "success": true,
-        "response_time": 1797.84,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:53:21.721261",
-        "query": "Phase 5 quality test 57 for Document Review Agent",
-        "success": true,
-        "response_time": 2995.709,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:53:21.724279",
-        "query": "Phase 5 quality test 58 for Document Review Agent",
-        "success": true,
-        "response_time": 2702.075,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:53:21.727163",
-        "query": "Phase 5 quality test 59 for Document Review Agent",
-        "success": true,
-        "response_time": 1207.971,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:53:21.730074",
-        "query": "Phase 5 quality test 60 for Document Review Agent",
-        "success": true,
-        "response_time": 1765.835,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:15.418058",
-        "query": "Premium test 1 for Document Review Agent",
-        "success": true,
-        "response_time": 2373.317,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:15.421274",
-        "query": "Premium test 2 for Document Review Agent",
-        "success": true,
-        "response_time": 1681.461,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:15.424326",
-        "query": "Premium test 3 for Document Review Agent",
-        "success": false,
-        "response_time": 1973.988,
-        "error": "Error"
-      },
-      {
-        "timestamp": "2026-04-25T18:54:15.427435",
-        "query": "Premium test 4 for Document Review Agent",
-        "success": true,
-        "response_time": 2128.235,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:15.430597",
-        "query": "Premium test 5 for Document Review Agent",
-        "success": true,
-        "response_time": 1424.458,
-        "error": null
-      },
       {
         "timestamp": "2026-04-25T18:54:15.433517",
         "query": "Premium test 6 for Document Review Agent",
@@ -3553,159 +3427,145 @@
         "success": true,
         "response_time": 709.126,
         "error": null
+      },
+      {
+        "timestamp": "2026-05-23T14:40:44.483056",
+        "query": "document_upload",
+        "success": false,
+        "response_time": 0.001,
+        "error": "No file provided"
+      },
+      {
+        "timestamp": "2026-05-23T14:40:52.887659",
+        "query": "document_upload",
+        "success": false,
+        "response_time": 0.002,
+        "error": "No file provided"
+      },
+      {
+        "timestamp": "2026-05-23T14:40:53.963059",
+        "query": "document_upload",
+        "success": false,
+        "response_time": 0.001,
+        "error": "No file provided"
+      },
+      {
+        "timestamp": "2026-05-23T14:41:16.524356",
+        "query": "document_upload",
+        "success": false,
+        "response_time": 0.002,
+        "error": "No file provided"
+      },
+      {
+        "timestamp": "2026-05-23T14:42:15.121417",
+        "query": "document_upload",
+        "success": false,
+        "response_time": 0.002,
+        "error": "No file provided"
+      },
+      {
+        "timestamp": "2026-05-23T14:43:25.448448",
+        "query": "\ud83d\udea8 EMERGENCY REQUEST \ud83d\udea8\nImmediate team expansion for critical healthcare client crisis\n\n- 3 new senior engineers starting TODAY\n- urgent legal contracts",
+        "success": true,
+        "response_time": 2009.515,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-23T14:43:35.793891",
+        "query": "\ud83d\udea8 EMERGENCY REQUEST \ud83d\udea8\nImmediate team expansion for critical healthcare client crisis\n\n- 3 new senior engineers starting TODAY\n- urgent legal contracts",
+        "success": true,
+        "response_time": 1202.672,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-23T14:43:38.483023",
+        "query": "\ud83d\udea8 EMERGENCY REQUEST \ud83d\udea8\nImmediate team expansion for critical healthcare client crisis\n\n- 3 new senior engineers starting TODAY\n- urgent legal contracts",
+        "success": true,
+        "response_time": 1639.577,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-23T14:44:47.613883",
+        "query": "\ud83d\udea8 EMERGENCY REQUEST \ud83d\udea8\nImmediate team expansion for critical healthcare client crisis\n\n- 3 new senior engineers starting TODAY\n- urgent legal contracts",
+        "success": true,
+        "response_time": 1310.819,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-23T14:45:17.347028",
+        "query": "document_upload",
+        "success": false,
+        "response_time": 0.002,
+        "error": "No file provided"
+      },
+      {
+        "timestamp": "2026-05-23T14:45:23.770802",
+        "query": "document_upload",
+        "success": false,
+        "response_time": 0.002,
+        "error": "No file provided"
+      },
+      {
+        "timestamp": "2026-05-23T14:45:24.849669",
+        "query": "document_upload",
+        "success": false,
+        "response_time": 0.002,
+        "error": "No file provided"
+      },
+      {
+        "timestamp": "2026-05-23T14:52:58.055041",
+        "query": "document_upload",
+        "success": false,
+        "response_time": 0.002,
+        "error": "No file provided"
+      },
+      {
+        "timestamp": "2026-05-23T14:53:18.774548",
+        "query": "document_upload",
+        "success": false,
+        "response_time": 0.002,
+        "error": "No file provided"
+      },
+      {
+        "timestamp": "2026-05-23T14:53:25.085848",
+        "query": "document_upload",
+        "success": false,
+        "response_time": 0.002,
+        "error": "No file provided"
+      },
+      {
+        "timestamp": "2026-05-23T14:53:26.164447",
+        "query": "document_upload",
+        "success": false,
+        "response_time": 0.002,
+        "error": "No file provided"
+      },
+      {
+        "timestamp": "2026-05-23T14:55:01.126856",
+        "query": "document_upload",
+        "success": false,
+        "response_time": 0.006,
+        "error": "No file provided"
+      },
+      {
+        "timestamp": "2026-05-23T14:56:19.951545",
+        "query": "\ud83d\udea8 EMERGENCY REQUEST \ud83d\udea8\nImmediate team expansion for critical healthcare client crisis\n\n- 3 new senior engineers starting TODAY\n- urgent legal contracts",
+        "success": true,
+        "response_time": 462.918,
+        "error": null
       }
     ],
     "created_at": "2026-04-25T18:39:21.211942",
-    "last_updated": "2026-05-23T12:08:23.423926",
+    "last_updated": "2026-05-23T14:56:19.951538",
     "accuracy_percentage": 91.5014164305949
   },
   "Analytics Agent": {
     "agent_id": "analytics_001",
-    "total": 369,
-    "successful": 352,
+    "total": 389,
+    "successful": 372,
     "failed": 17,
-    "total_time": 464748.6273460385,
+    "total_time": 465037.3293571469,
     "requests": [
-      {
-        "timestamp": "2026-04-25T18:53:22.440430",
-        "query": "Phase 5 quality test 57 for Analytics Agent",
-        "success": true,
-        "response_time": 2641.941,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:53:22.443364",
-        "query": "Phase 5 quality test 58 for Analytics Agent",
-        "success": true,
-        "response_time": 1996.742,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:53:22.446329",
-        "query": "Phase 5 quality test 59 for Analytics Agent",
-        "success": true,
-        "response_time": 1236.241,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:53:22.449296",
-        "query": "Phase 5 quality test 60 for Analytics Agent",
-        "success": true,
-        "response_time": 2301.174,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.422566",
-        "query": "Premium test 1 for Analytics Agent",
-        "success": true,
-        "response_time": 2107.368,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.425475",
-        "query": "Premium test 2 for Analytics Agent",
-        "success": true,
-        "response_time": 1337.852,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.428374",
-        "query": "Premium test 3 for Analytics Agent",
-        "success": true,
-        "response_time": 678.079,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.431336",
-        "query": "Premium test 4 for Analytics Agent",
-        "success": true,
-        "response_time": 2768.501,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.434192",
-        "query": "Premium test 5 for Analytics Agent",
-        "success": true,
-        "response_time": 2149.966,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.437445",
-        "query": "Premium test 6 for Analytics Agent",
-        "success": true,
-        "response_time": 1427.913,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.440452",
-        "query": "Premium test 7 for Analytics Agent",
-        "success": true,
-        "response_time": 1162.682,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.443376",
-        "query": "Premium test 8 for Analytics Agent",
-        "success": true,
-        "response_time": 1270.527,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.446277",
-        "query": "Premium test 9 for Analytics Agent",
-        "success": true,
-        "response_time": 746.976,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.449211",
-        "query": "Premium test 10 for Analytics Agent",
-        "success": true,
-        "response_time": 1247.642,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.452110",
-        "query": "Premium test 11 for Analytics Agent",
-        "success": true,
-        "response_time": 1606.616,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.455182",
-        "query": "Premium test 12 for Analytics Agent",
-        "success": true,
-        "response_time": 1312.97,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.458101",
-        "query": "Premium test 13 for Analytics Agent",
-        "success": true,
-        "response_time": 1716.729,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.460997",
-        "query": "Premium test 14 for Analytics Agent",
-        "success": true,
-        "response_time": 1359.479,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.463929",
-        "query": "Premium test 15 for Analytics Agent",
-        "success": true,
-        "response_time": 2434.839,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.466790",
-        "query": "Premium test 16 for Analytics Agent",
-        "success": true,
-        "response_time": 1513.335,
-        "error": null
-      },
       {
         "timestamp": "2026-04-25T18:54:16.469713",
         "query": "Premium test 17 for Analytics Agent",
@@ -4265,10 +4125,150 @@
         "success": true,
         "response_time": 2.524,
         "error": null
+      },
+      {
+        "timestamp": "2026-05-23T13:44:19.663530",
+        "query": "Show team performance metrics",
+        "success": true,
+        "response_time": 6.217,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-23T13:44:46.000973",
+        "query": "Show team performance metrics",
+        "success": true,
+        "response_time": 1.864,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-23T13:45:26.676124",
+        "query": "Show team performance metrics",
+        "success": true,
+        "response_time": 2.257,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-23T13:45:36.770892",
+        "query": "Show team performance metrics",
+        "success": true,
+        "response_time": 2.519,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-23T13:46:23.992659",
+        "query": "Show team performance metrics",
+        "success": true,
+        "response_time": 6.603,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-23T13:52:49.395025",
+        "query": "Show team performance metrics",
+        "success": true,
+        "response_time": 1.786,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-23T13:52:52.187203",
+        "query": "Show team performance metrics",
+        "success": true,
+        "response_time": 3.524,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-23T13:52:58.307102",
+        "query": "Show team performance metrics",
+        "success": true,
+        "response_time": 2.16,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-23T13:53:05.600827",
+        "query": "Show team performance metrics",
+        "success": true,
+        "response_time": 4.259,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-23T13:53:05.655220",
+        "query": "Show team performance metrics",
+        "success": true,
+        "response_time": 2.211,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-23T14:40:54.049155",
+        "query": "\ud83d\udea8 EMERGENCY REQUEST \ud83d\udea8\nImmediate team expansion for critical healthcare client crisis\n\n- 3 new senior engineers starting TODAY\n- urgent legal contracts",
+        "success": true,
+        "response_time": 65.084,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-23T14:41:16.574216",
+        "query": "\ud83d\udea8 EMERGENCY REQUEST \ud83d\udea8\nImmediate team expansion for critical healthcare client crisis\n\n- 3 new senior engineers starting TODAY\n- urgent legal contracts",
+        "success": true,
+        "response_time": 28.751,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-23T14:42:15.164907",
+        "query": "\ud83d\udea8 EMERGENCY REQUEST \ud83d\udea8\nImmediate team expansion for critical healthcare client crisis\n\n- 3 new senior engineers starting TODAY\n- urgent legal contracts",
+        "success": true,
+        "response_time": 21.357,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-23T14:43:38.502160",
+        "query": "\ud83d\udea8 EMERGENCY REQUEST \ud83d\udea8\nImmediate team expansion for critical healthcare client crisis\n\n- 3 new senior engineers starting TODAY\n- urgent legal contracts",
+        "success": true,
+        "response_time": 9.223,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-23T14:44:47.645464",
+        "query": "\ud83d\udea8 EMERGENCY REQUEST \ud83d\udea8\nImmediate team expansion for critical healthcare client crisis\n\n- 3 new senior engineers starting TODAY\n- urgent legal contracts",
+        "success": true,
+        "response_time": 21.402,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-23T14:45:24.889539",
+        "query": "\ud83d\udea8 EMERGENCY REQUEST \ud83d\udea8\nImmediate team expansion for critical healthcare client crisis\n\n- 3 new senior engineers starting TODAY\n- urgent legal contracts",
+        "success": true,
+        "response_time": 18.145,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-23T14:52:58.116095",
+        "query": "\ud83d\udea8 EMERGENCY REQUEST \ud83d\udea8\nImmediate team expansion for critical healthcare client crisis\n\n- 3 new senior engineers starting TODAY\n- urgent legal contracts",
+        "success": true,
+        "response_time": 37.242,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-23T14:53:26.204979",
+        "query": "\ud83d\udea8 EMERGENCY REQUEST \ud83d\udea8\nImmediate team expansion for critical healthcare client crisis\n\n- 3 new senior engineers starting TODAY\n- urgent legal contracts",
+        "success": true,
+        "response_time": 17.413,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-23T14:55:01.173261",
+        "query": "\ud83d\udea8 EMERGENCY REQUEST \ud83d\udea8\nImmediate team expansion for critical healthcare client crisis\n\n- 3 new senior engineers starting TODAY\n- urgent legal contracts",
+        "success": true,
+        "response_time": 24.538,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-23T14:56:19.973367",
+        "query": "\ud83d\udea8 EMERGENCY REQUEST \ud83d\udea8\nImmediate team expansion for critical healthcare client crisis\n\n- 3 new senior engineers starting TODAY\n- urgent legal contracts",
+        "success": true,
+        "response_time": 12.147,
+        "error": null
       }
     ],
     "created_at": "2026-04-25T18:39:21.211944",
-    "last_updated": "2026-05-23T12:07:20.694217",
+    "last_updated": "2026-05-23T14:56:19.973360",
     "accuracy_percentage": 95.18413597733712
   },
   "Email Agent": {

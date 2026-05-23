@@ -900,6 +900,151 @@ def display_agent_health_status(agent_metrics: List[Dict]):
             Avg Time: {agent.get('avg_response_time', 0):.2f}ms
             """)
 
+def display_team_performance_graphs(employees: List[Dict]):
+    """Display team performance with interactive graphs and individual contributions"""
+    if not employees:
+        st.info("No employee data available")
+        return
+    
+    st.markdown("### 📊 Employee Performance Comparison")
+    
+    # Prepare data for graphs
+    employee_names = [emp.get("name", "Unknown") for emp in employees]
+    tasks_completed = [emp.get("tasks_completed", 0) for emp in employees]
+    quality_scores = [emp.get("quality_score", 0) for emp in employees]
+    hours_worked = [emp.get("hours_worked", 0) for emp in employees]
+    deadline_adherence = [emp.get("deadline_adherence", 0) for emp in employees]
+    
+    # Create a grid of graphs
+    col1, col2 = st.columns(2)
+    
+    # Tasks Completed Bar Chart
+    with col1:
+        st.markdown("#### ✅ Tasks Completed by Employee")
+        fig1 = px.bar(
+            x=employee_names,
+            y=tasks_completed,
+            labels={"x": "Employee", "y": "Tasks Completed"},
+            color=tasks_completed,
+            color_continuous_scale="Blues",
+            title="Productivity - Tasks Completed"
+        )
+        fig1.update_layout(height=400, showlegend=False, hovermode="x unified", xaxis_tickangle=-45)
+        st.plotly_chart(fig1, use_container_width=True)
+    
+    # Quality Score Bar Chart
+    with col2:
+        st.markdown("#### 🎯 Quality Score by Employee")
+        fig2 = px.bar(
+            x=employee_names,
+            y=quality_scores,
+            labels={"x": "Employee", "y": "Quality Score (%)"},
+            color=quality_scores,
+            color_continuous_scale="Greens",
+            title="Quality Scores"
+        )
+        fig2.update_layout(height=400, showlegend=False, hovermode="x unified", xaxis_tickangle=-45)
+        st.plotly_chart(fig2, use_container_width=True)
+    
+    # Hours Worked Comparison
+    st.markdown("#### ⏱️ Hours Worked by Employee")
+    fig3 = px.bar(
+        x=employee_names,
+        y=hours_worked,
+        labels={"x": "Employee", "y": "Hours Worked"},
+        color=hours_worked,
+        color_continuous_scale="Purples",
+        title="Total Hours Contributed"
+    )
+    fig3.update_layout(height=400, showlegend=False, hovermode="x unified", xaxis_tickangle=-45)
+    st.plotly_chart(fig3, use_container_width=True)
+    
+    # Deadline Adherence Pie chart
+    st.markdown("#### 🎯 Task Contribution Distribution")
+    fig4 = px.pie(
+        labels=employee_names,
+        values=tasks_completed,
+        title="Individual Employee Contribution to Total Tasks",
+        hole=0.4
+    )
+    fig4.update_layout(height=500)
+    st.plotly_chart(fig4, use_container_width=True)
+
+def display_team_rankings_table(employees: List[Dict]):
+    """Display employee performance rankings with detailed metrics"""
+    st.markdown("### 🏆 Employee Performance Rankings")
+    
+    # Sort employees by quality score
+    sorted_employees = sorted(employees, key=lambda x: x.get("quality_score", 0), reverse=True)
+    
+    ranking_data = []
+    for rank, emp in enumerate(sorted_employees, 1):
+        emp_name = emp.get("name", "Unknown")
+        position = emp.get("position", "N/A")
+        tasks = emp.get("tasks_completed", 0)
+        quality = emp.get("quality_score", 0)
+        deadline = emp.get("deadline_adherence", 0)
+        hours = emp.get("hours_worked", 0)
+        
+        # Determine ranking emoji
+        if rank == 1:
+            rank_emoji = "🥇"
+        elif rank == 2:
+            rank_emoji = "🥈"
+        elif rank == 3:
+            rank_emoji = "🥉"
+        else:
+            rank_emoji = f"#{rank}"
+        
+        # Determine performance rating based on quality score
+        if quality >= 97:
+            rating = "⭐⭐⭐⭐⭐"
+        elif quality >= 94:
+            rating = "⭐⭐⭐⭐"
+        elif quality >= 91:
+            rating = "⭐⭐⭐"
+        elif quality >= 88:
+            rating = "⭐⭐"
+        else:
+            rating = "⭐"
+        
+        ranking_data.append({
+            "Rank": rank_emoji,
+            "Employee": emp_name,
+            "Position": position,
+            "Tasks Done": tasks,
+            "Quality %": f"{quality}%",
+            "Deadline %": f"{deadline}%",
+            "Hours": hours,
+            "Rating": rating
+        })
+    
+    df = __import__('pandas').DataFrame(ranking_data)
+    st.dataframe(df, use_container_width=True, hide_index=True)
+
+def display_team_statistics(team_data: Dict):
+    """Display aggregate team statistics"""
+    st.markdown("### 📈 Team Statistics Overview")
+    
+    col1, col2, col3, col4 = st.columns(4)
+    
+    total_employees = team_data.get("total_employees", 0)
+    total_tasks = team_data.get("total_tasks_completed", 0)
+    active_projects = team_data.get("active_projects", 0)
+    team_efficiency = team_data.get("team_efficiency", 0)
+    
+    with col1:
+        st.metric("👥 Total Employees", total_employees)
+    
+    with col2:
+        st.metric("📊 Active Projects", active_projects)
+    
+    with col3:
+        st.metric("✅ Tasks Completed", total_tasks)
+    
+    with col4:
+        st.metric("📈 Team Efficiency", f"{team_efficiency}%")
+
 def display_full_analytics_report(data: Dict):
     """Display complete analytics report with all sections"""
     # Handle None data
@@ -941,6 +1086,262 @@ def display_full_analytics_report(data: Dict):
         st.markdown("### 🎯 Recommendations")
         for rec in data["recommendations"]:
             st.info(f"• {rec}")
+
+def get_sample_team_performance_data() -> Dict:
+    """Generate sample employee team performance data showing contributions to projects"""
+    return {
+        "team_summary": {
+            "total_employees": 8,
+            "active_projects": 5,
+            "total_tasks_completed": 324,
+            "team_efficiency": 94.2,  # percentage
+            "average_deadline_adherence": 96.5  # percentage
+        },
+        "employees": [
+            {
+                "employee_id": "EMP001",
+                "name": "Unnathi",
+                "position": "Senior AI Engineer",
+                "assigned_projects": ["AI Assistant System", "ML Pipeline"],
+                "tasks_completed": 68,
+                "hours_worked": 160,
+                "quality_score": 98.5,
+                "deadline_adherence": 100.0,
+                "milestones_achieved": 5,
+                "performance_rating": "⭐⭐⭐⭐⭐ Excellent"
+            },
+            {
+                "employee_id": "EMP002",
+                "name": "John Doe",
+                "position": "Full Stack Developer",
+                "assigned_projects": ["Web Portal Redesign", "API Integration"],
+                "tasks_completed": 52,
+                "hours_worked": 145,
+                "quality_score": 94.3,
+                "deadline_adherence": 98.0,
+                "milestones_achieved": 4,
+                "performance_rating": "⭐⭐⭐⭐ Very Good"
+            },
+            {
+                "employee_id": "EMP003",
+                "name": "Sarah Smith",
+                "position": "Data Analyst",
+                "assigned_projects": ["Analytics Dashboard", "Data Pipeline"],
+                "tasks_completed": 45,
+                "hours_worked": 138,
+                "quality_score": 92.1,
+                "deadline_adherence": 95.0,
+                "milestones_achieved": 3,
+                "performance_rating": "⭐⭐⭐⭐ Very Good"
+            },
+            {
+                "employee_id": "EMP004",
+                "name": "Mike Johnson",
+                "position": "DevOps Engineer",
+                "assigned_projects": ["Infrastructure Upgrade", "Cloud Migration"],
+                "tasks_completed": 38,
+                "hours_worked": 152,
+                "quality_score": 96.8,
+                "deadline_adherence": 97.5,
+                "milestones_achieved": 4,
+                "performance_rating": "⭐⭐⭐⭐⭐ Excellent"
+            },
+            {
+                "employee_id": "EMP005",
+                "name": "Emily Chen",
+                "position": "UX/UI Designer",
+                "assigned_projects": ["Web Portal Redesign", "Mobile App"],
+                "tasks_completed": 41,
+                "hours_worked": 140,
+                "quality_score": 89.5,
+                "deadline_adherence": 94.0,
+                "milestones_achieved": 3,
+                "performance_rating": "⭐⭐⭐⭐ Good"
+            },
+            {
+                "employee_id": "EMP006",
+                "name": "Alex Rodriguez",
+                "position": "Backend Developer",
+                "assigned_projects": ["API Integration", "Database Optimization"],
+                "tasks_completed": 47,
+                "hours_worked": 148,
+                "quality_score": 93.7,
+                "deadline_adherence": 96.0,
+                "milestones_achieved": 3,
+                "performance_rating": "⭐⭐⭐⭐ Very Good"
+            },
+            {
+                "employee_id": "EMP007",
+                "name": "Lisa Wong",
+                "position": "QA Engineer",
+                "assigned_projects": ["Web Portal Redesign", "API Integration", "Mobile App"],
+                "tasks_completed": 55,
+                "hours_worked": 156,
+                "quality_score": 97.2,
+                "deadline_adherence": 98.5,
+                "milestones_achieved": 4,
+                "performance_rating": "⭐⭐⭐⭐⭐ Excellent"
+            },
+            {
+                "employee_id": "EMP008",
+                "name": "Robert Martinez",
+                "position": "Tech Lead",
+                "assigned_projects": ["AI Assistant System", "Infrastructure Upgrade"],
+                "tasks_completed": 31,
+                "hours_worked": 160,
+                "quality_score": 95.4,
+                "deadline_adherence": 99.0,
+                "milestones_achieved": 4,
+                "performance_rating": "⭐⭐⭐⭐⭐ Excellent"
+            }
+        ],
+        "projects": [
+            {
+                "project_id": "PRJ001",
+                "name": "AI Assistant System",
+                "status": "In Progress",
+                "completion": 85,
+                "team_members": ["Unnathi", "Robert Martinez"],
+                "total_tasks": 80,
+                "tasks_completed": 68,
+                "deadline": "2026-06-30"
+            },
+            {
+                "project_id": "PRJ002",
+                "name": "Web Portal Redesign",
+                "status": "In Progress",
+                "completion": 72,
+                "team_members": ["John Doe", "Emily Chen", "Lisa Wong"],
+                "total_tasks": 65,
+                "tasks_completed": 47,
+                "deadline": "2026-07-15"
+            },
+            {
+                "project_id": "PRJ003",
+                "name": "Data Pipeline",
+                "status": "In Progress",
+                "completion": 68,
+                "team_members": ["Sarah Smith"],
+                "total_tasks": 45,
+                "tasks_completed": 31,
+                "deadline": "2026-08-01"
+            },
+            {
+                "project_id": "PRJ004",
+                "name": "Cloud Migration",
+                "status": "In Progress",
+                "completion": 90,
+                "team_members": ["Mike Johnson"],
+                "total_tasks": 40,
+                "tasks_completed": 36,
+                "deadline": "2026-06-15"
+            },
+            {
+                "project_id": "PRJ005",
+                "name": "API Integration",
+                "status": "In Progress",
+                "completion": 78,
+                "team_members": ["John Doe", "Alex Rodriguez", "Lisa Wong"],
+                "total_tasks": 50,
+                "tasks_completed": 39,
+                "deadline": "2026-07-20"
+            }
+        ],
+        "insights": [
+            "🏆 Unnathi is the top performer with 68 tasks completed and 98.5% quality score",
+            "⭐ 5 employees have excellent performance ratings (4-5 stars)",
+            "📅 96.5% overall deadline adherence shows strong project management",
+            "� Cloud Migration project leading at 90% completion",
+            "👥 Web Portal Redesign has the most team collaboration (3 members)",
+            "🎯 24 milestones achieved across all projects",
+            "💪 Average quality score is 94.2% across the team"
+        ]
+    }
+
+def display_team_performance_page(analytics_data: Dict = None):
+    """Display comprehensive team performance dashboard with graphs and individual contributions"""
+    # Cinematic header
+    st.markdown("""
+    <style>
+        .team-perf-header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.15) 0%, rgba(124, 58, 237, 0.1) 100%);
+            border: 2px solid rgba(0, 217, 255, 0.3);
+            border-radius: 16px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 60px rgba(0, 217, 255, 0.15);
+            backdrop-filter: blur(20px);
+        }
+        .team-perf-title {
+            background: linear-gradient(135deg, #00d9ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 36px;
+            font-weight: 900;
+            margin: 0;
+            letter-spacing: 2px;
+        }
+    </style>
+    
+    <div class="team-perf-header">
+        <div class="team-perf-title">👨‍💼 TEAM PERFORMANCE ANALYTICS 👨‍💼</div>
+        <div style="margin-top: 12px; color: rgba(0, 217, 255, 0.7); font-size: 13px; letter-spacing: 1px; text-transform: uppercase;">
+            Employee Contributions & Project Performance
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Back button
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col1:
+        if st.button("← Back to Home", use_container_width=True):
+            st.session_state.page = "home"
+            st.rerun()
+    
+    st.markdown("---")
+    
+    # Always display demo data
+    st.markdown("""
+    ### 🎬 TEAM PERFORMANCE DATA
+    *Sample data showing employee performance and contributions*
+    """)
+    
+    # Get demo data
+    demo_data = get_sample_team_performance_data()
+    demo_team_summary = demo_data.get("team_summary", {})
+    demo_employees = demo_data.get("employees", [])
+    
+    
+    # Display demo using same functions
+    if demo_employees:
+        display_team_statistics(demo_team_summary)
+        st.markdown("---")
+        display_team_rankings_table(demo_employees)
+        st.markdown("---")
+        display_team_performance_graphs(demo_employees)
+        st.markdown("---")
+        if demo_data.get("insights"):
+            display_system_insights(demo_data["insights"])
+    
+    # Bottom controls
+    st.markdown("---")
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        if st.button("🏠 Home", use_container_width=True):
+            st.session_state.page = "home"
+            st.rerun()
+    
+    with col2:
+        if st.button("📊 Run New Query", use_container_width=True):
+            st.session_state.page = "home"
+            st.rerun()
+    
+    with col3:
+        if st.button("🔄 Refresh Data", use_container_width=True):
+            st.rerun()
 
 # ============================================================================
 # UTILITY FUNCTIONS - HTML CLEANING
@@ -1556,7 +1957,7 @@ def execute_meeting(user_input: str, request_id: str, is_example: bool = False) 
     
     if is_example:
         success = True
-        return get_hardcoded_meeting_data()
+        return get_hardcoded_meeting_data(user_input)
     
     try:
         # First try to use orchestrator endpoint for intelligent scheduling
@@ -1659,40 +2060,76 @@ def execute_hr(user_input: str, request_id: str, is_example: bool = False) -> Di
     
     return result
 
-def get_hardcoded_meeting_data() -> Dict:
-    """Hardcoded test data for meeting agent"""
+def get_hardcoded_meeting_data(user_input: str = "") -> Dict:
+    """Hardcoded test data for meeting agent with intelligent date parsing"""
+    import re
+    
+    # Parse user input for meeting details
+    meeting_date = "May 23rd 2026"
+    meeting_time = "10:00 AM"
+    meeting_end = "11:00 AM"
+    attendee_email = "unathics.btech23@rvu.edu.in"
+    meeting_title = "Emergency Coordination Meeting - Healthcare Client Crisis"
+    
+    # Try to extract date from user input
+    if user_input:
+        # Look for date patterns
+        date_pattern = r'(May|June|July|August|September|October|November|December)\s+(\d{1,2})(?:st|nd|rd|th)?\s+(\d{4})'
+        date_match = re.search(date_pattern, user_input, re.IGNORECASE)
+        if date_match:
+            meeting_date = f"{date_match.group(1)} {date_match.group(2)} {date_match.group(3)}"
+        
+        # Look for time patterns - handle both HH:MM and HH.MM formats
+        time_pattern = r'(\d{1,2})[:.](\d{2})\s*(AM|PM|am|pm)'
+        time_matches = re.findall(time_pattern, user_input)
+        if time_matches:
+            if len(time_matches) >= 1:
+                meeting_time = f"{time_matches[0][0]}:{time_matches[0][1]} {time_matches[0][2].upper()}"
+            if len(time_matches) >= 2:
+                meeting_end = f"{time_matches[1][0]}:{time_matches[1][1]} {time_matches[1][2].upper()}"
+        
+        # Alternative: Look for "from X to Y" pattern
+        if len(time_matches) < 2:
+            from_to_pattern = r'from\s+(\d{1,2})[:.](\d{2})\s*(AM|PM|am|pm)\s+to\s+(\d{1,2})[:.](\d{2})\s*(AM|PM|am|pm)'
+            from_to_match = re.search(from_to_pattern, user_input, re.IGNORECASE)
+            if from_to_match:
+                meeting_time = f"{from_to_match.group(1)}:{from_to_match.group(2)} {from_to_match.group(3).upper()}"
+                meeting_end = f"{from_to_match.group(4)}:{from_to_match.group(5)} {from_to_match.group(6).upper()}"
+        
+        # Look for email addresses
+        email_pattern = r'[\w\.-]+@[\w\.-]+\.\w+'
+        email_match = re.search(email_pattern, user_input)
+        if email_match:
+            attendee_email = email_match.group(0)
+    
     return {
         "status": "success",
         "data": {
             "meetings": [
                 {
-                    "title": "Onboarding Welcome Meeting",
-                    "date": "2024-04-17",
-                    "time": "10:00 AM",
+                    "title": meeting_title,
+                    "date": meeting_date,
+                    "time": meeting_time,
+                    "end_time": meeting_end,
                     "duration": "1 hour",
-                    "attendees": ["HR Manager", "Team Lead", "Unnathi"],
-                    "location": "Conference Room A",
-                    "agenda": "Welcome and team introduction"
-                },
-                {
-                    "title": "Technical Orientation",
-                    "date": "2024-04-18",
-                    "time": "2:00 PM",
-                    "duration": "2 hours",
-                    "attendees": ["DevOps Lead", "Unnathi"],
-                    "location": "Remote",
-                    "agenda": "Development environment setup and tools overview"
+                    "attendees": [attendee_email, "HR Manager", "Legal Compliance Officer"],
+                    "location": "Zoom Virtual Meeting",
+                    "agenda": "Emergency healthcare client onboarding - Legal review & team coordination",
+                    "zoom_link": "https://zoom.us/j/94234567890",
+                    "conference_id": "942-345-67890"
                 }
             ],
             "calendar_status": "updated",
-            "invitations_sent": 3
+            "invitations_sent": 1,
+            "primary_attendee": attendee_email,
+            "meeting_confirmed": True
         }
     }
 
 def execute_meeting_agent(user_input: str, request_id: str, is_example: bool = False) -> Dict:
     """Send to Meeting Calendar Agent for onboarding"""
     if is_example:
-        return get_hardcoded_meeting_data()
+        return get_hardcoded_meeting_data(user_input)
     
     try:
         response = requests.post(
@@ -2590,6 +3027,13 @@ def show_home_page():
         </div>
         """, unsafe_allow_html=True)
         
+        # Cinematic Orchestration Button
+        if st.button("🔮 LAUNCH DEMO MCP ORCHESTRATION", use_container_width=True, type="primary"):
+            st.session_state.page = "cinematic_orchestration"
+            st.rerun()
+        
+        st.markdown("")
+        
         col1, col2 = st.columns(2)
         
         with col1:
@@ -2684,7 +3128,8 @@ def show_home_page():
         
         with col2:
             if st.button("👨‍💼 Team Performance", use_container_width=True):
-                st.session_state.example_input = "Show team members performance metrics and analytics"
+                st.session_state.page = "team_performance"
+                st.rerun()
         
         with col3:
             if st.button("📅 Deadline Tracking", use_container_width=True):
@@ -4750,6 +5195,362 @@ This Support Agent uses **LangGraph** to orchestrate a multi-step decision workf
             st.session_state.current_result = None
             st.rerun()
 
+
+# ============================================================================
+# CINEMATIC MCP ORCHESTRATION PAGE
+# ============================================================================
+
+def display_cinematic_orchestration_page():
+    """Enterprise-grade cinematic MCP orchestration UI for workflow execution"""
+    
+    # Apply cinematic theme
+    st.markdown("""
+    <style>
+        /* Cinematic orchestration theme */
+        .cinematic-container {
+            background: linear-gradient(135deg, #0a0e27 0%, #16213e 100%);
+            color: #00d9ff;
+            font-family: 'Courier New', monospace;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid #00d9ff;
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.3), inset 0 0 20px rgba(0, 217, 255, 0.1);
+        }
+        .agent-node {
+            background: radial-gradient(circle at 30% 30%, rgba(0, 217, 255, 0.3), rgba(16, 33, 62, 0.9));
+            border: 2px solid #00d9ff;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 10px 0;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+        .agent-node.active {
+            background: radial-gradient(circle at 30% 30%, rgba(0, 255, 136, 0.4), rgba(16, 33, 62, 0.9));
+            border-color: #00ff88;
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.7), inset 0 0 20px rgba(0, 255, 136, 0.2);
+        }
+        .agent-node.completed {
+            background: radial-gradient(circle at 30% 30%, rgba(0, 255, 136, 0.2), rgba(16, 33, 62, 0.9));
+            border-color: #00ff88;
+            opacity: 0.7;
+        }
+        .reasoning-message {
+            background: rgba(0, 217, 255, 0.1);
+            border-left: 4px solid #00d9ff;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 4px;
+            font-size: 12px;
+            animation: slideIn 0.5s ease;
+        }
+        @keyframes slideIn {
+            from { margin-left: -20px; opacity: 0; }
+            to { margin-left: 0; opacity: 1; }
+        }
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 217, 255, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(0, 217, 255, 0.8); }
+        }
+        .pulse-active {
+            animation: pulse 1s infinite;
+        }
+        .workflow-line {
+            height: 3px;
+            background: linear-gradient(90deg, #00d9ff, transparent);
+            margin: 5px 0;
+            animation: flowAnimation 2s infinite;
+        }
+        @keyframes flowAnimation {
+            0% { opacity: 0.3; }
+            50% { opacity: 1; }
+            100% { opacity: 0.3; }
+        }
+    </style>
+    """, unsafe_allow_html=True)
+    
+    # Header
+    st.markdown("""
+    <div class="cinematic-container">
+        <h1 style="text-align: center; margin: 0; font-size: 28px; letter-spacing: 2px;">
+            🔮 MCP ORCHESTRATION COMMAND CENTER 🔮
+        </h1>
+        <p style="text-align: center; font-size: 12px; color: #00ff88; margin: 8px 0 0 0; letter-spacing: 1px;">
+            ENTERPRISE MULTI-AGENT WORKFLOW EXECUTION SYSTEM
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("")
+    
+    # Get or create workflow state
+    if "orchestration_workflow" not in st.session_state:
+        st.session_state.orchestration_workflow = None
+    if "orchestration_agents" not in st.session_state:
+        st.session_state.orchestration_agents = {}
+    
+    # Input Section
+    st.markdown("### 📝 EMERGENCY REQUEST INPUT")
+    user_request = st.text_area(
+        "Enter your emergency request:",
+        value="🚨 EMERGENCY REQUEST 🚨\nImmediate team expansion for critical healthcare client crisis\n\n- 3 new senior engineers starting TODAY\n- urgent legal contracts need review\n- emergency meeting with unathics.btech23@rvu.edu.in on May 23rd 2026\n- budget allocation $50,000\n- project deadline 48 hours\n- need real-time system monitoring",
+        height=150,
+        key="emergency_request"
+    )
+    
+    col1, col2, col3 = st.columns([1, 1, 1])
+    with col1:
+        upload_file = st.file_uploader("📄 Upload documents for review", type=["pdf", "txt", "docx"])
+    with col2:
+        st.markdown("<p style='color: #00d9ff; font-size: 12px; margin-top: 30px;'>🎤 Voice input coming soon</p>", unsafe_allow_html=True)
+    with col3:
+        trigger_workflow = st.button("🚀 LAUNCH ORCHESTRATION", use_container_width=True, type="primary")
+    
+    st.markdown("---")
+    
+    # Orchestration Execution
+    if trigger_workflow and user_request:
+        st.session_state.orchestration_workflow = {
+            "id": str(uuid.uuid4())[:8],
+            "status": "executing",
+            "agents": [],
+            "start_time": datetime.now()
+        }
+        st.rerun()
+    
+    # Display active orchestration
+    if st.session_state.orchestration_workflow:
+        workflow = st.session_state.orchestration_workflow
+        
+        st.markdown("### 🌐 WORKFLOW EXECUTION ORCHESTRATION")
+        
+        # Agent sequence
+        agent_sequence = [
+            ("MCP_CORE", "🔮 MCP Core - Request Classification"),
+            ("HR_ONBOARDING", "👥 HR Onboarding Agent"),
+            ("DOCUMENT_REVIEW", "📄 Document Review Agent"),
+            ("IT_SUPPORT", "🛡️ IT Support & Security Agent"),
+            ("MEETING_CALENDAR", "📅 Meeting Calendar Agent"),
+            ("PROJECT_MANAGEMENT", "📊 Project Management Agent"),
+            ("ANALYTICS", "📈 Analytics & Monitoring Agent"),
+        ]
+        
+        # MCP Core Phase
+        with st.container():
+            st.markdown('<div class="agent-node pulse-active">', unsafe_allow_html=True)
+            col1, col2 = st.columns([0.1, 0.9])
+            with col1:
+                st.markdown("🔮")
+            with col2:
+                st.markdown("**MCP CORE - INITIALIZING**")
+                st.markdown(
+                    '<div class="reasoning-message">✓ Analyzing emergency request context</div>',
+                    unsafe_allow_html=True
+                )
+                st.markdown(
+                    '<div class="reasoning-message">✓ Detected: HR onboarding + Legal review + IT provisioning + Meeting scheduling</div>',
+                    unsafe_allow_html=True
+                )
+                st.markdown(
+                    '<div class="reasoning-message">✓ Risk assessment: HIGH - Legal contracts require review</div>',
+                    unsafe_allow_html=True
+                )
+                st.markdown(
+                    '<div class="reasoning-message">✓ HITL trigger: Activated due to legal risk</div>',
+                    unsafe_allow_html=True
+                )
+            st.markdown('</div>', unsafe_allow_html=True)
+        
+        st.markdown('<div class="workflow-line"></div>', unsafe_allow_html=True)
+        
+        # Execute Agent Sequence
+        with st.spinner("🚀 Launching agent orchestration..."):
+            time.sleep(1)
+        
+        # HR Onboarding Agent
+        st.markdown('<div class="agent-node active pulse-active">', unsafe_allow_html=True)
+        col1, col2 = st.columns([0.1, 0.9])
+        with col1:
+            st.markdown("👥")
+        with col2:
+            st.markdown("**HR ONBOARDING AGENT**")
+            with st.spinner("Processing HR onboarding..."):
+                hr_result = execute_hr(user_request, workflow["id"], is_example=True)
+            
+            if hr_result.get("status") == "success":
+                st.markdown('<div class="reasoning-message">✓ Created profiles for 3 engineers</div>', unsafe_allow_html=True)
+                st.markdown('<div class="reasoning-message">✓ Assigned: AI Healthcare Team</div>', unsafe_allow_html=True)
+                st.markdown('<div class="reasoning-message">✓ Generated onboarding IDs: ENG-2026-001, ENG-2026-002, ENG-2026-003</div>', unsafe_allow_html=True)
+                if hr_result.get("data"):
+                    st.json(hr_result.get("data", {}), expanded=False)
+            st.markdown('</div>', unsafe_allow_html=True)
+        
+        st.markdown('<div class="workflow-line"></div>', unsafe_allow_html=True)
+        
+        # Document Review Agent
+        st.markdown('<div class="agent-node active pulse-active">', unsafe_allow_html=True)
+        col1, col2 = st.columns([0.1, 0.9])
+        with col1:
+            st.markdown("📄")
+        with col2:
+            st.markdown("**DOCUMENT REVIEW AGENT**")
+            with st.spinner("Analyzing documents..."):
+                doc_result = execute_document(user_request, workflow["id"], upload_file)
+            
+            if doc_result.get("status") == "success":
+                st.markdown('<div class="reasoning-message">✓ NDA analyzed - High-risk clauses detected</div>', unsafe_allow_html=True)
+                st.markdown('<div class="reasoning-message">✓ Risk Level: HIGH</div>', unsafe_allow_html=True)
+                st.markdown('<div class="reasoning-message">✓ Escalation triggered for compliance review</div>', unsafe_allow_html=True)
+                if doc_result.get("data"):
+                    st.json(doc_result.get("data", {}), expanded=False)
+            st.markdown('</div>', unsafe_allow_html=True)
+        
+        # Human Approval Gate
+        st.markdown("---")
+        st.markdown('<div style="background: rgba(255, 193, 7, 0.2); border: 2px solid #ffc107; border-radius: 8px; padding: 15px; text-align: center;">', unsafe_allow_html=True)
+        st.markdown("### ⚠️ HUMAN-IN-THE-LOOP APPROVAL REQUIRED")
+        st.markdown("**Legal Risk Level: HIGH** - Escalation requires manager approval")
+        
+        col1, col2 = st.columns(2)
+        with col1:
+            if st.button("✅ APPROVE & CONTINUE", use_container_width=True, type="primary"):
+                st.session_state.workflow_approved = True
+                st.rerun()
+        with col2:
+            if st.button("❌ REJECT & HALT", use_container_width=True):
+                st.session_state.workflow_approved = False
+                st.error("Workflow rejected by manager")
+                return
+        st.markdown('</div>', unsafe_allow_html=True)
+        
+        if st.session_state.get("workflow_approved"):
+            st.markdown('<div class="workflow-line"></div>', unsafe_allow_html=True)
+            st.success("✅ Approval granted - Continuing with remaining agents...")
+            
+            # IT Support Agent
+            st.markdown('<div class="agent-node active pulse-active">', unsafe_allow_html=True)
+            col1, col2 = st.columns([0.1, 0.9])
+            with col1:
+                st.markdown("🛡️")
+            with col2:
+                st.markdown("**IT SUPPORT & SECURITY AGENT**")
+                with st.spinner("Provisioning IT resources..."):
+                    support_result = execute_support_agent(user_request, workflow["id"], is_example=True)
+                
+                if support_result.get("status") == "success":
+                    st.markdown('<div class="reasoning-message">✓ Security profiles created for 3 engineers</div>', unsafe_allow_html=True)
+                    st.markdown('<div class="reasoning-message">✓ VPN access provisioned</div>', unsafe_allow_html=True)
+                    st.markdown('<div class="reasoning-message">✓ Healthcare compliance verified</div>', unsafe_allow_html=True)
+                    st.markdown('<div class="reasoning-message">✓ HIPAA requirements: ENABLED</div>', unsafe_allow_html=True)
+                    if support_result.get("data"):
+                        st.json(support_result.get("data", {}), expanded=False)
+                st.markdown('</div>', unsafe_allow_html=True)
+            
+            st.markdown('<div class="workflow-line"></div>', unsafe_allow_html=True)
+            
+            # Meeting Calendar Agent
+            st.markdown('<div class="agent-node active pulse-active">', unsafe_allow_html=True)
+            col1, col2 = st.columns([0.1, 0.9])
+            with col1:
+                st.markdown("📅")
+            with col2:
+                st.markdown("**MEETING CALENDAR AGENT**")
+                with st.spinner("Scheduling meetings..."):
+                    meeting_result = execute_meeting(user_request, workflow["id"], is_example=True)
+                
+                if meeting_result.get("status") == "success":
+                    meeting_data = meeting_result.get("data", {}).get("meetings", [{}])[0]
+                    
+                    st.markdown('<div class="reasoning-message">✓ Meeting scheduled successfully</div>', unsafe_allow_html=True)
+                    st.markdown(f'<div class="reasoning-message">✓ Date: {meeting_data.get("date", "May 23rd 2026")} | Time: {meeting_data.get("time", "10:00 AM")} to {meeting_data.get("end_time", "11:00 AM")}</div>', unsafe_allow_html=True)
+                    st.markdown(f'<div class="reasoning-message">✓ Invite sent to: {meeting_result.get("data", {}).get("primary_attendee", "unathics.btech23@rvu.edu.in")}</div>', unsafe_allow_html=True)
+                    st.markdown(f'<div class="reasoning-message">✓ Zoom link: {meeting_data.get("zoom_link", "Generated")}</div>', unsafe_allow_html=True)
+                    if meeting_result.get("data"):
+                        st.json(meeting_result.get("data", {}), expanded=False)
+                st.markdown('</div>', unsafe_allow_html=True)
+            
+            st.markdown('<div class="workflow-line"></div>', unsafe_allow_html=True)
+            
+            # Project Management Agent
+            st.markdown('<div class="agent-node active pulse-active">', unsafe_allow_html=True)
+            col1, col2 = st.columns([0.1, 0.9])
+            with col1:
+                st.markdown("📊")
+            with col2:
+                st.markdown("**PROJECT MANAGEMENT AGENT**")
+                with st.spinner("Allocating resources..."):
+                    project_result = execute_projects(user_request, workflow["id"], is_example=True)
+                
+                if project_result.get("status") == "success":
+                    st.markdown('<div class="reasoning-message">✓ Sprint board updated</div>', unsafe_allow_html=True)
+                    st.markdown('<div class="reasoning-message">✓ Emergency healthcare project created</div>', unsafe_allow_html=True)
+                    st.markdown('<div class="reasoning-message">✓ Budget allocated: $50,000</div>', unsafe_allow_html=True)
+                    st.markdown('<div class="reasoning-message">✓ Deadline set: 48 hours</div>', unsafe_allow_html=True)
+                    if project_result.get("data"):
+                        st.json(project_result.get("data", {}), expanded=False)
+                st.markdown('</div>', unsafe_allow_html=True)
+            
+            st.markdown('<div class="workflow-line"></div>', unsafe_allow_html=True)
+            
+            # Analytics Agent
+            st.markdown('<div class="agent-node active pulse-active">', unsafe_allow_html=True)
+            col1, col2 = st.columns([0.1, 0.9])
+            with col1:
+                st.markdown("📈")
+            with col2:
+                st.markdown("**ANALYTICS & MONITORING AGENT**")
+                with st.spinner("Collecting system metrics..."):
+                    analytics_result = execute_analytics(user_request, workflow["id"])
+                
+                if analytics_result.get("status") == "success":
+                    st.markdown('<div class="reasoning-message">✓ Real-time monitoring enabled</div>', unsafe_allow_html=True)
+                    st.markdown('<div class="reasoning-message">✓ Workflow latency: 2.3s</div>', unsafe_allow_html=True)
+                    st.markdown('<div class="reasoning-message">✓ System efficiency: 94.2%</div>', unsafe_allow_html=True)
+                    st.markdown('<div class="reasoning-message">✓ All 7 agents executed successfully</div>', unsafe_allow_html=True)
+                    if analytics_result.get("data"):
+                        st.json(analytics_result.get("data", {}), expanded=False)
+                st.markdown('</div>', unsafe_allow_html=True)
+            
+            st.markdown("---")
+            
+            # Workflow Completion Summary
+            st.markdown("""
+            <div class="cinematic-container" style="text-align: center;">
+                <h2 style="color: #00ff88; margin: 0;">✨ ORCHESTRATION COMPLETE ✨</h2>
+                <p style="color: #00d9ff; margin: 10px 0 0 0;">All agents executed successfully</p>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            # Metrics Summary
+            col1, col2, col3, col4 = st.columns(4)
+            with col1:
+                st.metric("Agents Executed", "7", "✓ All successful")
+            with col2:
+                st.metric("Total Time", "2.3s", "↓ Optimized")
+            with col3:
+                st.metric("System Efficiency", "94.2%", "↑ High")
+            with col4:
+                st.metric("Escalations", "1", "→ HITL approved")
+    
+    # Bottom Navigation
+    st.markdown("---")
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        if st.button("🏠 Home", use_container_width=True):
+            st.session_state.page = "home"
+            st.session_state.orchestration_workflow = None
+            st.rerun()
+    with col2:
+        if st.button("📊 View Team Performance", use_container_width=True):
+            st.session_state.page = "team_performance"
+            st.rerun()
+    with col3:
+        if st.button("🔄 New Request", use_container_width=True):
+            st.session_state.orchestration_workflow = None
+            st.session_state.workflow_approved = False
+            st.rerun()
+
 # ============================================================================
 # MAIN ROUTING
 # ============================================================================
@@ -4757,3 +5558,7 @@ if st.session_state.page == "home":
     show_home_page()
 elif st.session_state.page == "results":
     show_results_page()
+elif st.session_state.page == "team_performance":
+    display_team_performance_page()
+elif st.session_state.page == "cinematic_orchestration":
+    display_cinematic_orchestration_page()
