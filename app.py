@@ -43,6 +43,54 @@ except ImportError:
     metrics_collector = None
 
 # ============================================================================
+# APPLY GLOBAL CSS STYLING
+# ============================================================================
+
+st.markdown("""
+<style>
+/* Input fields - black text for light backgrounds */
+textarea, input[type="text"], input[type="password"] {
+    color: #000000 !important;
+    background-color: #ffffff !important;
+}
+
+.stTextArea textarea {
+    color: #000000 !important;
+    background-color: #ffffff !important;
+}
+
+/* Metric cards - light text for dark backgrounds */
+[data-testid="stMetric"] {
+    background-color: transparent !important;
+}
+
+[data-testid="stMetricValue"] {
+    color: #00d9ff !important;
+    font-weight: bold;
+}
+
+[data-testid="stMetricLabel"] {
+    color: #ffffff !important;
+}
+
+/* File uploader label */
+.stFileUploader label {
+    color: #000000 !important;
+}
+
+.stFileUploader {
+    color: #000000 !important;
+}
+
+/* Upload button text */
+.stFileUploader button {
+    color: #000000 !important;
+}
+
+</style>
+""", unsafe_allow_html=True)
+
+# ============================================================================
 # MCP ORCHESTRATION - ENUMS & DATA MODELS
 # ============================================================================
 
@@ -495,7 +543,7 @@ def apply_enterprise_styling():
         .stTextArea > div > div > textarea {
             background: rgba(0, 212, 255, 0.05) !important;
             border: 1px solid var(--border-color) !important;
-            color: var(--text-primary) !important;
+            color: #000000 !important;
             border-radius: 8px !important;
             font-family: 'Courier New', monospace !important;
         }
@@ -939,7 +987,7 @@ if CINEMATIC_UI_AVAILABLE:
 else:
     st.set_page_config(
         page_title="MCP Enterprise Platform",
-        page_icon="🚀",
+        page_icon="",
         layout="wide",
         initial_sidebar_state="collapsed"
     )
@@ -1332,7 +1380,7 @@ def execute_unified_mcp_workflow(user_input: str) -> str:
         with col2:
             st.markdown("### Project Management Agent")
         
-        with st.spinner("🎯 Setting up project..."):
+        with st.spinner(" Setting up project..."):
             import time
             time.sleep(1.5)
         
@@ -2330,10 +2378,74 @@ def show_home_page():
             0%, 100% { text-shadow: 0 0 20px rgba(0, 217, 255, 0.5); }
             50% { text-shadow: 0 0 40px rgba(0, 217, 255, 0.8); }
         }
+        
+        /* Input field styling - dark text for light backgrounds */
+        textarea, 
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="number"],
+        input[type="search"] {
+            color: #000000 !important;
+            background-color: #ffffff !important;
+            caret-color: #000000 !important;
+        }
+        
+        textarea::placeholder {
+            color: #999999 !important;
+        }
+        
+        input::placeholder {
+            color: #999999 !important;
+        }
+        
+        .stTextArea textarea {
+            color: #000000 !important;
+            background-color: #ffffff !important;
+        }
+        
+        .stTextArea textarea::placeholder {
+            color: #999999 !important;
+        }
+        
+        .stFileUploader {
+            color: #000000 !important;
+        }
+        
+        .stFileUploader label {
+            color: #000000 !important;
+        }
+        
+        /* Streamlit input override */
+        div[data-testid="stTextArea"] textarea {
+            color: #000000 !important;
+            background-color: #ffffff !important;
+        }
+        
+        div[data-testid="stTextInput"] input {
+            color: #000000 !important;
+            background-color: #ffffff !important;
+        }
+        
+        /* Additional targeting for all text inputs */
+        textarea, input {
+            color: #000000 !important;
+        }
+        
+        /* Style the text being typed */
+        textarea::selection {
+            background-color: #0066ff !important;
+            color: #000000 !important;
+        }
+        
+        input::selection {
+            background-color: #0066ff !important;
+            color: #000000 !important;
+        }
     </style>
     
     <div class="cinematic-header">
-        <div class="main-title">🌌 MCP ENTERPRISE AI OPERATING SYSTEM</div>
+        <div class="main-title">MCP ENTERPRISE AI OPERATING SYSTEM</div>
         <div class="main-subtitle">↤ Autonomous Multi-Agent Orchestration Platform ↦</div>
         <div style="margin-top: 20px; color: rgba(0, 217, 255, 0.7); font-size: 14px; letter-spacing: 1px; text-transform: uppercase;">
             Intelligent · Transparent · Autonomous · Enterprise-Grade
@@ -2353,7 +2465,7 @@ def show_home_page():
         box-shadow: 0 0 40px rgba(0, 217, 255, 0.1);
     ">
         <div style="color: #00d9ff; font-size: 18px; font-weight: 700; letter-spacing: 1px; margin-bottom: 20px; text-transform: uppercase;">
-            🎯 Submit Your Request
+             Submit Your Request
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -2379,7 +2491,7 @@ def show_home_page():
     # Cinematic action buttons
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        if st.button("� INITIATE MCP WORKFLOW", use_container_width=True):
+        if st.button(" INITIATE MCP WORKFLOW", use_container_width=True):
             if user_input.strip():
                 st.session_state.current_result = {
                     "input": user_input,
@@ -2452,7 +2564,7 @@ def show_home_page():
     """, unsafe_allow_html=True)
     
     # Create tabs for workflow types
-    tab1, tab2, tab3 = st.tabs(["🌀 Unified MCP", "🎯 Individual Agents", "🔗 Multi-Agent"])
+    tab1, tab2, tab3 = st.tabs([" Unified MCP", " Individual Agents", " Multi-Agent"])
     
     with tab1:
         st.markdown("""
@@ -2563,6 +2675,50 @@ def show_home_page():
         with col3:
             if st.button("⏱️ Timeline Setup", use_container_width=True):
                 st.session_state.example_input = "Set up project timeline and milestones"
+        
+        col1, col2, col3 = st.columns(3)
+        
+        with col1:
+            if st.button("🎯 Resource Allocation", use_container_width=True):
+                st.session_state.example_input = "Allocate budget and resources to the project"
+        
+        with col2:
+            if st.button("👨‍💼 Team Performance", use_container_width=True):
+                st.session_state.example_input = "Show team members performance metrics and analytics"
+        
+        with col3:
+            if st.button("📅 Deadline Tracking", use_container_width=True):
+                st.session_state.example_input = "Track project deadlines and upcoming milestones"
+        
+        st.markdown("#### 📧 Email Agent")
+        col1, col2, col3 = st.columns(3)
+        
+        with col1:
+            if st.button("✉️ Send Email", use_container_width=True):
+                st.session_state.example_input = "Send welcome email to new employee"
+        
+        with col2:
+            if st.button("📬 Email Campaign", use_container_width=True):
+                st.session_state.example_input = "Send bulk notification emails to team"
+        
+        with col3:
+            if st.button("💌 Email Template", use_container_width=True):
+                st.session_state.example_input = "Create and send email using template"
+        
+        st.markdown("#### 📊 Analytics Agent")
+        col1, col2, col3 = st.columns(3)
+        
+        with col1:
+            if st.button("📈 System Analytics", use_container_width=True):
+                st.session_state.example_input = "Get system performance analytics and metrics"
+        
+        with col2:
+            if st.button("🔍 Agent Metrics", use_container_width=True):
+                st.session_state.example_input = "Show analytics for all agents performance"
+        
+        with col3:
+            if st.button("📉 Trend Analysis", use_container_width=True):
+                st.session_state.example_input = "Analyze trends and generate insights report"
     
     with tab3:
         st.markdown("#### Smart Combinations")
@@ -3039,10 +3195,13 @@ def show_results_page():
             hr_response = response.get("hr_response", {})
             if hr_response and isinstance(hr_response, dict) and hr_response.get("status") == "success":
                 hr_data = hr_response.get("data", {})
-                if hr_data is None:
+                if hr_data is None or not isinstance(hr_data, dict):
                     hr_data = {}
-                employee_id = (hr_data or {}).get("employee_data", {}).get("id", "NEW-EMP")
-                employee_name = (hr_data or {}).get("employee_data", {}).get("name", "Employee")
+                employee_data = hr_data.get("employee_data", {})
+                if not isinstance(employee_data, dict):
+                    employee_data = {}
+                employee_id = employee_data.get("id", "NEW-EMP")
+                employee_name = employee_data.get("name", "Employee")
                 popup_html = f"""
                 <div class="response-popup success">
                     <div class="popup-header">
@@ -3080,10 +3239,10 @@ def show_results_page():
             support_response = response.get("support_response", {})
             if support_response and isinstance(support_response, dict) and support_response.get("status") == "success":
                 support_data = support_response.get("data", {})
-                if support_data is None:
+                if support_data is None or not isinstance(support_data, dict):
                     support_data = {}
-                ticket_id = (support_data or {}).get("ticket_id", "TKT-000")
-                decision = (support_data or {}).get("decision", "PROCESSING")
+                ticket_id = support_data.get("ticket_id", "TKT-000")
+                decision = support_data.get("decision", "PROCESSING")
                 popup_html = f"""
                 <div class="response-popup success">
                     <div class="popup-header">
@@ -3118,10 +3277,12 @@ def show_results_page():
             
             # Meeting Response Popup
             meeting_response = response.get("meeting_response", {})
-            if meeting_response.get("status") == "success":
+            if meeting_response and isinstance(meeting_response, dict) and meeting_response.get("status") == "success":
                 meeting_data = meeting_response.get("data", {})
+                if meeting_data is None or not isinstance(meeting_data, dict):
+                    meeting_data = {}
                 meetings = meeting_data.get("meetings", [])
-                if meetings:
+                if meetings and isinstance(meetings, list) and len(meetings) > 0:
                     meeting = meetings[0]
                     meeting_title = meeting.get("title", "Meeting")
                     meeting_time = meeting.get("time", "TBD")
@@ -3162,9 +3323,13 @@ def show_results_page():
             # Project Response - ENHANCED UI
             # Project Response - ENHANCED PREMIUM UI
             project_response = response.get("project_response", {})
-            if project_response.get("status") == "success":
+            if project_response and isinstance(project_response, dict) and project_response.get("status") == "success":
                 project_data = project_response.get("data", {})
+                if project_data is None or not isinstance(project_data, dict):
+                    project_data = {}
                 project_info = project_data.get("project_data", {})
+                if project_info is None or not isinstance(project_info, dict):
+                    project_info = {}
                 project_name = project_info.get("name", "Project")
                 project_id = project_info.get("id", "PROJ-000")
                 team_members = project_info.get("team_members", [])
@@ -3542,10 +3707,15 @@ This Support Agent uses **LangGraph** to orchestrate a multi-step decision workf
                     project_request_type = "assign"
                 elif "resource" in user_input_lower and "allocat" in user_input_lower:
                     project_request_type = "resource_allocation"
+                elif "performance" in user_input_lower and "team" in user_input_lower:
+                    project_request_type = "team_performance"
+                elif "deadline" in user_input_lower or "milestone" in user_input_lower:
+                    project_request_type = "deadline_tracking"
                 elif "status" in user_input_lower:
                     project_request_type = "status"
                 else:
                     project_request_type = "status"  # Default
+
                 
                 # DIFFERENT VISUALIZATIONS BASED ON PROJECT REQUEST TYPE
                 if project_request_type == "assign":
@@ -3674,6 +3844,145 @@ This Support Agent uses **LangGraph** to orchestrate a multi-step decision workf
                         st.metric("⏱️ Total Hours/Week", "150")
                     with col3:
                         st.metric("💸 Total Cost/Month", "$24,000")
+                
+                elif project_request_type == "team_performance":
+                    # ========== TEAM PERFORMANCE WORKFLOW ==========
+                    st.success("📊 Team Performance Analysis Complete!")
+                    
+                    st.markdown("### 👥 Team Member Contribution Analysis")
+                    
+                    # Create dummy team contribution data
+                    team_contribution = {
+                        "Team Member": ["Alice Johnson (Lead)", "Bob Smith", "Carol White", "David Brown", "Eve Davis"],
+                        "Tasks Completed": [12, 8, 6, 9, 5],
+                        "Hours Logged": [48, 35, 28, 42, 22],
+                        "Efficiency %": [95, 87, 81, 92, 78]
+                    }
+                    
+                    contrib_df = pd.DataFrame(team_contribution)
+                    
+                    col1, col2 = st.columns(2)
+                    
+                    with col1:
+                        # Tasks completed bar chart
+                        fig_tasks = px.bar(
+                            contrib_df,
+                            x="Team Member",
+                            y="Tasks Completed",
+                            color="Tasks Completed",
+                            color_continuous_scale="Viridis",
+                            labels={"Tasks Completed": "Tasks Done"},
+                            title="📋 Tasks Completed by Member",
+                            text="Tasks Completed"
+                        )
+                        fig_tasks.update_traces(textposition='auto')
+                        fig_tasks.update_layout(
+                            xaxis_tickangle=-45,
+                            height=350,
+                            showlegend=False,
+                            hovermode='x unified'
+                        )
+                        st.plotly_chart(fig_tasks, use_container_width=True)
+                    
+                    with col2:
+                        # Efficiency score scatter plot
+                        fig_efficiency = px.scatter(
+                            contrib_df,
+                            x="Hours Logged",
+                            y="Efficiency %",
+                            size="Tasks Completed",
+                            hover_name="Team Member",
+                            color="Efficiency %",
+                            color_continuous_scale="RdYlGn",
+                            title="⚡ Efficiency vs Hours Logged",
+                            size_max=50,
+                            range_y=[70, 100]
+                        )
+                        fig_efficiency.update_layout(height=350, hovermode='closest')
+                        st.plotly_chart(fig_efficiency, use_container_width=True)
+                    
+                    st.divider()
+                    st.markdown("### 📈 Performance Metrics Summary")
+                    col1, col2, col3, col4 = st.columns(4)
+                    with col1:
+                        st.metric("🏆 Top Performer", "Alice Johnson", "95% efficiency")
+                    with col2:
+                        st.metric("📊 Avg Efficiency", "86.6%", "+5% vs last week")
+                    with col3:
+                        st.metric("⏱️ Total Hours", "175 hrs", "On track")
+                    with col4:
+                        st.metric("✅ Tasks Done", "40 tasks", "+8 this week")
+                    
+                    st.divider()
+                    st.markdown("### 🎯 Performance Improvement Recommendations")
+                    recommendations_perf = [
+                        "David Brown shows high efficiency (92%) - consider for team lead role",
+                        "Eve Davis needs support - assign mentor or additional training",
+                        "Carol White progressing well - recommend for advanced projects",
+                        "Consider flexible hours for high performers to maintain morale"
+                    ]
+                    for rec in recommendations_perf:
+                        st.info(f"💡 {rec}")
+                
+                elif project_request_type == "deadline_tracking":
+                    # ========== DEADLINE TRACKING WORKFLOW ==========
+                    st.success("⏰ Deadline & Milestone Tracking")
+                    
+                    st.markdown("### ⏰ Upcoming Deadlines & Milestones")
+                    
+                    deadline_data = {
+                        "Milestone": ["Design Review", "Development Sprint 1", "Integration Testing", "UAT Release", "Production Go-Live"],
+                        "Deadline": ["Apr 20, 2026", "May 5, 2026", "May 15, 2026", "May 25, 2026", "Jun 5, 2026"],
+                        "Days Left": [4, 19, 29, 39, 50],
+                        "Status": ["🔴 Critical", "🟡 At Risk", "🟢 On Track", "🟢 On Track", "🟢 Healthy"]
+                    }
+                    
+                    deadline_df = pd.DataFrame(deadline_data)
+                    
+                    # Create timeline visualization
+                    fig_timeline = go.Figure()
+                    
+                    colors = {"🔴 Critical": "#e74c3c", "🟡 At Risk": "#f39c12", "🟢 On Track": "#2ecc71", "🟢 Healthy": "#27ae60"}
+                    
+                    for idx, row in deadline_df.iterrows():
+                        color = colors.get(row["Status"], "#95a5a6")
+                        fig_timeline.add_trace(go.Scatter(
+                            x=[row["Days Left"]],
+                            y=[row["Milestone"]],
+                            mode='markers+text',
+                            marker=dict(size=15, color=color),
+                            text=f'{row["Days Left"]}d',
+                            textposition="middle center",
+                            hovertemplate=f'<b>{row["Milestone"]}</b><br>Deadline: {row["Deadline"]}<br>Days Left: {row["Days Left"]}<extra></extra>'
+                        ))
+                    
+                    fig_timeline.update_layout(
+                        title="📅 Project Milestone Timeline",
+                        xaxis_title="Days Until Deadline",
+                        yaxis_title="Milestone",
+                        height=350,
+                        showlegend=False,
+                        hovermode='closest',
+                        xaxis=dict(range=[0, 55]),
+                        margin=dict(l=200, r=20, t=40, b=20)
+                    )
+                    st.plotly_chart(fig_timeline, use_container_width=True)
+                    
+                    # Display deadline summary table
+                    st.markdown("#### Deadline Summary")
+                    st.dataframe(
+                        deadline_df.style.format({
+                            "Days Left": "{} days"
+                        }).background_gradient(subset=["Days Left"], cmap="RdYlGn_r", vmin=0, vmax=50),
+                        use_container_width=True,
+                        hide_index=True
+                    )
+                    
+                    st.divider()
+                    st.markdown("### 🚨 Critical Items")
+                    critical = deadline_df[deadline_df["Status"].str.contains("Critical|At Risk")]
+                    for _, row in critical.iterrows():
+                        st.warning(f"⚠️ **{row['Milestone']}** - Due in {row['Days Left']} days ({row['Deadline']})")
                 
                 else:
                     # ========== PROJECT STATUS WORKFLOW (Default) ==========

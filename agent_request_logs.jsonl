@@ -2152,3 +2152,41 @@
 {"timestamp": "2026-05-21T14:25:39.191204", "agent": "Analytics Agent", "query": "Execute all 6 agents in sequence", "success": true, "response_time": 95.54, "error": null}
 {"timestamp": "2026-05-21T18:10:15.272576", "agent": "Email Agent", "query": "Show my email stats", "success": true, "response_time": 138.194, "error": null}
 {"timestamp": "2026-05-21T18:17:10.633055", "agent": "Email Agent", "query": "Show  email stats", "success": true, "response_time": 64.061, "error": null}
+{"timestamp": "2026-05-23T11:55:44.396456", "agent": "HR Onboarding Agent", "query": "Onboard new employee to the company", "success": true, "response_time": 10.363, "error": null}
+{"timestamp": "2026-05-23T11:55:50.792124", "agent": "Support Agent", "query": "Setup IT access for Onboard new employee to the company", "success": true, "response_time": 6391.246, "error": null}
+{"timestamp": "2026-05-23T11:55:51.025444", "agent": "Project Management Agent", "query": "Assign to project: Onboard new employee to the company", "success": true, "response_time": 9.124, "error": null}
+{"timestamp": "2026-05-23T11:56:15.115038", "agent": "HR Onboarding Agent", "query": "Onboard new employee to the company", "success": true, "response_time": 10.023, "error": null}
+{"timestamp": "2026-05-23T11:56:20.977351", "agent": "Support Agent", "query": "Setup IT access for Onboard new employee to the company", "success": true, "response_time": 5858.279, "error": null}
+{"timestamp": "2026-05-23T11:56:20.986488", "agent": "Project Management Agent", "query": "Assign to project: Onboard new employee to the company", "success": true, "response_time": 1.762, "error": null}
+{"timestamp": "2026-05-23T11:56:52.971798", "agent": "Project Management Agent", "query": "Assign team member to the AI project", "success": true, "response_time": 2.905, "error": null}
+{"timestamp": "2026-05-23T11:57:08.603492", "agent": "Project Management Agent", "query": "Create project team and assign roles", "success": true, "response_time": 2.261, "error": null}
+{"timestamp": "2026-05-23T11:57:14.474966", "agent": "Support Agent", "query": "Setup team access for Create project team and assign roles", "success": true, "response_time": 5863.25, "error": null}
+{"timestamp": "2026-05-23T11:57:14.481925", "agent": "HR Onboarding Agent", "query": "Assign team for Create project team and assign roles", "success": true, "response_time": 3.238, "error": null}
+{"timestamp": "2026-05-23T11:58:35.227305", "agent": "Project Management Agent", "query": "Set up project timeline and milestones", "success": true, "response_time": 3.946, "error": null}
+{"timestamp": "2026-05-23T11:59:07.280119", "agent": "Meeting Calendar Agent", "query": "Schedule project kickoff meeting and allocate resources", "success": true, "response_time": 5.116, "error": null}
+{"timestamp": "2026-05-23T11:59:25.615802", "agent": "Analytics Agent", "query": "Generate performance report for all agents", "success": true, "response_time": 9.336, "error": null}
+{"timestamp": "2026-05-23T11:59:44.135883", "agent": "Support Agent", "query": "My VPN keeps disconnecting", "success": true, "response_time": 5963.898, "error": null}
+{"timestamp": "2026-05-23T12:00:06.827079", "agent": "HR Onboarding Agent", "query": "Onboard new employee to the company", "success": true, "response_time": 5.712, "error": null}
+{"timestamp": "2026-05-23T12:00:12.742452", "agent": "Support Agent", "query": "Setup IT access for Onboard new employee to the company", "success": true, "response_time": 5911.261, "error": null}
+{"timestamp": "2026-05-23T12:00:12.757837", "agent": "Project Management Agent", "query": "Assign to project: Onboard new employee to the company", "success": true, "response_time": 3.346, "error": null}
+{"timestamp": "2026-05-23T12:02:52.458835", "agent": "HR Onboarding Agent", "query": "Onboard new employee and set up all systems and access", "success": true, "response_time": 2.951, "error": null}
+{"timestamp": "2026-05-23T12:02:58.300662", "agent": "Support Agent", "query": "Setup IT access for Onboard new employee and set up all systems and access", "success": true, "response_time": 5837.329, "error": null}
+{"timestamp": "2026-05-23T12:02:58.308551", "agent": "Project Management Agent", "query": "Assign to project: Onboard new employee and set up all systems and access", "success": true, "response_time": 1.339, "error": null}
+{"timestamp": "2026-05-23T12:03:19.079837", "agent": "Analytics Agent", "query": "Get system performance analytics and metrics", "success": true, "response_time": 5.351, "error": null}
+{"timestamp": "2026-05-23T12:03:37.223912", "agent": "Analytics Agent", "query": "Analyze trends and generate insights report", "success": true, "response_time": 1.754, "error": null}
+{"timestamp": "2026-05-23T12:03:49.194139", "agent": "Project Management Agent", "query": "Set up project timeline and milestones", "success": true, "response_time": 2.689, "error": null}
+{"timestamp": "2026-05-23T12:03:58.375971", "agent": "Analytics Agent", "query": "Show analytics for all agents performance", "success": true, "response_time": 2.041, "error": null}
+{"timestamp": "2026-05-23T12:04:10.509264", "agent": "Project Management Agent", "query": "Create project team and assign roles", "success": true, "response_time": 1.667, "error": null}
+{"timestamp": "2026-05-23T12:04:16.429402", "agent": "Support Agent", "query": "Setup team access for Create project team and assign roles", "success": true, "response_time": 5912.194, "error": null}
+{"timestamp": "2026-05-23T12:04:16.435343", "agent": "HR Onboarding Agent", "query": "Assign team for Create project team and assign roles", "success": true, "response_time": 2.189, "error": null}
+{"timestamp": "2026-05-23T12:06:51.506535", "agent": "Project Management Agent", "query": "Set up project timeline and milestones", "success": true, "response_time": 1.637, "error": null}
+{"timestamp": "2026-05-23T12:07:20.697546", "agent": "Analytics Agent", "query": "Show team members performance metrics and analytics", "success": true, "response_time": 2.524, "error": null}
+{"timestamp": "2026-05-23T12:07:32.270747", "agent": "Project Management Agent", "query": "Allocate budget and resources to the project", "success": true, "response_time": 3.202, "error": null}
+{"timestamp": "2026-05-23T12:08:23.427001", "agent": "Document Review Agent", "query": "review this document", "success": true, "response_time": 709.126, "error": null}
+{"timestamp": "2026-05-23T12:20:23.318451", "agent": "Support Agent", "query": "my vpn is not working", "success": true, "response_time": 6170.083, "error": null}
+{"timestamp": "2026-05-23T12:26:33.314030", "agent": "Project Management Agent", "query": "Allocate budget and resources to the project", "success": true, "response_time": 9.877, "error": null}
+{"timestamp": "2026-05-23T12:26:55.610884", "agent": "Project Management Agent", "query": "Track project deadlines and upcoming milestones", "success": true, "response_time": 2.115, "error": null}
+{"timestamp": "2026-05-23T12:27:10.448797", "agent": "HR Onboarding Agent", "query": "Onboard new employee to the company", "success": true, "response_time": 7.752, "error": null}
+{"timestamp": "2026-05-23T12:27:16.361784", "agent": "Support Agent", "query": "Setup IT access for Onboard new employee to the company", "success": true, "response_time": 5908.749, "error": null}
+{"timestamp": "2026-05-23T12:27:16.373854", "agent": "Project Management Agent", "query": "Assign to project: Onboard new employee to the company", "success": true, "response_time": 1.57, "error": null}
+{"timestamp": "2026-05-23T12:27:48.763614", "agent": "Support Agent", "query": "my vpn is not working", "success": true, "response_time": 5980.434, "error": null}
