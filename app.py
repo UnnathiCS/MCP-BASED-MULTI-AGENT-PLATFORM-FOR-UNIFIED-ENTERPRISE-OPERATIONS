@@ -48,6 +48,62 @@ import os
 import sys
 import socket
 import atexit
+from urllib.parse import urlparse
+
+# ============================================================================
+# DEPLOYMENT / BACKEND DETECTION (used before auto-start)
+# ============================================================================
+
+def _api_host_is_local(url: str) -> bool:
+    host = (urlparse(url).hostname or "").lower()
+    return host in ("", "localhost", "127.0.0.1", "::1")
+
+
+def is_deployed_environment() -> bool:
+    """True on hosted deployment (Streamlit Cloud, Docker, PaaS); False for local dev."""
+    mode = os.environ.get("MCP_DEPLOYMENT_MODE", "").strip().lower()
+    if mode in ("1", "true", "yes", "production", "deployed"):
+        return True
+    if mode in ("0", "false", "no", "local", "development", "dev"):
+        return False
+
+    if os.environ.get("STREAMLIT_SHARING_MODE"):
+        return True
+
+    # Streamlit Community Cloud (no official env var; common VM signals)
+    if os.getenv("USER") == "appuser":
+        return True
+    if os.path.isfile("/app/.supervisord.conf") or os.path.isdir("/home/appuser/.streamlit"):
+        return True
+    if os.environ.get("STREAMLIT_SERVER_ALLOW_RUN_ON_SAVE") is not None:
+        return True
+
+    # Docker / docker-compose (APIs point at service hostnames, not loopback)
+    support_api = os.environ.get("SUPPORT_API", "http://127.0.0.1:8000")
+    if not _api_host_is_local(support_api):
+        return True
+    if os.path.isfile("/.dockerenv"):
+        return True
+
+    # Common PaaS hosts
+    if any(
+        os.environ.get(key)
+        for key in (
+            "RENDER",
+            "RENDER_SERVICE_ID",
+            "RAILWAY_ENVIRONMENT",
+            "RAILWAY_PROJECT_ID",
+            "FLY_APP_NAME",
+            "VERCEL",
+            "HEROKU_APP_NAME",
+            "DYNO",
+            "KUBERNETES_SERVICE_HOST",
+        )
+    ):
+        return True
+
+    return False
+
 
 # ============================================================================
 # AUTO-START BACKEND SERVICES
@@ -148,8 +204,8 @@ def cleanup_backends():
         except:
             pass
 
-# Initialize backends on app start (local dev only; skip on Streamlit Cloud)
-if not os.environ.get("STREAMLIT_SHARING_MODE") and "backends_started" not in st.session_state:
+# Initialize backends on app start (local dev only)
+if not is_deployed_environment() and "backends_started" not in st.session_state:
     start_backend_services()
     st.session_state.backends_started = True
     
@@ -1509,19 +1565,6 @@ def backends_available() -> bool:
         return response.status_code == 200
     except Exception:
         return False
-
-
-def is_deployed_environment() -> bool:
-    """True on hosted deployment (e.g. Streamlit Cloud); False for local `streamlit run`."""
-    mode = os.environ.get("MCP_DEPLOYMENT_MODE", "").strip().lower()
-    if mode in ("1", "true", "yes", "production", "deployed"):
-        return True
-    if mode in ("0", "false", "no", "local", "development", "dev"):
-        return False
-    # Set automatically on Streamlit Community Cloud
-    if os.environ.get("STREAMLIT_SHARING_MODE"):
-        return True
-    return False
 
 
 def should_use_demo_data(is_example: bool) -> bool:
@@ -3314,13 +3357,19 @@ def show_home_page():
     </div>
     """, unsafe_allow_html=True)
 
-    if not is_deployed_environment() and not backends_available():
-        st.error(
-            "Agent backends are offline (Support Agent :8000 not reachable). "
-            "Run `bash START_ALL_AGENTS.sh` from the project folder, or start Support only: "
-            "`cd Customer_support_agent && .venv/bin/python main.py` — then refresh this page. "
-            "If port 8000 is already in use, stop that process first: `lsof -ti :8000 | xargs kill -9`"
-        )
+    if not backends_available():
+        if is_deployed_environment():
+            st.info(
+                "Hosted mode: agent APIs are not connected. Example workflows use built-in demo data. "
+                "For live agents, deploy with Docker Compose (`docker-compose up`) or set agent URLs in environment variables."
+            )
+        else:
+            st.error(
+                "Agent backends are offline (Support Agent :8000 not reachable). "
+                "Run `bash START_ALL_AGENTS.sh` from the project folder, or start Support only: "
+                "`cd Customer_support_agent && .venv/bin/python main.py` — then refresh this page. "
+                "If port 8000 is already in use, stop that process first: `lsof -ti :8000 | xargs kill -9`"
+            )
     
     # Main input section with holographic styling
     st.markdown("""

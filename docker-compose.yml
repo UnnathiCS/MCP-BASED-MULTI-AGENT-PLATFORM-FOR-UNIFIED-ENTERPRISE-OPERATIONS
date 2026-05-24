@@ -108,6 +108,7 @@ services:
       - projects-agent
       - analytics-agent
     environment:
+      - MCP_DEPLOYMENT_MODE=deployed
       - SUPPORT_API=http://support-agent:8000
       - DOCUMENT_API=http://document-agent:8001
       - MEETING_API=http://meeting-agent:8002

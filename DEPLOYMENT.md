@@ -56,7 +56,13 @@ git push origin main
 
 When backends are not running, the UI uses **demo mode** (sample workflow data) automatically on Streamlit Cloud. Local `streamlit run` always calls real agent APIs.
 
-Optional: in Streamlit Cloud **Secrets**, set `MCP_DEPLOYMENT_MODE=deployed` to force demo fallback if auto-detection does not apply.
+The app auto-detects Streamlit Community Cloud and other hosts (no bash/lsof messages on the home page).
+
+If detection fails, add to Streamlit Cloud **Secrets** (TOML):
+
+```toml
+MCP_DEPLOYMENT_MODE = "deployed"
+```
 
 For local development, set `MCP_DEPLOYMENT_MODE=local` to disable demo mode explicitly.
 
