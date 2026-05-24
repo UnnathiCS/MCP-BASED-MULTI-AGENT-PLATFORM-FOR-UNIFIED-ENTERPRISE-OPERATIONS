@@ -3561,186 +3561,11 @@
   },
   "Analytics Agent": {
     "agent_id": "analytics_001",
-    "total": 390,
-    "successful": 373,
+    "total": 415,
+    "successful": 398,
     "failed": 17,
-    "total_time": 465117.0014553067,
+    "total_time": 465178.92376708955,
     "requests": [
-      {
-        "timestamp": "2026-04-25T18:54:16.472612",
-        "query": "Premium test 18 for Analytics Agent",
-        "success": true,
-        "response_time": 2222.998,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.475537",
-        "query": "Premium test 19 for Analytics Agent",
-        "success": true,
-        "response_time": 626.052,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.478465",
-        "query": "Premium test 20 for Analytics Agent",
-        "success": true,
-        "response_time": 1162.796,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.481454",
-        "query": "Premium test 21 for Analytics Agent",
-        "success": true,
-        "response_time": 1156.438,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.484340",
-        "query": "Premium test 22 for Analytics Agent",
-        "success": true,
-        "response_time": 2578.271,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.487371",
-        "query": "Premium test 23 for Analytics Agent",
-        "success": true,
-        "response_time": 833.301,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.490458",
-        "query": "Premium test 24 for Analytics Agent",
-        "success": true,
-        "response_time": 2542.34,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.493354",
-        "query": "Premium test 25 for Analytics Agent",
-        "success": true,
-        "response_time": 1625.888,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.496372",
-        "query": "Premium test 26 for Analytics Agent",
-        "success": true,
-        "response_time": 2749.366,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.499267",
-        "query": "Premium test 27 for Analytics Agent",
-        "success": true,
-        "response_time": 639.069,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.502139",
-        "query": "Premium test 28 for Analytics Agent",
-        "success": true,
-        "response_time": 1370.878,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.505421",
-        "query": "Premium test 29 for Analytics Agent",
-        "success": true,
-        "response_time": 1139.341,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.508319",
-        "query": "Premium test 30 for Analytics Agent",
-        "success": true,
-        "response_time": 998.033,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.511221",
-        "query": "Premium test 31 for Analytics Agent",
-        "success": true,
-        "response_time": 932.776,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.514126",
-        "query": "Premium test 32 for Analytics Agent",
-        "success": true,
-        "response_time": 2683.752,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.517004",
-        "query": "Premium test 33 for Analytics Agent",
-        "success": true,
-        "response_time": 1835.077,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.519993",
-        "query": "Premium test 34 for Analytics Agent",
-        "success": true,
-        "response_time": 1405.753,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.523061",
-        "query": "Premium test 35 for Analytics Agent",
-        "success": true,
-        "response_time": 1632.842,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.525987",
-        "query": "Premium test 36 for Analytics Agent",
-        "success": true,
-        "response_time": 1077.066,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.528860",
-        "query": "Premium test 37 for Analytics Agent",
-        "success": true,
-        "response_time": 2054.472,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.531791",
-        "query": "Premium test 38 for Analytics Agent",
-        "success": true,
-        "response_time": 1338.861,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.534687",
-        "query": "Premium test 39 for Analytics Agent",
-        "success": true,
-        "response_time": 1758.569,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.537705",
-        "query": "Premium test 40 for Analytics Agent",
-        "success": true,
-        "response_time": 2450.468,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.540660",
-        "query": "Premium test 41 for Analytics Agent",
-        "success": true,
-        "response_time": 2401.461,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.543663",
-        "query": "Premium test 42 for Analytics Agent",
-        "success": true,
-        "response_time": 1531.444,
-        "error": null
-      },
       {
         "timestamp": "2026-04-25T18:54:16.546582",
         "query": "Premium test 43 for Analytics Agent",
@@ -4265,10 +4090,185 @@
         "success": true,
         "response_time": 79.672,
         "error": null
+      },
+      {
+        "timestamp": "2026-05-24T20:29:44.951117",
+        "query": "Get system performance analytics and metrics",
+        "success": true,
+        "response_time": 1.998,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8007): Max retries exceeded with url: /agent/orchestrate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x13d72e750>: Failed to establish a new connection: [Errno 61] Connection refused'))"
+      },
+      {
+        "timestamp": "2026-05-24T20:30:41.712486",
+        "query": "Get system performance analytics and metrics",
+        "success": true,
+        "response_time": 1.79,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8007): Max retries exceeded with url: /agent/orchestrate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x13d72eff0>: Failed to establish a new connection: [Errno 61] Connection refused'))"
+      },
+      {
+        "timestamp": "2026-05-24T20:30:49.280024",
+        "query": "Show analytics for all agents performance",
+        "success": true,
+        "response_time": 1.753,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8007): Max retries exceeded with url: /agent/orchestrate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x13d72d850>: Failed to establish a new connection: [Errno 61] Connection refused'))"
+      },
+      {
+        "timestamp": "2026-05-24T20:31:11.693379",
+        "query": "Get system performance analytics and metrics",
+        "success": true,
+        "response_time": 1.592,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8007): Max retries exceeded with url: /agent/orchestrate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x16582d640>: Failed to establish a new connection: [Errno 61] Connection refused'))"
+      },
+      {
+        "timestamp": "2026-05-24T20:36:47.428791",
+        "query": "Get system performance analytics and metrics",
+        "success": true,
+        "response_time": 2.781,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8007): Max retries exceeded with url: /agent/orchestrate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1657ed6a0>: Failed to establish a new connection: [Errno 61] Connection refused'))"
+      },
+      {
+        "timestamp": "2026-05-24T20:36:51.761750",
+        "query": "Show analytics for all agents performance",
+        "success": true,
+        "response_time": 1.968,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8007): Max retries exceeded with url: /agent/orchestrate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x16582e150>: Failed to establish a new connection: [Errno 61] Connection refused'))"
+      },
+      {
+        "timestamp": "2026-05-24T20:37:13.715912",
+        "query": "show mw analytics of this month\n",
+        "success": true,
+        "response_time": 2.049,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8007): Max retries exceeded with url: /agent/orchestrate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x16581bfb0>: Failed to establish a new connection: [Errno 61] Connection refused'))"
+      },
+      {
+        "timestamp": "2026-05-24T20:37:54.874229",
+        "query": "Get system performance analytics and metrics",
+        "success": true,
+        "response_time": 6.212,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8007): Max retries exceeded with url: /agent/orchestrate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x127e08590>: Failed to establish a new connection: [Errno 61] Connection refused'))"
+      },
+      {
+        "timestamp": "2026-05-24T20:44:32.218649",
+        "query": "Get system performance analytics and metrics",
+        "success": true,
+        "response_time": 3.511,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8007): Max retries exceeded with url: /agent/orchestrate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x16923d4f0>: Failed to establish a new connection: [Errno 61] Connection refused'))"
+      },
+      {
+        "timestamp": "2026-05-24T20:47:43.225178",
+        "query": "Get system performance analytics and metrics",
+        "success": true,
+        "response_time": 2.706,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8007): Max retries exceeded with url: /agent/orchestrate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1692476b0>: Failed to establish a new connection: [Errno 61] Connection refused'))"
+      },
+      {
+        "timestamp": "2026-05-24T20:48:28.710983",
+        "query": "Get system performance analytics and metrics",
+        "success": true,
+        "response_time": 2.875,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8007): Max retries exceeded with url: /agent/orchestrate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x13fa4e450>: Failed to establish a new connection: [Errno 61] Connection refused'))"
+      },
+      {
+        "timestamp": "2026-05-24T20:48:35.866187",
+        "query": "Analyze trends and generate insights report",
+        "success": true,
+        "response_time": 2.196,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8007): Max retries exceeded with url: /agent/orchestrate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x13fab89e0>: Failed to establish a new connection: [Errno 61] Connection refused'))"
+      },
+      {
+        "timestamp": "2026-05-24T20:48:40.219460",
+        "query": "Show analytics for all agents performance",
+        "success": true,
+        "response_time": 2.694,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8007): Max retries exceeded with url: /agent/orchestrate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x13fa4c980>: Failed to establish a new connection: [Errno 61] Connection refused'))"
+      },
+      {
+        "timestamp": "2026-05-24T20:57:22.756021",
+        "query": "Get system performance analytics and metrics",
+        "success": true,
+        "response_time": 3.044,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8007): Max retries exceeded with url: /agent/orchestrate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x13fa404a0>: Failed to establish a new connection: [Errno 61] Connection refused'))"
+      },
+      {
+        "timestamp": "2026-05-24T20:57:28.810365",
+        "query": "Show analytics for all agents performance",
+        "success": true,
+        "response_time": 1.662,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8007): Max retries exceeded with url: /agent/orchestrate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x13fa41b50>: Failed to establish a new connection: [Errno 61] Connection refused'))"
+      },
+      {
+        "timestamp": "2026-05-24T20:57:32.788264",
+        "query": "Analyze trends and generate insights report",
+        "success": true,
+        "response_time": 1.839,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8007): Max retries exceeded with url: /agent/orchestrate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x13fb51400>: Failed to establish a new connection: [Errno 61] Connection refused'))"
+      },
+      {
+        "timestamp": "2026-05-24T20:58:22.606409",
+        "query": "Get system performance analytics and metrics",
+        "success": true,
+        "response_time": 1.915,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8007): Max retries exceeded with url: /agent/orchestrate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x13fb616a0>: Failed to establish a new connection: [Errno 61] Connection refused'))"
+      },
+      {
+        "timestamp": "2026-05-24T20:59:29.173629",
+        "query": "Get system performance analytics and metrics",
+        "success": true,
+        "response_time": 1.505,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8007): Max retries exceeded with url: /agent/orchestrate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x13fbedaf0>: Failed to establish a new connection: [Errno 61] Connection refused'))"
+      },
+      {
+        "timestamp": "2026-05-24T20:59:33.732059",
+        "query": "Show analytics for all agents performance",
+        "success": true,
+        "response_time": 1.796,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8007): Max retries exceeded with url: /agent/orchestrate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x13fb60680>: Failed to establish a new connection: [Errno 61] Connection refused'))"
+      },
+      {
+        "timestamp": "2026-05-24T21:02:33.998905",
+        "query": "Get system performance analytics and metrics",
+        "success": true,
+        "response_time": 1.825,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8007): Max retries exceeded with url: /agent/orchestrate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x13f9db500>: Failed to establish a new connection: [Errno 61] Connection refused'))"
+      },
+      {
+        "timestamp": "2026-05-24T21:04:22.371463",
+        "query": "Get system performance analytics and metrics",
+        "success": true,
+        "response_time": 1.897,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8007): Max retries exceeded with url: /agent/orchestrate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x13fa4dd60>: Failed to establish a new connection: [Errno 61] Connection refused'))"
+      },
+      {
+        "timestamp": "2026-05-24T21:12:12.971148",
+        "query": "Get system performance analytics and metrics",
+        "success": true,
+        "response_time": 2.707,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8007): Max retries exceeded with url: /agent/orchestrate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x161643c20>: Failed to establish a new connection: [Errno 61] Connection refused'))"
+      },
+      {
+        "timestamp": "2026-05-24T21:13:37.460618",
+        "query": "Get system performance analytics and metrics",
+        "success": true,
+        "response_time": 3.444,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8007): Max retries exceeded with url: /agent/orchestrate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x159049460>: Failed to establish a new connection: [Errno 61] Connection refused'))"
+      },
+      {
+        "timestamp": "2026-05-24T21:16:23.018670",
+        "query": "Show analytics for all agents performance",
+        "success": true,
+        "response_time": 3.115,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8007): Max retries exceeded with url: /agent/orchestrate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x15904a360>: Failed to establish a new connection: [Errno 61] Connection refused'))"
+      },
+      {
+        "timestamp": "2026-05-24T21:16:32.388114",
+        "query": "Analyze trends and generate insights report",
+        "success": true,
+        "response_time": 3.048,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8007): Max retries exceeded with url: /agent/orchestrate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1599c1e20>: Failed to establish a new connection: [Errno 61] Connection refused'))"
       }
     ],
     "created_at": "2026-04-25T18:39:21.211944",
-    "last_updated": "2026-05-24T20:18:36.195056",
+    "last_updated": "2026-05-24T21:16:32.388111",
     "accuracy_percentage": 95.18413597733712
   },
   "Email Agent": {

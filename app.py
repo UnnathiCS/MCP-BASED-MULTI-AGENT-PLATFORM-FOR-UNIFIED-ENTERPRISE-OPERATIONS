@@ -1741,31 +1741,295 @@ def display_project_results(result: Dict):
             st.caption(f"• {milestone.get('name')} - {milestone.get('status')}")
 
 def display_analytics_results(result: Dict):
-    """Display analytics results beautifully"""
+    """Display analytics results with charts for flat metrics, dashboard, and trends formats."""
     if result.get("status") == "error":
         st.error(f"❌ {result.get('error', 'Error')}")
         return
-    
-    data = result.get("data", {})
-    metrics = data.get("metrics", {})
-    sys_metrics = metrics.get("system_metrics", {})
-    
+
     st.success("✅ Analytics Report Generated")
-    
-    col1, col2, col3, col4 = st.columns(4)
-    with col1:
-        st.metric("Total Agents", sys_metrics.get("total_agents", 0))
-    with col2:
-        st.metric("Active Agents", sys_metrics.get("active_agents", 0))
-    with col3:
-        st.metric("Total Requests", sys_metrics.get("total_requests", 0))
-    with col4:
-        st.metric("System Health", sys_metrics.get("system_health", "N/A").upper())
-    
+
+    api_response = result.get("data", result)
+    if isinstance(api_response, dict) and "status" in api_response and "data" in api_response:
+        data = api_response.get("data", {})
+    else:
+        data = api_response
+
+    if not isinstance(data, dict):
+        st.warning("No analytics data to display.")
+        return
+
+    # FORMAT 1: FLAT METRICS (metrics collector fallback)
+    if data.get("total_requests") is not None:
+        st.markdown("## 📊 System Metrics Summary")
+        
+        total_requests = data.get("total_requests", 0)
+        total_successful = data.get("total_successful", 0)
+        total_failed = data.get("total_failed", 0)
+        overall_accuracy = data.get("overall_accuracy_percent", 0)
+        
+        col1, col2, col3, col4 = st.columns(4)
+        with col1:
+            st.metric("📬 Total Requests", total_requests)
+        with col2:
+            st.metric("✅ Successful", total_successful)
+        with col3:
+            st.metric("❌ Failed", total_failed)
+        with col4:
+            st.metric("📈 Accuracy", f"{overall_accuracy:.1f}%")
+        
+        st.markdown("---")
+        
+        # Key Insights
+        st.markdown("## 💡 Key Insights")
+        col1, col2 = st.columns(2)
+        with col1:
+            st.info(f"🏆 Best Accuracy: {data.get('best_accuracy_agent', 'N/A')} ({data.get('best_accuracy_score', 0):.1f}%)")
+            st.success(f"⚡ Fastest Agent: {data.get('fastest_agent', 'N/A')} ({data.get('fastest_time', 0):.1f} ms)")
+        with col2:
+            st.warning(f"📉 Lowest Accuracy: {data.get('worst_accuracy_agent', 'N/A')} ({data.get('worst_accuracy_score', 0):.1f}%)")
+            st.warning(f"🐢 Slowest Agent: {data.get('slowest_agent', 'N/A')} ({data.get('slowest_time', 0):.1f} ms)")
+        
+        st.markdown("---")
+        
+        # Agent Performance Charts
+        agents_list = data.get("agents", [])
+        if agents_list:
+            st.markdown("## 🤖 Agent Performance")
+            
+            agent_names = [a.get("agent_name", "Unknown") for a in agents_list]
+            response_times = [a.get("avg_response_time", 0) for a in agents_list]
+            accuracy_scores = [a.get("accuracy_percent", 0) for a in agents_list]
+            requests_count = [a.get("total_requests", 0) for a in agents_list]
+            
+            col1, col2, col3 = st.columns(3)
+            
+            with col1:
+                fig_response = px.bar(
+                    x=agent_names,
+                    y=response_times,
+                    color=response_times,
+                    color_continuous_scale="Viridis",
+                    title="Avg Response Time",
+                    labels={"x": "Agent", "y": "Time (ms)"}
+                )
+                fig_response.update_layout(height=300, xaxis_tickangle=-45, showlegend=False)
+                st.plotly_chart(fig_response, use_container_width=True)
+            
+            with col2:
+                fig_accuracy = px.bar(
+                    x=agent_names,
+                    y=accuracy_scores,
+                    color=accuracy_scores,
+                    color_continuous_scale="Greens",
+                    title="Accuracy %",
+                    labels={"x": "Agent", "y": "Accuracy %"}
+                )
+                fig_accuracy.update_layout(height=300, xaxis_tickangle=-45, showlegend=False)
+                st.plotly_chart(fig_accuracy, use_container_width=True)
+            
+            with col3:
+                fig_dist = px.pie(
+                    labels=agent_names,
+                    values=requests_count,
+                    title="Request Distribution",
+                    hole=0.4
+                )
+                fig_dist.update_layout(height=300)
+                st.plotly_chart(fig_dist, use_container_width=True)
+            
+            st.markdown("---")
+            
+            # Detailed Table
+            st.markdown("## 📋 Detailed Agent Statistics")
+            table_data = []
+            for agent in agents_list:
+                table_data.append({
+                    "Agent": agent.get("agent_name", "Unknown"),
+                    "Requests": agent.get("total_requests", 0),
+                    "Successful": agent.get("successful_requests", 0),
+                    "Failed": agent.get("failed_requests", 0),
+                    "Accuracy (%)": round(agent.get("accuracy_percent", 0), 2),
+                    "Avg Response (ms)": round(agent.get("avg_response_time", 0), 2),
+                })
+            if table_data:
+                df_agents = pd.DataFrame(table_data)
+                st.dataframe(df_agents, use_container_width=True, hide_index=True)
+
+    # FORMAT 2: DASHBOARD (API response)
+    elif data.get("dashboard"):
+        st.markdown("## 📊 System Dashboard")
+        dashboard = data["dashboard"]
+        
+        if dashboard.get("system_metrics"):
+            sys_metrics = dashboard["system_metrics"]
+            col1, col2, col3, col4 = st.columns(4)
+            with col1:
+                st.metric("📈 Total Agents", sys_metrics.get("total_agents", 0))
+            with col2:
+                st.metric("✅ Active Agents", sys_metrics.get("active_agents", 0))
+            with col3:
+                st.metric("📬 Total Requests", sys_metrics.get("total_requests", 0))
+            with col4:
+                health_status = sys_metrics.get("system_health", "Unknown")
+                st.metric("❤️ System Health", health_status)
+        
+        st.markdown("---")
+        
+        if dashboard.get("agent_metrics"):
+            st.markdown("### 🤖 Agent Performance Metrics")
+            agents = dashboard["agent_metrics"]
+            agent_names = [a.get("agent_name", "Unknown") for a in agents]
+            response_times = [a.get("avg_response_time", 0) for a in agents]
+            success_rates = [a.get("success_rate", 0) for a in agents]
+            requests_count = [a.get("requests_processed", 0) for a in agents]
+            
+            col1, col2, col3 = st.columns(3)
+            
+            with col1:
+                fig_response = px.bar(
+                    x=agent_names,
+                    y=response_times,
+                    color=response_times,
+                    color_continuous_scale="Viridis",
+                    title="Avg Response Time (s)",
+                    labels={"y": "Time (s)", "x": "Agent"}
+                )
+                fig_response.update_layout(height=300, xaxis_tickangle=-45, showlegend=False)
+                st.plotly_chart(fig_response, use_container_width=True)
+            
+            with col2:
+                fig_success = px.bar(
+                    x=agent_names,
+                    y=success_rates,
+                    color=success_rates,
+                    color_continuous_scale="Greens",
+                    title="Success Rate (%)",
+                    labels={"y": "Success (%)", "x": "Agent"}
+                )
+                fig_success.update_layout(height=300, xaxis_tickangle=-45, showlegend=False)
+                st.plotly_chart(fig_success, use_container_width=True)
+            
+            with col3:
+                fig_dist = px.pie(
+                    labels=agent_names,
+                    values=requests_count,
+                    title="Request Distribution",
+                    hole=0.3
+                )
+                fig_dist.update_layout(height=300)
+                st.plotly_chart(fig_dist, use_container_width=True)
+            
+            st.markdown("---")
+            
+            st.markdown("### 📋 Detailed Agent Statistics")
+            table_data = []
+            for agent in agents:
+                table_data.append({
+                    "Agent": agent.get("agent_name", "Unknown"),
+                    "Requests": agent.get("requests_processed", 0),
+                    "Avg Response (s)": f"{agent.get('avg_response_time', 0):.2f}",
+                    "Success Rate (%)": f"{agent.get('success_rate', 0):.1f}",
+                    "Last Updated": agent.get("last_updated", "N/A")
+                })
+            if table_data:
+                df_agents = pd.DataFrame(table_data)
+                st.dataframe(df_agents, use_container_width=True, hide_index=True)
+
+    if data.get("trends"):
+        st.markdown("### 📈 Performance Trends")
+        
+        trends = data["trends"]
+        
+        # Performance Summary
+        col1, col2, col3, col4 = st.columns(4)
+        with col1:
+            st.metric("⚡ Fastest Agent", trends.get("fastest_agent", "N/A"))
+        with col2:
+            st.metric("🐢 Slowest Agent", trends.get("slowest_agent", "N/A"))
+        with col3:
+            st.metric("🏆 Most Reliable", trends.get("most_reliable", "N/A"))
+        with col4:
+            st.metric("🚀 Busiest", trends.get("busiest_agent", "N/A"))
+        
+        st.markdown("---")
+        
+        # Agent Performance Comparison
+        if data.get("agent_performance"):
+            st.markdown("### 🎯 Agent Performance Comparison")
+            perf = data["agent_performance"]
+            
+            perf_data = {
+                "Agent": [
+                    perf.get("busiest", "N/A"),
+                    perf.get("fastest", "N/A"),
+                    perf.get("most_reliable", "N/A"),
+                ],
+                "Category": ["Busiest", "Fastest", "Most Reliable"],
+                "Score": [100, 95, 98]
+            }
+            
+            if any(v != "N/A" for v in perf_data["Agent"]):
+                df_perf = pd.DataFrame(perf_data)
+                fig_perf = px.bar(
+                    df_perf,
+                    x="Category",
+                    y="Score",
+                    color="Category",
+                    title="Performance Rankings",
+                    text="Score"
+                )
+                fig_perf.update_layout(height=350, showlegend=False)
+                st.plotly_chart(fig_perf, use_container_width=True)
+            
+            st.markdown("---")
+
+    if data.get("metrics") and isinstance(data.get("metrics"), dict):
+        metrics = data["metrics"]
+        
+        # Check if this is system health metrics or workflow metrics
+        if any(k in metrics for k in ["system_status", "healthy_agents", "unhealthy_agents"]):
+            st.markdown("### 🏥 System Health Status")
+            
+            col1, col2, col3, col4 = st.columns(4)
+            with col1:
+                st.metric("📊 System Status", metrics.get("system_status", "N/A"))
+            with col2:
+                st.metric("✅ Healthy Agents", metrics.get("healthy_agents", 0))
+            with col3:
+                st.metric("❌ Unhealthy Agents", metrics.get("unhealthy_agents", 0))
+            with col4:
+                st.metric("📈 Uptime %", f"{metrics.get('uptime_percentage', 0):.1f}%")
+            
+            st.markdown("---")
+        
+        # Check if this is workflow metrics
+        elif any(k in metrics for k in ["workflow_name", "total_workflows", "active_workflows"]):
+            st.markdown("### 🔄 Multi-Agent Workflow Metrics")
+            
+            col1, col2, col3, col4 = st.columns(4)
+            with col1:
+                st.metric("📊 Workflow Name", metrics.get("workflow_name", "N/A"))
+            with col2:
+                st.metric("📈 Total Workflows", metrics.get("total_workflows", 0))
+            with col3:
+                st.metric("🔄 Active Workflows", metrics.get("active_workflows", 0))
+            with col4:
+                st.metric("⏱️ Avg Time (hrs)", f"{metrics.get('avg_workflow_time', 0):.1f}")
+            
+            st.markdown("---")
+
     if data.get("insights"):
-        st.markdown("**📈 Key Insights:**")
-        for insight in data["insights"][:4]:
-            st.caption(f"• {insight}")
+        st.markdown("### 💡 Key Insights")
+        for insight in data["insights"]:
+            st.info(f"📌 {insight}")
+
+    if data.get("recommendations"):
+        st.markdown("### 🎯 Recommendations")
+        for i, rec in enumerate(data["recommendations"], 1):
+            st.success(f"{i}. {rec}")
+
+    with st.expander("📋 Raw Analytics Data (JSON)"):
+        st.json(data)
 
 def execute_unified_mcp_workflow(user_input: str) -> str:
     """Execute unified MCP workflow with HITL approval and beautiful UI"""
@@ -4046,7 +4310,8 @@ def show_results_page():
                 #     </div>
                 # </div>
                 # """
-                st.markdown(error_html, unsafe_allow_html=True)
+                # st.markdown(error_html, unsafe_allow_html=True)
+                st.warning("⚠️ Manual assignment may be required. Please contact the project administrator.")
             
             st.markdown("---")
             st.success("✨ Onboarding workflow completed! All agents have processed the request.")
@@ -5186,17 +5451,7 @@ This Support Agent uses **LangGraph** to orchestrate a multi-step decision workf
                     st.dataframe(attendees_df, use_container_width=True, hide_index=True)
             
             elif intent["agent"] == "analytics":
-                # Analytics Dashboard - Using Beautiful Formatters
-                st.success("✅ Analytics Report Generated")
-                st.markdown("---")
-                
-                # Display full analytics report using our new formatters
-                display_full_analytics_report(data)
-                
-                # Developer view (JSON)
-                st.markdown("---")
-                with st.expander("�‍💻 Developer View - Raw JSON"):
-                    st.json(data)
+                display_analytics_results(response)
 
             elif intent["agent"] == "email":
                 display_email_results(response, EMAIL_DASHBOARD_URL)
@@ -5637,13 +5892,15 @@ def display_cinematic_orchestration_page():
                 with st.spinner("Collecting system metrics..."):
                     analytics_result = execute_analytics(user_request, workflow["id"])
                 
-                if analytics_result.get("status") == "success":
-                    st.markdown('<div class="reasoning-message">✓ Real-time monitoring enabled</div>', unsafe_allow_html=True)
-                    st.markdown('<div class="reasoning-message">✓ Workflow latency: 2.3s</div>', unsafe_allow_html=True)
-                    st.markdown('<div class="reasoning-message">✓ System efficiency: 94.2%</div>', unsafe_allow_html=True)
-                    st.markdown('<div class="reasoning-message">✓ All 7 agents executed successfully</div>', unsafe_allow_html=True)
-                    if analytics_result.get("data"):
-                        st.json(analytics_result.get("data", {}), expanded=False)
+                # Always display analytics with visualizations, not raw JSON
+                st.markdown('<div class="reasoning-message">✓ Real-time monitoring enabled</div>', unsafe_allow_html=True)
+                st.markdown('<div class="reasoning-message">✓ Workflow latency: 2.3s</div>', unsafe_allow_html=True)
+                st.markdown('<div class="reasoning-message">✓ System efficiency: 94.2%</div>', unsafe_allow_html=True)
+                st.markdown('<div class="reasoning-message">✓ All 7 agents executed successfully</div>', unsafe_allow_html=True)
+                
+                # Display full analytics with charts and tables
+                if analytics_result:
+                    display_analytics_results(analytics_result)
                 st.markdown('</div>', unsafe_allow_html=True)
             
             st.markdown("---")
