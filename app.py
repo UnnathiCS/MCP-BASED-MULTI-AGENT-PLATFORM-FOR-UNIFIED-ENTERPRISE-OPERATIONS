@@ -45,6 +45,8 @@ except ImportError:
 # Import subprocess for backend management
 import subprocess
 import os
+import sys
+import socket
 import atexit
 
 # ============================================================================
@@ -53,84 +55,90 @@ import atexit
 
 BACKEND_PROCESSES = []
 
+def _port_is_open(port: int, host: str = "127.0.0.1") -> bool:
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+        sock.settimeout(0.5)
+        return sock.connect_ex((host, port)) == 0
+
+
+def _python_for_service(service_path: str) -> str:
+    """Use the agent's local .venv when available."""
+    for venv_name in (".venv", "venv"):
+        candidate = os.path.join(service_path, venv_name, "bin", "python")
+        if os.path.isfile(candidate):
+            return candidate
+    return sys.executable
+
+
+def _build_service_cmd(service_path: str, command: str) -> List[str]:
+    parts = command.split()
+    if parts and parts[0] in ("python", "python3"):
+        return [_python_for_service(service_path), *parts[1:]]
+    return parts
+
+
 def start_backend_services():
-    """Auto-start all backend services on app initialization"""
+    """Auto-start backend services on app initialization (local dev)."""
     global BACKEND_PROCESSES
-    
-    # Check if backends are already running
+
+    support_url = os.environ.get("SUPPORT_API", "http://127.0.0.1:8000").rstrip("/")
     try:
-        support_url = os.environ.get("SUPPORT_API", "http://127.0.0.1:8000").rstrip("/")
-        response = requests.get(f"{support_url}/health", timeout=2)
-        if response.status_code == 200:
-            return  # Backends already running
-    except:
+        if requests.get(f"{support_url}/health", timeout=2).status_code == 200:
+            return
+    except Exception:
         pass
-    
-    # Define services to start
+
+    # Port taken by another process (not our agent) — avoid failed duplicate bind
+    try:
+        support_port = int(support_url.rsplit(":", 1)[-1].rstrip("/"))
+        if _port_is_open(support_port):
+            return
+    except (ValueError, IndexError):
+        pass
+
     services = [
-        {
-            "name": "Support Agent (8000)",
-            "path": "Customer_support_agent",
-            "port": 8000,
-            "command": "python main.py"
-        },
-        {
-            "name": "Document Agent (8001)",
-            "path": "Document_Review_agent/document_review_agent",
-            "port": 8001,
-            "command": "python3 -m uvicorn app.main:app --port 8001"
-        },
-        {
-            "name": "Meeting Agent (8002)",
-            "path": "meeting-calendar-agent",
-            "port": 8002,
-            "command": "python3 -m uvicorn app.main:app --port 8002"
-        },
-        {
-            "name": "HR Agent (8003)",
-            "path": "HR_Onboarding_agent",
-            "port": 8003,
-            "command": "python3 -m uvicorn app.main:app --port 8003"
-        },
-        {
-            "name": "Email Agent (8004)",
-            "path": "Email_agent",
-            "port": 8004,
-            "command": "python3 -m uvicorn app.main:app --port 8004"
-        },
-        {
-            "name": "Projects Agent (8005)",
-            "path": "Project_Management_agent",
-            "port": 8005,
-            "command": "python3 -m uvicorn app.main:app --port 8005"
-        },
-        {
-            "name": "Analytics Agent (8007)",
-            "path": "Analytics_agent/app",
-            "port": 8007,
-            "command": "python3 -m uvicorn main:app --port 8007"
-        }
+        {"name": "Support Agent", "path": "Customer_support_agent", "port": 8000, "command": "python main.py"},
+        {"name": "Document Agent", "path": "Document_Review_agent/document_review_agent", "port": 8001, "command": "python -m uvicorn app.main:app --host 127.0.0.1 --port 8001"},
+        {"name": "Meeting Agent", "path": "meeting-calendar-agent", "port": 8002, "command": "python -m uvicorn app.main:app --host 127.0.0.1 --port 8002"},
+        {"name": "HR Agent", "path": "HR_Onboarding_agent", "port": 8003, "command": "python -m uvicorn app.main:app --host 127.0.0.1 --port 8003"},
+        {"name": "Email Agent", "path": "Email_agent", "port": 8004, "command": "python -m uvicorn app.main:app --host 127.0.0.1 --port 8004"},
+        {"name": "Projects Agent", "path": "Project_Management_agent", "port": 8005, "command": "python -m uvicorn app.main:app --host 127.0.0.1 --port 8005"},
+        {"name": "Analytics Agent", "path": "Analytics_agent/app", "port": 8007, "command": "python -m uvicorn main:app --host 127.0.0.1 --port 8007"},
     ]
-    
-    # Get the project directory
+
     project_dir = os.path.dirname(os.path.abspath(__file__))
-    
-    # Start each service
+    log_dir = os.path.join(project_dir, ".mcp_agent_logs")
+    os.makedirs(log_dir, exist_ok=True)
+
     for service in services:
+        port = service["port"]
+        if _port_is_open(port):
+            continue
+        service_path = os.path.join(project_dir, service["path"])
+        if not os.path.isdir(service_path):
+            continue
         try:
-            service_path = os.path.join(project_dir, service["path"])
-            if os.path.exists(service_path):
-                process = subprocess.Popen(
-                    service["command"],
-                    shell=True,
-                    cwd=service_path,
-                    stdout=subprocess.DEVNULL,
-                    stderr=subprocess.DEVNULL,
-                    preexec_fn=os.setsid
-                )
-                BACKEND_PROCESSES.append(process)
-        except Exception as e:
+            cmd = _build_service_cmd(service_path, service["command"])
+            log_path = os.path.join(log_dir, f"agent_{port}.log")
+            log_file = open(log_path, "a", encoding="utf-8")
+            process = subprocess.Popen(
+                cmd,
+                cwd=service_path,
+                stdout=log_file,
+                stderr=subprocess.STDOUT,
+                start_new_session=True,
+            )
+            BACKEND_PROCESSES.append(process)
+        except Exception:
             pass
+
+    for _ in range(20):
+        try:
+            if requests.get(f"{support_url}/health", timeout=2).status_code == 200:
+                break
+        except Exception:
+            pass
+        time.sleep(1)
 
 def cleanup_backends():
     """Cleanup backend processes on app exit"""
@@ -140,8 +148,8 @@ def cleanup_backends():
         except:
             pass
 
-# Initialize backends on app start
-if "backends_started" not in st.session_state:
+# Initialize backends on app start (local dev only; skip on Streamlit Cloud)
+if not os.environ.get("STREAMLIT_SHARING_MODE") and "backends_started" not in st.session_state:
     start_backend_services()
     st.session_state.backends_started = True
     
@@ -1503,8 +1511,23 @@ def backends_available() -> bool:
         return False
 
 
+def is_deployed_environment() -> bool:
+    """True on hosted deployment (e.g. Streamlit Cloud); False for local `streamlit run`."""
+    mode = os.environ.get("MCP_DEPLOYMENT_MODE", "").strip().lower()
+    if mode in ("1", "true", "yes", "production", "deployed"):
+        return True
+    if mode in ("0", "false", "no", "local", "development", "dev"):
+        return False
+    # Set automatically on Streamlit Community Cloud
+    if os.environ.get("STREAMLIT_SHARING_MODE"):
+        return True
+    return False
+
+
 def should_use_demo_data(is_example: bool) -> bool:
-    """Use hardcoded demo responses for examples or when backends are not running (e.g. Streamlit Cloud)."""
+    """Demo/fallback data only when deployed and backends are down (or example workflow)."""
+    if not is_deployed_environment():
+        return False
     return is_example or not backends_available()
 
 # Configure cinematic theme if available
@@ -2269,10 +2292,20 @@ def execute_support_agent(user_input: str, request_id: str, is_example: bool = F
             result = {"status": "error", "data": {"decision": "agent_error", "error": f"Support Agent returned {response.status_code}"}}
     except Exception as e:
         error_msg = str(e)
-        result = get_hardcoded_support_data()
-        result["data"]["demo_mode"] = True
-        result["data"]["backend_note"] = f"Support Agent unavailable: {e}"
-        success = True
+        if is_deployed_environment():
+            result = get_hardcoded_support_data()
+            result["data"]["demo_mode"] = True
+            result["data"]["backend_note"] = f"Support Agent unavailable: {e}"
+            success = True
+        else:
+            result = {
+                "status": "error",
+                "data": {
+                    "decision": "support_pending",
+                    "error": f"Support Agent unavailable: {e}",
+                    "fallback_solution": "IT support ticket created. You will be contacted shortly by the IT team.",
+                },
+            }
     
     finally:
         # Record metrics
@@ -2424,10 +2457,13 @@ def execute_hr(user_input: str, request_id: str, is_example: bool = False) -> Di
             result = {"status": "error", "error": f"Agent error: {response.status_code}"}
     except Exception as e:
         error_msg = str(e)
-        result = get_hardcoded_hr_data()
-        result["data"]["demo_mode"] = True
-        result["data"]["backend_note"] = str(e)
-        success = True
+        if is_deployed_environment():
+            result = get_hardcoded_hr_data()
+            result["data"]["demo_mode"] = True
+            result["data"]["backend_note"] = str(e)
+            success = True
+        else:
+            result = {"status": "error", "error": str(e)}
     
     finally:
         # Record metrics
@@ -2525,10 +2561,12 @@ def execute_meeting_agent(user_input: str, request_id: str, is_example: bool = F
         else:
             return {"status": "error", "error": f"Agent error: {response.status_code}"}
     except Exception as e:
-        result = get_hardcoded_meeting_data(user_input)
-        result["data"]["demo_mode"] = True
-        result["data"]["backend_note"] = str(e)
-        return result
+        if is_deployed_environment():
+            result = get_hardcoded_meeting_data(user_input)
+            result["data"]["demo_mode"] = True
+            result["data"]["backend_note"] = str(e)
+            return result
+        return {"status": "error", "error": str(e)}
 
 def get_hardcoded_project_data() -> Dict:
     """Hardcoded test data for project agent"""
@@ -3275,6 +3313,14 @@ def show_home_page():
         </div>
     </div>
     """, unsafe_allow_html=True)
+
+    if not is_deployed_environment() and not backends_available():
+        st.error(
+            "Agent backends are offline (Support Agent :8000 not reachable). "
+            "Run `bash START_ALL_AGENTS.sh` from the project folder, or start Support only: "
+            "`cd Customer_support_agent && .venv/bin/python main.py` — then refresh this page. "
+            "If port 8000 is already in use, stop that process first: `lsof -ti :8000 | xargs kill -9`"
+        )
     
     # Main input section with holographic styling
     st.markdown("""
@@ -3643,7 +3689,7 @@ def show_results_page():
     start_time = result_data["start_time"]
     is_example = result_data.get("is_example", False)
     use_demo = should_use_demo_data(is_example)
-    if use_demo and not backends_available():
+    if use_demo:
         st.info(
             "Demo mode: agent backends are not reachable in this deployment, "
             "so sample onboarding workflow data is shown."

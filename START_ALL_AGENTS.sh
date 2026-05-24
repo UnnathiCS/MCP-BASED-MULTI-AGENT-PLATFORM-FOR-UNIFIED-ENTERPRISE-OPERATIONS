@@ -4,8 +4,8 @@
 # Usage: bash START_ALL_AGENTS.sh
 # Starts all agents in background with logging to /tmp/mcp_logs/
 
-PROJECT_DIR="$HOME/Documents/SEM-6/MINI-PROJECT"
-PYTHON3="/Library/Frameworks/Python.framework/Versions/3.12/bin/python3"
+PROJECT_DIR="$(cd "$(dirname "$0")" && pwd)"
+PYTHON3="${PYTHON3:-python3}"
 
 echo "🚀 Starting MCP Multi-Agent Platform..."
 echo "=================================="
@@ -26,8 +26,11 @@ sleep 2
 # Agent 1: Support Agent (Port 8000)
 echo "✨ Starting Support Agent (Port 8000)..."
 cd "$PROJECT_DIR/Customer_support_agent"
-source .venv/bin/activate 2>/dev/null || true
-python main.py > /tmp/mcp_logs/agent_8000.log 2>&1 &
+if [ -x ".venv/bin/python" ]; then
+  .venv/bin/python main.py > /tmp/mcp_logs/agent_8000.log 2>&1 &
+else
+  $PYTHON3 main.py > /tmp/mcp_logs/agent_8000.log 2>&1 &
+fi
 echo "  ✅ Started (PID: $!)"
 sleep 1
 
@@ -56,8 +59,8 @@ sleep 1
 
 # Agent 4.5: Email Agent (Port 8004)
 echo "✨ Starting Email Agent (Port 8004)..."
-cd "$PROJECT_DIR/Email-Agent"
-python3 app_simple.py > /tmp/mcp_logs/agent_8004.log 2>&1 &
+cd "$PROJECT_DIR/Email_agent"
+$PYTHON3 -m uvicorn app.main:app --host 127.0.0.1 --port 8004 > /tmp/mcp_logs/agent_8004.log 2>&1 &
 echo "  ✅ Started (PID: $!)"
 sleep 1
 

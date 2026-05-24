@@ -1,46 +1,11 @@
 {
   "Support Agent": {
     "agent_id": "support_001",
-    "total": 380,
-    "successful": 366,
-    "failed": 14,
-    "total_time": 765253.7680740283,
+    "total": 385,
+    "successful": 370,
+    "failed": 15,
+    "total_time": 788803.9253826068,
     "requests": [
-      {
-        "timestamp": "2026-04-25T18:54:15.184859",
-        "query": "Premium test 4 for Support Agent",
-        "success": true,
-        "response_time": 2337.062,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:15.188263",
-        "query": "Premium test 5 for Support Agent",
-        "success": true,
-        "response_time": 1318.188,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:15.191214",
-        "query": "Premium test 6 for Support Agent",
-        "success": false,
-        "response_time": 852.828,
-        "error": "Error"
-      },
-      {
-        "timestamp": "2026-04-25T18:54:15.194106",
-        "query": "Premium test 7 for Support Agent",
-        "success": true,
-        "response_time": 1628.376,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:15.197009",
-        "query": "Premium test 8 for Support Agent",
-        "success": true,
-        "response_time": 878.497,
-        "error": null
-      },
       {
         "timestamp": "2026-04-25T18:54:15.200029",
         "query": "Premium test 9 for Support Agent",
@@ -705,33 +670,54 @@
         "success": true,
         "response_time": 6097.77,
         "error": null
+      },
+      {
+        "timestamp": "2026-05-24T21:31:09.407733",
+        "query": "Setup IT access for Onboard unnathi email:unathics.btech23@rvu.edu.in as a AIML engineer for the AI project, starts on  25-05-2026  i.e may 25th at 5p",
+        "success": false,
+        "response_time": 0.868,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /it-support/text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x159dce720>: Failed to establish a new connection: [Errno 61] Connection refused'))"
+      },
+      {
+        "timestamp": "2026-05-24T21:38:51.430442",
+        "query": "Setup IT access for Onboard new employee to the company",
+        "success": true,
+        "response_time": 6177.334,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-24T21:39:13.452829",
+        "query": "My VPN keeps disconnecting",
+        "success": true,
+        "response_time": 5908.204,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-24T21:39:37.429675",
+        "query": "How do I reset my password?",
+        "success": true,
+        "response_time": 5844.226,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-24T21:39:38.170043",
+        "query": "How do I reset my password?",
+        "success": true,
+        "response_time": 5619.525,
+        "error": null
       }
     ],
     "created_at": "2026-04-25T18:39:21.211928",
-    "last_updated": "2026-05-24T20:17:28.017421",
+    "last_updated": "2026-05-24T21:39:38.170037",
     "accuracy_percentage": 96.3172804532578
   },
   "HR Onboarding Agent": {
     "agent_id": "hr_001",
-    "total": 374,
-    "successful": 353,
+    "total": 376,
+    "successful": 355,
     "failed": 21,
-    "total_time": 652055.9493596744,
+    "total_time": 652085.1718480777,
     "requests": [
-      {
-        "timestamp": "2026-04-25T18:54:15.945726",
-        "query": "Premium test 1 for HR Onboarding Agent",
-        "success": true,
-        "response_time": 1387.791,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:15.948650",
-        "query": "Premium test 2 for HR Onboarding Agent",
-        "success": true,
-        "response_time": 2347.399,
-        "error": null
-      },
       {
         "timestamp": "2026-04-25T18:54:15.951559",
         "query": "Premium test 3 for HR Onboarding Agent",
@@ -1417,10 +1403,24 @@
         "success": true,
         "response_time": 4.972,
         "error": null
+      },
+      {
+        "timestamp": "2026-05-24T21:31:09.401444",
+        "query": "Onboard unnathi email:unathics.btech23@rvu.edu.in as a AIML engineer for the AI project, starts on  25-05-2026  i.e may 25th at 5pm",
+        "success": true,
+        "response_time": 19.633,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-24T21:38:45.244820",
+        "query": "Onboard new employee to the company",
+        "success": true,
+        "response_time": 9.589,
+        "error": null
       }
     ],
     "created_at": "2026-04-25T18:39:21.211937",
-    "last_updated": "2026-05-24T20:17:21.914690",
+    "last_updated": "2026-05-24T21:38:45.244813",
     "accuracy_percentage": 94.05099150141642
   },
   "Meeting Calendar Agent": {
@@ -2137,25 +2137,11 @@
   },
   "Project Management Agent": {
     "agent_id": "project_001",
-    "total": 385,
-    "successful": 362,
+    "total": 387,
+    "successful": 364,
     "failed": 23,
-    "total_time": 617058.9377719606,
+    "total_time": 617086.5928966249,
     "requests": [
-      {
-        "timestamp": "2026-04-25T18:54:16.218370",
-        "query": "Premium test 13 for Project Management Agent",
-        "success": true,
-        "response_time": 1891.625,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.221464",
-        "query": "Premium test 14 for Project Management Agent",
-        "success": false,
-        "response_time": 2477.755,
-        "error": "Error"
-      },
       {
         "timestamp": "2026-04-25T18:54:16.224333",
         "query": "Premium test 15 for Project Management Agent",
@@ -2841,40 +2827,33 @@
         "success": true,
         "response_time": 1.36,
         "error": null
+      },
+      {
+        "timestamp": "2026-05-24T21:31:10.516147",
+        "query": "Assign to project: Onboard unnathi email:unathics.btech23@rvu.edu.in as a AIML engineer for the AI project, starts on  25-05-2026  i.e may 25th at 5pm",
+        "success": true,
+        "response_time": 23.014,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-24T21:38:51.459309",
+        "query": "Assign to project: Onboard new employee to the company",
+        "success": true,
+        "response_time": 4.641,
+        "error": null
       }
     ],
     "created_at": "2026-04-25T18:39:21.211940",
-    "last_updated": "2026-05-24T20:17:28.029219",
+    "last_updated": "2026-05-24T21:38:51.459302",
     "accuracy_percentage": 93.48441926345609
   },
   "Document Review Agent": {
     "agent_id": "document_001",
-    "total": 381,
-    "successful": 331,
-    "failed": 50,
-    "total_time": 801933.5775485807,
+    "total": 384,
+    "successful": 333,
+    "failed": 51,
+    "total_time": 805046.7846504026,
     "requests": [
-      {
-        "timestamp": "2026-04-25T18:54:15.442811",
-        "query": "Premium test 9 for Document Review Agent",
-        "success": true,
-        "response_time": 2706.212,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:15.445706",
-        "query": "Premium test 10 for Document Review Agent",
-        "success": true,
-        "response_time": 1491.646,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:15.448706",
-        "query": "Premium test 11 for Document Review Agent",
-        "success": true,
-        "response_time": 1813.254,
-        "error": null
-      },
       {
         "timestamp": "2026-04-25T18:54:15.451634",
         "query": "Premium test 12 for Document Review Agent",
@@ -3553,26 +3532,40 @@
         "success": false,
         "response_time": 0.002,
         "error": "No file provided"
+      },
+      {
+        "timestamp": "2026-05-24T21:40:19.069388",
+        "query": "document_upload",
+        "success": false,
+        "response_time": 0.001,
+        "error": "No file provided"
+      },
+      {
+        "timestamp": "2026-05-24T21:40:42.749264",
+        "query": "review this document",
+        "success": true,
+        "response_time": 1161.055,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-24T21:41:18.485931",
+        "query": "review this document ",
+        "success": true,
+        "response_time": 1952.151,
+        "error": null
       }
     ],
     "created_at": "2026-04-25T18:39:21.211942",
-    "last_updated": "2026-05-24T20:18:36.092686",
+    "last_updated": "2026-05-24T21:41:18.485914",
     "accuracy_percentage": 91.5014164305949
   },
   "Analytics Agent": {
     "agent_id": "analytics_001",
-    "total": 416,
-    "successful": 399,
+    "total": 417,
+    "successful": 400,
     "failed": 17,
-    "total_time": 465182.2747402188,
+    "total_time": 465183.93198776216,
     "requests": [
-      {
-        "timestamp": "2026-04-25T18:54:16.549607",
-        "query": "Premium test 44 for Analytics Agent",
-        "success": false,
-        "response_time": 2049.451,
-        "error": "Error"
-      },
       {
         "timestamp": "2026-04-25T18:54:16.552471",
         "query": "Premium test 45 for Analytics Agent",
@@ -4265,10 +4258,17 @@
         "success": true,
         "response_time": 3.351,
         "error": "HTTPConnectionPool(host='127.0.0.1', port=8007): Max retries exceeded with url: /agent/orchestrate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x159a89a90>: Failed to establish a new connection: [Errno 61] Connection refused'))"
+      },
+      {
+        "timestamp": "2026-05-24T21:39:24.322090",
+        "query": "Database query is timing out",
+        "success": true,
+        "response_time": 1.657,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8007): Max retries exceeded with url: /agent/orchestrate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x159deb800>: Failed to establish a new connection: [Errno 61] Connection refused'))"
       }
     ],
     "created_at": "2026-04-25T18:39:21.211944",
-    "last_updated": "2026-05-24T21:21:30.787912",
+    "last_updated": "2026-05-24T21:39:24.322071",
     "accuracy_percentage": 95.18413597733712
   },
   "Email Agent": {

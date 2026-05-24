@@ -54,6 +54,12 @@ git push origin main
 
 **Note:** Streamlit Cloud won't run backends automatically. Use Docker option instead.
 
+When backends are not running, the UI uses **demo mode** (sample workflow data) automatically on Streamlit Cloud. Local `streamlit run` always calls real agent APIs.
+
+Optional: in Streamlit Cloud **Secrets**, set `MCP_DEPLOYMENT_MODE=deployed` to force demo fallback if auto-detection does not apply.
+
+For local development, set `MCP_DEPLOYMENT_MODE=local` to disable demo mode explicitly.
+
 ---
 
 ## **🚢 Option 4: Railway / Render / Heroku**
