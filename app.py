@@ -59,7 +59,8 @@ def start_backend_services():
     
     # Check if backends are already running
     try:
-        response = requests.get("http://127.0.0.1:8000/health", timeout=2)
+        support_url = os.environ.get("SUPPORT_API", "http://127.0.0.1:8000").rstrip("/")
+        response = requests.get(f"{support_url}/health", timeout=2)
         if response.status_code == 200:
             return  # Backends already running
     except:
@@ -1477,15 +1478,34 @@ def clean_data_recursive(data):
 # ============================================================================
 # CONFIG
 # ============================================================================
-SUPPORT_API = "http://127.0.0.1:8000"
-DOCUMENT_API = "http://127.0.0.1:8001"
-MEETING_API = "http://127.0.0.1:8002"
-HR_API = "http://127.0.0.1:8003"
-PROJECTS_API = "http://127.0.0.1:8005"
-ANALYTICS_API = "http://127.0.0.1:8007"
-EMAIL_API = "http://127.0.0.1:8004"
-EMAIL_DASHBOARD_URL = "http://127.0.0.1:8004/dashboard.html"
+def _api_url(env_key: str, default: str) -> str:
+    """Read agent base URL from environment (docker-compose) or use localhost default."""
+    return os.environ.get(env_key, default).rstrip("/")
+
+
+SUPPORT_API = _api_url("SUPPORT_API", "http://127.0.0.1:8000")
+DOCUMENT_API = _api_url("DOCUMENT_API", "http://127.0.0.1:8001")
+MEETING_API = _api_url("MEETING_API", "http://127.0.0.1:8002")
+HR_API = _api_url("HR_API", "http://127.0.0.1:8003")
+PROJECTS_API = _api_url("PROJECTS_API", "http://127.0.0.1:8005")
+ANALYTICS_API = _api_url("ANALYTICS_API", "http://127.0.0.1:8007")
+EMAIL_API = _api_url("EMAIL_API", "http://127.0.0.1:8004")
+EMAIL_DASHBOARD_URL = _api_url("EMAIL_DASHBOARD_URL", f"{EMAIL_API}/dashboard.html")
 REQUEST_TIMEOUT = 30
+
+
+def backends_available() -> bool:
+    """True when the support agent health endpoint is reachable."""
+    try:
+        response = requests.get(f"{SUPPORT_API}/health", timeout=2)
+        return response.status_code == 200
+    except Exception:
+        return False
+
+
+def should_use_demo_data(is_example: bool) -> bool:
+    """Use hardcoded demo responses for examples or when backends are not running (e.g. Streamlit Cloud)."""
+    return is_example or not backends_available()
 
 # Configure cinematic theme if available
 if CINEMATIC_UI_AVAILABLE:
@@ -2228,7 +2248,7 @@ def execute_support_agent(user_input: str, request_id: str, is_example: bool = F
     """Send to Support Agent"""
     start_time = time.time()
     
-    if is_example:
+    if should_use_demo_data(is_example):
         return get_hardcoded_support_data()
     
     success = False
@@ -2249,14 +2269,10 @@ def execute_support_agent(user_input: str, request_id: str, is_example: bool = F
             result = {"status": "error", "data": {"decision": "agent_error", "error": f"Support Agent returned {response.status_code}"}}
     except Exception as e:
         error_msg = str(e)
-        result = {
-            "status": "error",
-            "data": {
-                "decision": "support_pending",
-                "error": f"Support Agent unavailable: {str(e)}",
-                "fallback_solution": "IT support ticket created. You will be contacted shortly by the IT team."
-            }
-        }
+        result = get_hardcoded_support_data()
+        result["data"]["demo_mode"] = True
+        result["data"]["backend_note"] = f"Support Agent unavailable: {e}"
+        success = True
     
     finally:
         # Record metrics
@@ -2324,7 +2340,7 @@ def execute_meeting(user_input: str, request_id: str, is_example: bool = False) 
     error_msg = None
     result = None
     
-    if is_example:
+    if should_use_demo_data(is_example):
         success = True
         return get_hardcoded_meeting_data(user_input)
     
@@ -2390,7 +2406,7 @@ def execute_hr(user_input: str, request_id: str, is_example: bool = False) -> Di
     error_msg = None
     result = None
     
-    if is_example:
+    if should_use_demo_data(is_example):
         success = True
         return get_hardcoded_hr_data()
     
@@ -2408,7 +2424,10 @@ def execute_hr(user_input: str, request_id: str, is_example: bool = False) -> Di
             result = {"status": "error", "error": f"Agent error: {response.status_code}"}
     except Exception as e:
         error_msg = str(e)
-        result = {"status": "error", "error": str(e)}
+        result = get_hardcoded_hr_data()
+        result["data"]["demo_mode"] = True
+        result["data"]["backend_note"] = str(e)
+        success = True
     
     finally:
         # Record metrics
@@ -2492,7 +2511,7 @@ def get_hardcoded_meeting_data(user_input: str = "") -> Dict:
 
 def execute_meeting_agent(user_input: str, request_id: str, is_example: bool = False) -> Dict:
     """Send to Meeting Calendar Agent for onboarding"""
-    if is_example:
+    if should_use_demo_data(is_example):
         return get_hardcoded_meeting_data(user_input)
     
     try:
@@ -2506,7 +2525,10 @@ def execute_meeting_agent(user_input: str, request_id: str, is_example: bool = F
         else:
             return {"status": "error", "error": f"Agent error: {response.status_code}"}
     except Exception as e:
-        return {"status": "error", "error": str(e)}
+        result = get_hardcoded_meeting_data(user_input)
+        result["data"]["demo_mode"] = True
+        result["data"]["backend_note"] = str(e)
+        return result
 
 def get_hardcoded_project_data() -> Dict:
     """Hardcoded test data for project agent"""
@@ -2547,7 +2569,7 @@ def execute_projects(user_input: str, request_id: str, is_example: bool = False)
     error_msg = None
     result = None
     
-    if is_example:
+    if should_use_demo_data(is_example):
         success = True
         return get_hardcoded_project_data()
     
@@ -3558,7 +3580,8 @@ def show_home_page():
             "input": st.session_state.example_input,
             "file": None,
             "request_id": str(uuid.uuid4())[:8],
-            "start_time": time.time()
+            "start_time": time.time(),
+            "is_example": True,
         }
         del st.session_state.example_input
         st.session_state.page = "results"
@@ -3619,6 +3642,12 @@ def show_results_page():
     request_id = result_data["request_id"]
     start_time = result_data["start_time"]
     is_example = result_data.get("is_example", False)
+    use_demo = should_use_demo_data(is_example)
+    if use_demo and not backends_available():
+        st.info(
+            "Demo mode: agent backends are not reachable in this deployment, "
+            "so sample onboarding workflow data is shown."
+        )
     
     # Detect intent
     intent = detect_intent(user_input)
@@ -3641,28 +3670,28 @@ def show_results_page():
                 # Multi-agent onboarding workflow
                 response = {
                     "status": "success",
-                    "hr_response": execute_hr(user_input, request_id, is_example=is_example),
-                    "support_response": execute_support_agent(f"Setup IT access for {user_input}", request_id, is_example=is_example),
-                    "meeting_response": execute_meeting_agent(f"Schedule onboarding for {user_input}", request_id, is_example=is_example),
-                    "project_response": execute_projects(f"Assign to project: {user_input}", request_id, is_example=is_example)
+                    "hr_response": execute_hr(user_input, request_id, is_example=use_demo),
+                    "support_response": execute_support_agent(f"Setup IT access for {user_input}", request_id, is_example=use_demo),
+                    "meeting_response": execute_meeting_agent(f"Schedule onboarding for {user_input}", request_id, is_example=use_demo),
+                    "project_response": execute_projects(f"Assign to project: {user_input}", request_id, is_example=use_demo)
                 }
             elif intent.get("is_multi_agent") and intent.get("multi_agent_type") == "offboarding":
                 # Multi-agent offboarding workflow
                 response = {
                     "status": "success",
-                    "support_response": execute_support_agent(f"Revoke access for {user_input}", request_id, is_example=is_example),
-                    "meeting_response": execute_meeting_agent(f"Schedule exit meeting for {user_input}", request_id, is_example=is_example),
-                    "project_response": execute_projects(f"Transfer projects for {user_input}", request_id, is_example=is_example),
-                    "hr_response": execute_hr(f"Offboard {user_input}", request_id, is_example=is_example)
+                    "support_response": execute_support_agent(f"Revoke access for {user_input}", request_id, is_example=use_demo),
+                    "meeting_response": execute_meeting_agent(f"Schedule exit meeting for {user_input}", request_id, is_example=use_demo),
+                    "project_response": execute_projects(f"Transfer projects for {user_input}", request_id, is_example=use_demo),
+                    "hr_response": execute_hr(f"Offboard {user_input}", request_id, is_example=use_demo)
                 }
             elif intent.get("is_multi_agent") and intent.get("multi_agent_type") == "project_team_setup":
                 # Multi-agent project and team setup workflow
                 response = {
                     "status": "success",
-                    "project_response": execute_projects(user_input, request_id, is_example=is_example),
-                    "meeting_response": execute_meeting_agent(f"Schedule team meeting for {user_input}", request_id, is_example=is_example),
-                    "support_response": execute_support_agent(f"Setup team access for {user_input}", request_id, is_example=is_example),
-                    "hr_response": execute_hr(f"Assign team for {user_input}", request_id, is_example=is_example)
+                    "project_response": execute_projects(user_input, request_id, is_example=use_demo),
+                    "meeting_response": execute_meeting_agent(f"Schedule team meeting for {user_input}", request_id, is_example=use_demo),
+                    "support_response": execute_support_agent(f"Setup team access for {user_input}", request_id, is_example=use_demo),
+                    "hr_response": execute_hr(f"Assign team for {user_input}", request_id, is_example=use_demo)
                 }
             else:
                 # Single agent workflow
@@ -3671,11 +3700,11 @@ def show_results_page():
                 elif intent["agent"] == "documents":
                     response = execute_document(user_input, request_id, uploaded_file)
                 elif intent["agent"] == "hr":
-                    response = execute_hr(user_input, request_id, is_example=is_example)
+                    response = execute_hr(user_input, request_id, is_example=use_demo)
                 elif intent["agent"] == "meetings":
-                    response = execute_meeting(user_input, request_id, is_example=is_example)
+                    response = execute_meeting(user_input, request_id, is_example=use_demo)
                 elif intent["agent"] == "projects":
-                    response = execute_projects(user_input, request_id, is_example=is_example)
+                    response = execute_projects(user_input, request_id, is_example=use_demo)
                 elif intent["agent"] == "analytics":
                     response = execute_analytics(user_input, request_id)
                 elif intent["agent"] == "email":

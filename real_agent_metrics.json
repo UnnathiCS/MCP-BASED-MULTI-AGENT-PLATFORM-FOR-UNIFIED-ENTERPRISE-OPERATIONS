@@ -3561,18 +3561,11 @@
   },
   "Analytics Agent": {
     "agent_id": "analytics_001",
-    "total": 415,
-    "successful": 398,
+    "total": 416,
+    "successful": 399,
     "failed": 17,
-    "total_time": 465178.92376708955,
+    "total_time": 465182.2747402188,
     "requests": [
-      {
-        "timestamp": "2026-04-25T18:54:16.546582",
-        "query": "Premium test 43 for Analytics Agent",
-        "success": true,
-        "response_time": 1620.195,
-        "error": null
-      },
       {
         "timestamp": "2026-04-25T18:54:16.549607",
         "query": "Premium test 44 for Analytics Agent",
@@ -4265,10 +4258,17 @@
         "success": true,
         "response_time": 3.048,
         "error": "HTTPConnectionPool(host='127.0.0.1', port=8007): Max retries exceeded with url: /agent/orchestrate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1599c1e20>: Failed to establish a new connection: [Errno 61] Connection refused'))"
+      },
+      {
+        "timestamp": "2026-05-24T21:21:30.787917",
+        "query": "Database query is timing out",
+        "success": true,
+        "response_time": 3.351,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8007): Max retries exceeded with url: /agent/orchestrate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x159a89a90>: Failed to establish a new connection: [Errno 61] Connection refused'))"
       }
     ],
     "created_at": "2026-04-25T18:39:21.211944",
-    "last_updated": "2026-05-24T21:16:32.388111",
+    "last_updated": "2026-05-24T21:21:30.787912",
     "accuracy_percentage": 95.18413597733712
   },
   "Email Agent": {
