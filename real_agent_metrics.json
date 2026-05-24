@@ -1,32 +1,11 @@
 {
   "Support Agent": {
     "agent_id": "support_001",
-    "total": 377,
-    "successful": 363,
+    "total": 380,
+    "successful": 366,
     "failed": 14,
-    "total_time": 747085.2106685565,
+    "total_time": 765253.7680740283,
     "requests": [
-      {
-        "timestamp": "2026-04-25T18:54:15.175621",
-        "query": "Premium test 1 for Support Agent",
-        "success": true,
-        "response_time": 2726.492,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:15.178744",
-        "query": "Premium test 2 for Support Agent",
-        "success": true,
-        "response_time": 2347.46,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:15.181869",
-        "query": "Premium test 3 for Support Agent",
-        "success": true,
-        "response_time": 1958.291,
-        "error": null
-      },
       {
         "timestamp": "2026-04-25T18:54:15.184859",
         "query": "Premium test 4 for Support Agent",
@@ -705,40 +684,40 @@
         "success": true,
         "response_time": 5771.125,
         "error": null
+      },
+      {
+        "timestamp": "2026-05-24T20:13:19.520643",
+        "query": "Setup IT access for Onboard new employee to the company",
+        "success": true,
+        "response_time": 6142.455,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-24T20:14:42.551616",
+        "query": "Setup IT access for Onboard unnathi email:unathics.btech23@rvu.edu.in as a AIML engineer for the AI project, starts on may 24th at 5pm",
+        "success": true,
+        "response_time": 5928.332,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-24T20:17:28.017427",
+        "query": "Setup IT access for Complete onboarding process for new hire",
+        "success": true,
+        "response_time": 6097.77,
+        "error": null
       }
     ],
     "created_at": "2026-04-25T18:39:21.211928",
-    "last_updated": "2026-05-24T19:55:37.621171",
+    "last_updated": "2026-05-24T20:17:28.017421",
     "accuracy_percentage": 96.3172804532578
   },
   "HR Onboarding Agent": {
     "agent_id": "hr_001",
-    "total": 371,
-    "successful": 350,
+    "total": 374,
+    "successful": 353,
     "failed": 21,
-    "total_time": 652021.0234220218,
+    "total_time": 652055.9493596744,
     "requests": [
-      {
-        "timestamp": "2026-04-25T18:53:22.083680",
-        "query": "Phase 5 quality test 58 for HR Onboarding Agent",
-        "success": false,
-        "response_time": 1682.045,
-        "error": "Simulated error"
-      },
-      {
-        "timestamp": "2026-04-25T18:53:22.086594",
-        "query": "Phase 5 quality test 59 for HR Onboarding Agent",
-        "success": true,
-        "response_time": 1672.261,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:53:22.089642",
-        "query": "Phase 5 quality test 60 for HR Onboarding Agent",
-        "success": true,
-        "response_time": 2541.461,
-        "error": null
-      },
       {
         "timestamp": "2026-04-25T18:54:15.945726",
         "query": "Premium test 1 for HR Onboarding Agent",
@@ -1417,26 +1396,40 @@
         "success": true,
         "response_time": 5.597,
         "error": null
+      },
+      {
+        "timestamp": "2026-05-24T20:13:13.373496",
+        "query": "Onboard new employee to the company",
+        "success": true,
+        "response_time": 11.792,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-24T20:14:36.617347",
+        "query": "Onboard unnathi email:unathics.btech23@rvu.edu.in as a AIML engineer for the AI project, starts on may 24th at 5pm",
+        "success": true,
+        "response_time": 18.162,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-24T20:17:21.914701",
+        "query": "Complete onboarding process for new hire",
+        "success": true,
+        "response_time": 4.972,
+        "error": null
       }
     ],
     "created_at": "2026-04-25T18:39:21.211937",
-    "last_updated": "2026-05-24T19:55:31.845211",
+    "last_updated": "2026-05-24T20:17:21.914690",
     "accuracy_percentage": 94.05099150141642
   },
   "Meeting Calendar Agent": {
     "agent_id": "meeting_001",
-    "total": 356,
-    "successful": 330,
+    "total": 357,
+    "successful": 331,
     "failed": 26,
-    "total_time": 589614.93510036,
+    "total_time": 589823.8860967589,
     "requests": [
-      {
-        "timestamp": "2026-04-25T18:53:21.861683",
-        "query": "Phase 5 quality test 44 for Meeting Calendar Agent",
-        "success": true,
-        "response_time": 943.172,
-        "error": null
-      },
       {
         "timestamp": "2026-04-25T18:53:21.864617",
         "query": "Phase 5 quality test 45 for Meeting Calendar Agent",
@@ -2129,47 +2122,26 @@
         "success": true,
         "response_time": 4.579,
         "error": null
+      },
+      {
+        "timestamp": "2026-05-24T20:18:19.139795",
+        "query": "Schedule project kickoff meeting and allocate resources",
+        "success": true,
+        "response_time": 208.951,
+        "error": null
       }
     ],
     "created_at": "2026-04-25T18:39:21.211939",
-    "last_updated": "2026-05-23T13:45:54.774191",
+    "last_updated": "2026-05-24T20:18:19.139784",
     "accuracy_percentage": 92.63456090651559
   },
   "Project Management Agent": {
     "agent_id": "project_001",
-    "total": 381,
-    "successful": 358,
+    "total": 385,
+    "successful": 362,
     "failed": 23,
-    "total_time": 617041.9370967592,
+    "total_time": 617058.9377719606,
     "requests": [
-      {
-        "timestamp": "2026-04-25T18:54:16.206773",
-        "query": "Premium test 9 for Project Management Agent",
-        "success": true,
-        "response_time": 841.104,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.209656",
-        "query": "Premium test 10 for Project Management Agent",
-        "success": true,
-        "response_time": 2141.673,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.212566",
-        "query": "Premium test 11 for Project Management Agent",
-        "success": true,
-        "response_time": 1911.537,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.215474",
-        "query": "Premium test 12 for Project Management Agent",
-        "success": true,
-        "response_time": 2502.492,
-        "error": null
-      },
       {
         "timestamp": "2026-04-25T18:54:16.218370",
         "query": "Premium test 13 for Project Management Agent",
@@ -2841,40 +2813,47 @@
         "success": true,
         "response_time": 1.941,
         "error": null
+      },
+      {
+        "timestamp": "2026-05-24T20:13:19.533297",
+        "query": "Assign to project: Onboard new employee to the company",
+        "success": true,
+        "response_time": 2.11,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-24T20:14:43.410308",
+        "query": "Assign to project: Onboard unnathi email:unathics.btech23@rvu.edu.in as a AIML engineer for the AI project, starts on may 24th at 5pm",
+        "success": true,
+        "response_time": 7.191,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-24T20:16:39.834761",
+        "query": "Allocate budget and resources to the project",
+        "success": true,
+        "response_time": 6.34,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-24T20:17:28.029223",
+        "query": "Assign to project: Complete onboarding process for new hire",
+        "success": true,
+        "response_time": 1.36,
+        "error": null
       }
     ],
     "created_at": "2026-04-25T18:39:21.211940",
-    "last_updated": "2026-05-24T19:55:37.634198",
+    "last_updated": "2026-05-24T20:17:28.029219",
     "accuracy_percentage": 93.48441926345609
   },
   "Document Review Agent": {
     "agent_id": "document_001",
-    "total": 378,
+    "total": 381,
     "successful": 331,
-    "failed": 47,
-    "total_time": 801933.5727802091,
+    "failed": 50,
+    "total_time": 801933.5775485807,
     "requests": [
-      {
-        "timestamp": "2026-04-25T18:54:15.433517",
-        "query": "Premium test 6 for Document Review Agent",
-        "success": true,
-        "response_time": 693.034,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:15.436567",
-        "query": "Premium test 7 for Document Review Agent",
-        "success": true,
-        "response_time": 2067.666,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:15.439892",
-        "query": "Premium test 8 for Document Review Agent",
-        "success": true,
-        "response_time": 1872.053,
-        "error": null
-      },
       {
         "timestamp": "2026-04-25T18:54:15.442811",
         "query": "Premium test 9 for Document Review Agent",
@@ -3553,26 +3532,40 @@
         "success": true,
         "response_time": 462.918,
         "error": null
+      },
+      {
+        "timestamp": "2026-05-24T20:18:31.241901",
+        "query": "document_upload",
+        "success": false,
+        "response_time": 0.001,
+        "error": "No file provided"
+      },
+      {
+        "timestamp": "2026-05-24T20:18:35.016986",
+        "query": "document_upload",
+        "success": false,
+        "response_time": 0.002,
+        "error": "No file provided"
+      },
+      {
+        "timestamp": "2026-05-24T20:18:36.092699",
+        "query": "document_upload",
+        "success": false,
+        "response_time": 0.002,
+        "error": "No file provided"
       }
     ],
     "created_at": "2026-04-25T18:39:21.211942",
-    "last_updated": "2026-05-23T14:56:19.951538",
+    "last_updated": "2026-05-24T20:18:36.092686",
     "accuracy_percentage": 91.5014164305949
   },
   "Analytics Agent": {
     "agent_id": "analytics_001",
-    "total": 389,
-    "successful": 372,
+    "total": 390,
+    "successful": 373,
     "failed": 17,
-    "total_time": 465037.3293571469,
+    "total_time": 465117.0014553067,
     "requests": [
-      {
-        "timestamp": "2026-04-25T18:54:16.469713",
-        "query": "Premium test 17 for Analytics Agent",
-        "success": true,
-        "response_time": 1615.745,
-        "error": null
-      },
       {
         "timestamp": "2026-04-25T18:54:16.472612",
         "query": "Premium test 18 for Analytics Agent",
@@ -4265,10 +4258,17 @@
         "success": true,
         "response_time": 12.147,
         "error": null
+      },
+      {
+        "timestamp": "2026-05-24T20:18:36.195063",
+        "query": "\ud83d\udea8 EMERGENCY REQUEST \ud83d\udea8\nImmediate team expansion for critical healthcare client crisis\n\n- 3 new senior engineers starting TODAY\n- urgent legal contracts",
+        "success": true,
+        "response_time": 79.672,
+        "error": null
       }
     ],
     "created_at": "2026-04-25T18:39:21.211944",
-    "last_updated": "2026-05-23T14:56:19.973360",
+    "last_updated": "2026-05-24T20:18:36.195056",
     "accuracy_percentage": 95.18413597733712
   },
   "Email Agent": {

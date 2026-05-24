@@ -1,0 +1,124 @@
+version: '3.8'
+
+services:
+  # Support Agent (8000)
+  support-agent:
+    build:
+      context: ./Customer_support_agent
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+    restart: always
+    networks:
+      - mcp-network
+
+  # Document Review Agent (8001)
+  document-agent:
+    build:
+      context: ./Document_Review_agent/document_review_agent
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8001"
+    environment:
+      - PORT=8001
+    restart: always
+    networks:
+      - mcp-network
+
+  # Meeting Calendar Agent (8002)
+  meeting-agent:
+    build:
+      context: ./meeting-calendar-agent
+      dockerfile: Dockerfile
+    ports:
+      - "8002:8002"
+    environment:
+      - PORT=8002
+    restart: always
+    networks:
+      - mcp-network
+
+  # HR Onboarding Agent (8003)
+  hr-agent:
+    build:
+      context: ./HR_Onboarding_agent
+      dockerfile: Dockerfile
+    ports:
+      - "8003:8003"
+    environment:
+      - PORT=8003
+    restart: always
+    networks:
+      - mcp-network
+
+  # Email Agent (8004)
+  email-agent:
+    build:
+      context: ./Email_agent
+      dockerfile: Dockerfile
+    ports:
+      - "8004:8004"
+    environment:
+      - PORT=8004
+    restart: always
+    networks:
+      - mcp-network
+
+  # Projects Agent (8005)
+  projects-agent:
+    build:
+      context: ./Project_Management_agent
+      dockerfile: Dockerfile
+    ports:
+      - "8005:8005"
+    environment:
+      - PORT=8005
+    restart: always
+    networks:
+      - mcp-network
+
+  # Analytics Agent (8007)
+  analytics-agent:
+    build:
+      context: ./Analytics_agent
+      dockerfile: Dockerfile
+    ports:
+      - "8007:8007"
+    environment:
+      - PORT=8007
+    restart: always
+    networks:
+      - mcp-network
+
+  # Streamlit UI
+  streamlit:
+    build:
+      context: .
+      dockerfile: Dockerfile.streamlit
+    ports:
+      - "8501:8501"
+    depends_on:
+      - support-agent
+      - document-agent
+      - meeting-agent
+      - hr-agent
+      - email-agent
+      - projects-agent
+      - analytics-agent
+    environment:
+      - SUPPORT_API=http://support-agent:8000
+      - DOCUMENT_API=http://document-agent:8001
+      - MEETING_API=http://meeting-agent:8002
+      - HR_API=http://hr-agent:8003
+      - EMAIL_API=http://email-agent:8004
+      - PROJECTS_API=http://projects-agent:8005
+      - ANALYTICS_API=http://analytics-agent:8007
+    networks:
+      - mcp-network
+    restart: always
+
+networks:
+  mcp-network:
+    driver: bridge

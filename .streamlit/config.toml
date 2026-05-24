@@ -1,0 +1,21 @@
+[theme]
+primaryColor = "#00d9ff"
+backgroundColor = "#0a0e27"
+secondaryBackgroundColor = "#16213e"
+textColor = "#00d9ff"
+font = "monospace"
+
+[client]
+showErrorDetails = true
+toolbarMode = "viewer"
+
+[server]
+port = 8501
+headless = true
+runOnSave = false
+maxUploadSize = 500
+enableXsrfProtection = false
+enableCORS = true
+
+[logger]
+level = "info"

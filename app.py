@@ -42,6 +42,111 @@ try:
 except ImportError:
     metrics_collector = None
 
+# Import subprocess for backend management
+import subprocess
+import os
+import atexit
+
+# ============================================================================
+# AUTO-START BACKEND SERVICES
+# ============================================================================
+
+BACKEND_PROCESSES = []
+
+def start_backend_services():
+    """Auto-start all backend services on app initialization"""
+    global BACKEND_PROCESSES
+    
+    # Check if backends are already running
+    try:
+        response = requests.get("http://127.0.0.1:8000/health", timeout=2)
+        if response.status_code == 200:
+            return  # Backends already running
+    except:
+        pass
+    
+    # Define services to start
+    services = [
+        {
+            "name": "Support Agent (8000)",
+            "path": "Customer_support_agent",
+            "port": 8000,
+            "command": "python main.py"
+        },
+        {
+            "name": "Document Agent (8001)",
+            "path": "Document_Review_agent/document_review_agent",
+            "port": 8001,
+            "command": "python3 -m uvicorn app.main:app --port 8001"
+        },
+        {
+            "name": "Meeting Agent (8002)",
+            "path": "meeting-calendar-agent",
+            "port": 8002,
+            "command": "python3 -m uvicorn app.main:app --port 8002"
+        },
+        {
+            "name": "HR Agent (8003)",
+            "path": "HR_Onboarding_agent",
+            "port": 8003,
+            "command": "python3 -m uvicorn app.main:app --port 8003"
+        },
+        {
+            "name": "Email Agent (8004)",
+            "path": "Email_agent",
+            "port": 8004,
+            "command": "python3 -m uvicorn app.main:app --port 8004"
+        },
+        {
+            "name": "Projects Agent (8005)",
+            "path": "Project_Management_agent",
+            "port": 8005,
+            "command": "python3 -m uvicorn app.main:app --port 8005"
+        },
+        {
+            "name": "Analytics Agent (8007)",
+            "path": "Analytics_agent/app",
+            "port": 8007,
+            "command": "python3 -m uvicorn main:app --port 8007"
+        }
+    ]
+    
+    # Get the project directory
+    project_dir = os.path.dirname(os.path.abspath(__file__))
+    
+    # Start each service
+    for service in services:
+        try:
+            service_path = os.path.join(project_dir, service["path"])
+            if os.path.exists(service_path):
+                process = subprocess.Popen(
+                    service["command"],
+                    shell=True,
+                    cwd=service_path,
+                    stdout=subprocess.DEVNULL,
+                    stderr=subprocess.DEVNULL,
+                    preexec_fn=os.setsid
+                )
+                BACKEND_PROCESSES.append(process)
+        except Exception as e:
+            pass
+
+def cleanup_backends():
+    """Cleanup backend processes on app exit"""
+    for process in BACKEND_PROCESSES:
+        try:
+            os.killpg(os.getpgid(process.pid), 9)
+        except:
+            pass
+
+# Initialize backends on app start
+if "backends_started" not in st.session_state:
+    start_backend_services()
+    st.session_state.backends_started = True
+    
+# Register cleanup on exit
+atexit.register(cleanup_backends)
+
 # ============================================================================
 # APPLY GLOBAL CSS STYLING
 # ============================================================================

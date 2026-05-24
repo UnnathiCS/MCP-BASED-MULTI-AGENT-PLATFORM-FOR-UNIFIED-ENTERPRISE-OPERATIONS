@@ -1,0 +1,30 @@
+FROM python:3.12-slim
+
+WORKDIR /app
+
+# Copy all project files
+COPY . .
+
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt && \
+    pip install --no-cache-dir -r Customer_support_agent/requirements.txt 2>/dev/null || true && \
+    pip install --no-cache-dir -r Document_Review_agent/document_review_agent/requirements.txt 2>/dev/null || true && \
+    pip install --no-cache-dir -r meeting-calendar-agent/requirements.txt 2>/dev/null || true && \
+    pip install --no-cache-dir -r HR_Onboarding_agent/requirements.txt 2>/dev/null || true && \
+    pip install --no-cache-dir -r Email_agent/requirements.txt 2>/dev/null || true && \
+    pip install --no-cache-dir -r Project_Management_agent/requirements.txt 2>/dev/null || true && \
+    pip install --no-cache-dir -r Analytics_agent/app/requirements.txt 2>/dev/null || true
+
+# Configure Streamlit
+RUN mkdir -p ~/.streamlit && \
+    echo "[theme]" > ~/.streamlit/config.toml && \
+    echo "primaryColor = \"#00d9ff\"" >> ~/.streamlit/config.toml && \
+    echo "[server]" >> ~/.streamlit/config.toml && \
+    echo "headless = true" >> ~/.streamlit/config.toml && \
+    echo "port = 8501" >> ~/.streamlit/config.toml
+
+# Expose port
+EXPOSE 8501
+
+# Run the app
+CMD ["streamlit", "run", "app.py", "--logger.level=info"]
