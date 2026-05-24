@@ -205,11 +205,6 @@ async def orchestrate_projects(request: AgentRequest) -> ProjectResponse:
                     f"✅ {employee_name or 'New employee'} assigned to {project_name}",
                     "Team access provisioned",
                     "Collaboration tools configured"
-                ],
-                recommendations=[
-                    f"Schedule {employee_name or 'employee'}'s first team meeting",
-                    "Share project documentation",
-                    "Assign initial tasks"
                 ]
             )
         

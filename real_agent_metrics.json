@@ -1,46 +1,11 @@
 {
   "Support Agent": {
     "agent_id": "support_001",
-    "total": 372,
-    "successful": 358,
+    "total": 377,
+    "successful": 363,
     "failed": 14,
-    "total_time": 716957.0556754993,
+    "total_time": 747085.2106685565,
     "requests": [
-      {
-        "timestamp": "2026-04-25T18:53:21.536667",
-        "query": "Phase 5 quality test 56 for Support Agent",
-        "success": true,
-        "response_time": 880.266,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:53:21.539813",
-        "query": "Phase 5 quality test 57 for Support Agent",
-        "success": true,
-        "response_time": 831.466,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:53:21.542771",
-        "query": "Phase 5 quality test 58 for Support Agent",
-        "success": true,
-        "response_time": 1936.334,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:53:21.545698",
-        "query": "Phase 5 quality test 59 for Support Agent",
-        "success": true,
-        "response_time": 2208.643,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:53:21.548664",
-        "query": "Phase 5 quality test 60 for Support Agent",
-        "success": false,
-        "response_time": 2485.106,
-        "error": "Simulated error"
-      },
       {
         "timestamp": "2026-04-25T18:54:15.175621",
         "query": "Premium test 1 for Support Agent",
@@ -705,54 +670,54 @@
         "success": true,
         "response_time": 7544.666,
         "error": null
+      },
+      {
+        "timestamp": "2026-05-24T19:21:23.509904",
+        "query": "Setup IT access for Onboard new employee to the company",
+        "success": true,
+        "response_time": 6452.685,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-24T19:26:48.067504",
+        "query": "Setup IT access for Onboard new employee to the company",
+        "success": true,
+        "response_time": 6029.294,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-24T19:51:31.063226",
+        "query": "Setup IT access for Onboard new employee to the company",
+        "success": true,
+        "response_time": 5818.147,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-24T19:54:30.313581",
+        "query": "Setup IT access for Onboard new employee to the company",
+        "success": true,
+        "response_time": 6056.904,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-24T19:55:37.621178",
+        "query": "Setup IT access for Onboard new employee to the company",
+        "success": true,
+        "response_time": 5771.125,
+        "error": null
       }
     ],
     "created_at": "2026-04-25T18:39:21.211928",
-    "last_updated": "2026-05-23T14:55:24.457076",
+    "last_updated": "2026-05-24T19:55:37.621171",
     "accuracy_percentage": 96.3172804532578
   },
   "HR Onboarding Agent": {
     "agent_id": "hr_001",
-    "total": 366,
-    "successful": 345,
+    "total": 371,
+    "successful": 350,
     "failed": 21,
-    "total_time": 651972.845464487,
+    "total_time": 652021.0234220218,
     "requests": [
-      {
-        "timestamp": "2026-04-25T18:53:22.068644",
-        "query": "Phase 5 quality test 53 for HR Onboarding Agent",
-        "success": true,
-        "response_time": 1950.274,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:53:22.071902",
-        "query": "Phase 5 quality test 54 for HR Onboarding Agent",
-        "success": true,
-        "response_time": 1413.765,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:53:22.074866",
-        "query": "Phase 5 quality test 55 for HR Onboarding Agent",
-        "success": true,
-        "response_time": 2503.859,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:53:22.077774",
-        "query": "Phase 5 quality test 56 for HR Onboarding Agent",
-        "success": true,
-        "response_time": 752.12,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:53:22.080741",
-        "query": "Phase 5 quality test 57 for HR Onboarding Agent",
-        "success": true,
-        "response_time": 1355.236,
-        "error": null
-      },
       {
         "timestamp": "2026-04-25T18:53:22.083680",
         "query": "Phase 5 quality test 58 for HR Onboarding Agent",
@@ -1417,10 +1382,45 @@
         "success": true,
         "response_time": 8.577,
         "error": null
+      },
+      {
+        "timestamp": "2026-05-24T19:21:17.050354",
+        "query": "Onboard new employee to the company",
+        "success": true,
+        "response_time": 20.434,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-24T19:26:42.033378",
+        "query": "Onboard new employee to the company",
+        "success": true,
+        "response_time": 3.88,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-24T19:51:25.238265",
+        "query": "Onboard new employee to the company",
+        "success": true,
+        "response_time": 11.216,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-24T19:54:24.251765",
+        "query": "Onboard new employee to the company",
+        "success": true,
+        "response_time": 7.051,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-24T19:55:31.845229",
+        "query": "Onboard new employee to the company",
+        "success": true,
+        "response_time": 5.597,
+        "error": null
       }
     ],
     "created_at": "2026-04-25T18:39:21.211937",
-    "last_updated": "2026-05-23T14:55:16.903960",
+    "last_updated": "2026-05-24T19:55:31.845211",
     "accuracy_percentage": 94.05099150141642
   },
   "Meeting Calendar Agent": {
@@ -2137,46 +2137,11 @@
   },
   "Project Management Agent": {
     "agent_id": "project_001",
-    "total": 376,
-    "successful": 353,
+    "total": 381,
+    "successful": 358,
     "failed": 23,
-    "total_time": 617023.2384044374,
+    "total_time": 617041.9370967592,
     "requests": [
-      {
-        "timestamp": "2026-04-25T18:54:16.191886",
-        "query": "Premium test 4 for Project Management Agent",
-        "success": true,
-        "response_time": 1359.103,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.194806",
-        "query": "Premium test 5 for Project Management Agent",
-        "success": true,
-        "response_time": 843.946,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.197765",
-        "query": "Premium test 6 for Project Management Agent",
-        "success": true,
-        "response_time": 787.752,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.200681",
-        "query": "Premium test 7 for Project Management Agent",
-        "success": true,
-        "response_time": 1454.682,
-        "error": null
-      },
-      {
-        "timestamp": "2026-04-25T18:54:16.203764",
-        "query": "Premium test 8 for Project Management Agent",
-        "success": true,
-        "response_time": 1167.933,
-        "error": null
-      },
       {
         "timestamp": "2026-04-25T18:54:16.206773",
         "query": "Premium test 9 for Project Management Agent",
@@ -2841,10 +2806,45 @@
         "success": true,
         "response_time": 3.741,
         "error": null
+      },
+      {
+        "timestamp": "2026-05-24T19:21:24.808142",
+        "query": "Assign to project: Onboard new employee to the company",
+        "success": true,
+        "response_time": 8.826,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-24T19:26:48.078395",
+        "query": "Assign to project: Onboard new employee to the company",
+        "success": true,
+        "response_time": 2.028,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-24T19:51:31.074724",
+        "query": "Assign to project: Onboard new employee to the company",
+        "success": true,
+        "response_time": 2.054,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-24T19:54:30.329598",
+        "query": "Assign to project: Onboard new employee to the company",
+        "success": true,
+        "response_time": 3.85,
+        "error": null
+      },
+      {
+        "timestamp": "2026-05-24T19:55:37.634202",
+        "query": "Assign to project: Onboard new employee to the company",
+        "success": true,
+        "response_time": 1.941,
+        "error": null
       }
     ],
     "created_at": "2026-04-25T18:39:21.211940",
-    "last_updated": "2026-05-23T14:55:25.451076",
+    "last_updated": "2026-05-24T19:55:37.634198",
     "accuracy_percentage": 93.48441926345609
   },
   "Document Review Agent": {

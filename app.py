@@ -2010,11 +2010,6 @@ def get_hardcoded_hr_data() -> Dict:
                 "✅ NDA signed",
                 "✅ Benefits enrollment",
                 "✅ Tax forms filed"
-            ],
-            "next_steps": [
-                "Complete first day orientation",
-                "Meet with team members",
-                "Review project documentation"
             ]
         }
     }
@@ -3900,52 +3895,52 @@ def show_results_page():
                 st.markdown("<br>", unsafe_allow_html=True)
                 
                 # Recommendations Section
-                if recommendations:
-                    recommendations_html = f"""
-                    <div style="background: #F3E5F5; border-radius: 12px; padding: 25px; 
-                                border-left: 5px solid #9C27B0; box-shadow: 0 4px 12px rgba(156, 39, 176, 0.15);">
-                        <div style="display: flex; align-items: center; margin-bottom: 20px;">
-                            <span style="font-size: 24px; margin-right: 10px;">💡</span>
-                            <h3 style="margin: 0; color: #9C27B0; font-size: 18px;">Recommendations</h3>
-                        </div>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                    """
+                # if recommendations:
+                #     recommendations_html = f"""
+                #     <div style="background: #F3E5F5; border-radius: 12px; padding: 25px; 
+                #                 border-left: 5px solid #9C27B0; box-shadow: 0 4px 12px rgba(156, 39, 176, 0.15);">
+                #         <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                #             <span style="font-size: 24px; margin-right: 10px;">💡</span>
+                #             <h3 style="margin: 0; color: #9C27B0; font-size: 18px;">Recommendations</h3>
+                #         </div>
+                #         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                #     """
                     
-                    for rec in recommendations:
-                        recommendations_html += f"""
-                        <div style="background: white; padding: 15px; border-radius: 8px; 
-                                    border-left: 3px solid #9C27B0;">
-                            <div style="display: flex; align-items: flex-start;">
-                                <span style="font-size: 18px; margin-right: 10px;">💡</span>
-                                <span style="color: #1F2937; line-height: 1.5;">{rec}</span>
-                            </div>
-                        </div>
-                        """
+                #     for rec in recommendations:
+                #         recommendations_html += f"""
+                #         <div style="background: white; padding: 15px; border-radius: 8px; 
+                #                     border-left: 3px solid #9C27B0;">
+                #             <div style="display: flex; align-items: flex-start;">
+                #                 <span style="font-size: 18px; margin-right: 10px;">💡</span>
+                #                 <span style="color: #1F2937; line-height: 1.5;">{rec}</span>
+                #             </div>
+                #         </div>
+                #         """
                     
-                    recommendations_html += """
-                        </div>
-                    </div>
-                    """
-                    st.markdown(recommendations_html, unsafe_allow_html=True)
+                    # recommendations_html += """
+                    #     </div>
+                    # </div>
+                    # """
+                    # st.markdown(recommendations_html, unsafe_allow_html=True)
                 
             else:
                 # Error State - Premium Design
-                error_message = project_response.get("data", {}).get("error", "Unknown error occurred")
-                error_html = f"""
-                <div style="background: #FEE2E2; border-radius: 12px; padding: 25px; 
-                            border-left: 5px solid #DC2626; box-shadow: 0 4px 12px rgba(220, 38, 38, 0.15);">
-                    <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                        <span style="font-size: 28px; margin-right: 15px;">❌</span>
-                        <h3 style="margin: 0; color: #DC2626; font-size: 18px;">Project Assignment Failed</h3>
-                    </div>
-                    <div style="background: white; padding: 15px; border-radius: 8px; color: #7F1D1D;">
-                        <strong>Error:</strong> {error_message}
-                    </div>
-                    <div style="margin-top: 15px; padding: 15px; background: #FECACA; border-radius: 8px; color: #7F1D1D;">
-                        ⚠️ Manual assignment may be required. Please contact the project administrator.
-                    </div>
-                </div>
-                """
+                # error_message = project_response.get("data", {}).get("error", "Unknown error occurred")
+                # error_html = f"""
+                # <div style="background: #FEE2E2; border-radius: 12px; padding: 25px; 
+                #             border-left: 5px solid #DC2626; box-shadow: 0 4px 12px rgba(220, 38, 38, 0.15);">
+                #     <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                #         <span style="font-size: 28px; margin-right: 15px;">❌</span>
+                #         <h3 style="margin: 0; color: #DC2626; font-size: 18px;">Project Assignment Failed</h3>
+                #     </div>
+                #     <div style="background: white; padding: 15px; border-radius: 8px; color: #7F1D1D;">
+                #         <strong>Error:</strong> {error_message}
+                #     </div>
+                #     <div style="margin-top: 15px; padding: 15px; background: #FECACA; border-radius: 8px; color: #7F1D1D;">
+                #         ⚠️ Manual assignment may be required. Please contact the project administrator.
+                #     </div>
+                # </div>
+                # """
                 st.markdown(error_html, unsafe_allow_html=True)
             
             st.markdown("---")
