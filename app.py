@@ -3360,15 +3360,13 @@ def show_home_page():
     if not backends_available():
         if is_deployed_environment():
             st.info(
-                "Hosted mode: agent APIs are not connected. Example workflows use built-in demo data. "
-                "For live agents, deploy with Docker Compose (`docker-compose up`) or set agent URLs in environment variables."
+                ""
+               
             )
         else:
             st.error(
-                "Agent backends are offline (Support Agent :8000 not reachable). "
-                "Run `bash START_ALL_AGENTS.sh` from the project folder, or start Support only: "
-                "`cd Customer_support_agent && .venv/bin/python main.py` — then refresh this page. "
-                "If port 8000 is already in use, stop that process first: `lsof -ti :8000 | xargs kill -9`"
+                ""
+               
             )
     
     # Main input section with holographic styling
