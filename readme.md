@@ -47,43 +47,7 @@ The MCP automatically:
 This is a layered, orchestrator-based microservices architecture:
 Key Design Principle: MCP is stateless and horizontally scalable. Each request is independent. Agents only respond to MCP; they never call each other.
 
-
-┌─────────────────────────────────────────────────────────────┐
-│              FRONTEND LAYER                                 │
-│  ┌──────────────────────┐      ┌─────────────────────────┐ │
-│  │  Streamlit Dashboard │      │  React/Next.js (Future) │ │
-│  │  (agent UIs)         │      │  (web interface)        │ │
-│  └──────────────────────┘      └─────────────────────────┘ │
-└──────────────────┬────────────────────────────┬─────────────┘
-                   │                            │
-┌──────────────────▼────────────────────────────▼─────────────┐
-│              ORCHESTRATION LAYER (MCP)                       │
-│  ┌────────────────────────────────────────────────────────┐ │
-│  │  MCP Decision Engine (Python)                         │ │
-│  │  ├─ Intent Detector (rule + model + semantic)        │ │
-│  │  ├─ Agent Registry (capability-indexed)              │ │
-│  │  ├─ Policy Engine (compliance + access control)      │ │
-│  │  └─ Orchestrator (scoring, routing, invocation)      │ │
-│  └────────────────────────────────────────────────────────┘ │
-│                                                              │
-│  ┌────────────────────────────────────────────────────────┐ │
-│  │  Orchestration API (FastAPI)                          │ │
-│  │  ├─ /api/workflow/submit (async orchestration)       │ │
-│  │  ├─ /api/workflow/{id}/status (polling)              │ │
-│  │  ├─ /api/workflow/{id}/approve (human approval)      │ │
-│  │  └─ /api/health (service discovery)                  │ │
-│  └────────────────────────────────────────────────────────┘ │
-└──────────────────┬────────────────────────────┬─────────────┘
-                   │                            │
-┌──────────────────▼────────────────────────────▼─────────────┐
-│              AGENT LAYER (Microservices)                    │
-│  ┌──────────────┐ ┌──────────────┐ ┌──────────────┐         │
-│  │   Document   │ │ IT Support   │ │ HR Onboarding│         │
-│  │   Review     │ │   Agent      │ │   Agent      │ ...     │
-│  │   (FastAPI)  │ │ (FastAPI)    │ │ (FastAPI)    │         │
-│  └──────────────┘ └──────────────┘ └──────────────┘         │
-└──────────────────────────────────────────────────────────────┘
-
+<img width="932" height="660" alt="image" src="https://github.com/user-attachments/assets/dfa40a87-a5e1-4cd4-9a43-5e23bb812680" />
 
 # 2. COMPLETE REQUEST LIFECYCLE
 
