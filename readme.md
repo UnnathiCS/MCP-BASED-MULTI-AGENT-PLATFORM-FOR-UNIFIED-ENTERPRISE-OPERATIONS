@@ -43,6 +43,120 @@ The MCP automatically:
 
 ---
 
+# OVERALL ARCHITECTURE:
+This is a layered, orchestrator-based microservices architecture:
+Key Design Principle: MCP is stateless and horizontally scalable. Each request is independent. Agents only respond to MCP; they never call each other.
+
+
+┌─────────────────────────────────────────────────────────────┐
+│              FRONTEND LAYER                                 │
+│  ┌──────────────────────┐      ┌─────────────────────────┐ │
+│  │  Streamlit Dashboard │      │  React/Next.js (Future) │ │
+│  │  (agent UIs)         │      │  (web interface)        │ │
+│  └──────────────────────┘      └─────────────────────────┘ │
+└──────────────────┬────────────────────────────┬─────────────┘
+                   │                            │
+┌──────────────────▼────────────────────────────▼─────────────┐
+│              ORCHESTRATION LAYER (MCP)                       │
+│  ┌────────────────────────────────────────────────────────┐ │
+│  │  MCP Decision Engine (Python)                         │ │
+│  │  ├─ Intent Detector (rule + model + semantic)        │ │
+│  │  ├─ Agent Registry (capability-indexed)              │ │
+│  │  ├─ Policy Engine (compliance + access control)      │ │
+│  │  └─ Orchestrator (scoring, routing, invocation)      │ │
+│  └────────────────────────────────────────────────────────┘ │
+│                                                              │
+│  ┌────────────────────────────────────────────────────────┐ │
+│  │  Orchestration API (FastAPI)                          │ │
+│  │  ├─ /api/workflow/submit (async orchestration)       │ │
+│  │  ├─ /api/workflow/{id}/status (polling)              │ │
+│  │  ├─ /api/workflow/{id}/approve (human approval)      │ │
+│  │  └─ /api/health (service discovery)                  │ │
+│  └────────────────────────────────────────────────────────┘ │
+└──────────────────┬────────────────────────────┬─────────────┘
+                   │                            │
+┌──────────────────▼────────────────────────────▼─────────────┐
+│              AGENT LAYER (Microservices)                    │
+│  ┌──────────────┐ ┌──────────────┐ ┌──────────────┐         │
+│  │   Document   │ │ IT Support   │ │ HR Onboarding│         │
+│  │   Review     │ │   Agent      │ │   Agent      │ ...     │
+│  │   (FastAPI)  │ │ (FastAPI)    │ │ (FastAPI)    │         │
+│  └──────────────┘ └──────────────┘ └──────────────┘         │
+└──────────────────────────────────────────────────────────────┘
+
+
+# 2. COMPLETE REQUEST LIFECYCLE
+
+
+USER → FRONTEND
+  ↓
+[Streamlit dashboard or React UI]
+  ↓
+POST /api/workflow/submit
+  ↓
+ORCHESTRATION_API
+  ├─ Create workflow record (ID + status: "submitted")
+  ├─ Add background task
+  └─ Return workflow_id immediately
+  ↓
+BACKGROUND TASK: orchestrate_workflow(workflow_id, request)
+  ├─ classify_request(content)
+  │  └─ Keyword-based agent selection
+  │     ("contract" → document_review, "password" → it_support, etc.)
+  │
+  ├─ For each agent:
+  │  ├─ Emit AGENT_TRIGGERED event
+  │  ├─ Call trigger_agent() → agent_url/api/process
+  │  └─ Emit AGENT_COMPLETED event
+  │
+  └─ Emit WORKFLOW_COMPLETED event
+  ↓
+FRONTEND (polling or WebSocket)
+  ├─ GET /api/workflow/{workflow_id}/status
+  ├─ GET /api/workflow/{workflow_id}/events
+  └─ Display live event stream
+  ↓
+[At scale, MCP would be called instead:]
+  ├─ ORCHESTRATION_API receives request
+  ├─ MCP.process_request(MCPRequest)
+  │
+  ├─ Step 1: INTENT DETECTION
+  │  └─ IntentDetector.detect(text)
+  │     ├─ Rule-based matching (keywords)
+  │     ├─ Model-based (LLM/NLP)
+  │     └─ Semantic fallback (embeddings)
+  │
+  ├─ Step 2: AGENT REGISTRY LOOKUP
+  │  └─ Find agents by detected intent
+  │
+  ├─ Step 3: CANDIDATE SCORING
+  │  └─ Score = 30% intent_match + 25% capability + 20% health
+  │            + 15% policy + 5% cost + priority_boost
+  │
+  ├─ Step 4: POLICY FILTERING
+  │  └─ PolicyEngine blocks/allows agents per rules
+  │     (compliance, data residency, PII masking)
+  │
+  ├─ Step 5: PLAN GENERATION
+  │  └─ Decide execution mode: sync | async | pipeline
+  │
+  ├─ Step 6: AGENT INVOCATION (HTTP POST)
+  │  └─ Send AgentInvocation with mcp_meta context
+  │     {request_id, trace_id, user_id, policies, timeout}
+  │
+  ├─ Step 7: RESULT AGGREGATION
+  │  └─ Consolidate multi-agent responses
+  │
+  └─ Step 8: RETURN MCPResponse
+     {status, decision, result, audit_trail, agent_responses}
+
+FRONTEND receives result
+  ├─ Display agent responses
+  ├─ Show suggested actions (escalations)
+  └─ Handle human approval if needed
+
+  
+
 # 🧠 Core Features
 
 ## 🤖 Multi-Agent Architecture
